@@ -1,0 +1,37 @@
+#RELEASE Location of external products
+# Run "gnumake clean uninstall install" in the application
+# top directory each time this file is changed.
+#
+# NOTE: The build does not check dependancies on files
+# external to this application. Thus you should run
+# "gnumake clean uninstall install" in the top directory
+# each time EPICS_BASE, SNCSEQ, or any other external
+# module defined in the RELEASE file is rebuilt.
+
+TEMPLATE_TOP=$(EPICS_BASE)/templates/makeBaseApp/top
+
+# If you don't want to install into $(TOP) then
+# define INSTALL_LOCATION_APP here
+#INSTALL_LOCATION_APP=<fullpathname>
+
+#If using the sequencer, uncomment this line:
+#SNCSEQ=/home/diamond/R3.14.7/prod/support/seq/2-0-10
+
+# EPICS_BASE usually appears last so other apps can override stuff:
+EPICS_BASE=/home/epics/R3.14.7/base
+
+# External module definitions (prod release).
+ASYN=/home/diamond/R3.14.7/prod/support/asyn/4-3
+STREAM=/home/diamond/R3.14.7/prod/support/streamDevice/2-0-beta1
+PRESSARR=/home/diamond/R3.14.7/prod/support/pressArr_subrec/dls2-2
+IPAC=/home/diamond/R3.14.7/prod/support/ipac/2-8dls4-0
+HY8515=/home/diamond/R3.14.7/prod/support/Hy8515/3-0
+UTILITY=/home/diamond/R3.14.7/prod/support/utility/dls2-4
+HY8401=/home/diamond/R3.14.7/prod/support/Hy8401ip/3-0
+
+# External module definitions (local).
+
+#Capfast users may need the following definitions
+#CAPFAST_TEMPLATES=
+#SCH2EDIF_PATH=
+-include $(TOP)/configure/RELEASE.private

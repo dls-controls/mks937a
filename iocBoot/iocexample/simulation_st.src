@@ -1,0 +1,28 @@
+#!$(INSTALL)/bin/$(ARCH)/simulation
+
+## You may have to change example to something else
+## everywhere it appears in this file
+
+cd "$(INSTALL)"
+
+# Load binaries on architectures that need to do so.
+# VXWORKS_ONLY, LINUX_ONLY and RTEMS_ONLY are macros that resolve
+# to a comment symbol on architectures that are not the current
+# build architecture, so they can be used liberally to do architecture
+# specific things. Alternatively, you can include an architecture
+# specific file.
+$(VXWORKS_ONLY)ld < bin/$(ARCH)/simulation.munch
+
+## This drvTS initializer is needed if the IOC has a hardware event system
+#TSinit
+
+## Register all support components
+dbLoadDatabase("dbd/simulation.dbd")
+simulation_registerRecordDeviceDriver(pdbbase)
+
+
+## Load record instances
+cd "example"
+dbLoadTemplate "simulation_mks937a.substitutions"
+
+iocInit()

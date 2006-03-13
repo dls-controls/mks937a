@@ -1,0 +1,26 @@
+<?xml version="1.0" ?>
+<types>
+  <device name="VA-GCTLR">
+    <property name="Line Frequency"     readback=":F"    />
+    <property name="Pressure Unit"      readback=":UNIT" />
+    <property name="Controller Version" readback=":CTLV" />
+    <property name="Comms Version"      readback=":COMV" />
+    <property name="Slot CC"                smon=":MCC"  />
+    <property name="Slot A"                 smon=":MA"   />
+    <property name="Slot B"                 smon=":MB"   />
+  </device>     
+  <device name="VA-GAUGE">
+    <property name="Pressure" readback=":P" />
+  </device>     
+  <device name="VA-IMG">
+    <property name="Pressure"           readback=":P"      smon=":STA" scon=":CCHV" />
+    <property name="IMG Overpressure"   readback=":PRO:SP"                          />
+    <property name="Valve Interlock"    readback=":RLY:SP"                          />
+    <property name="MPS Interlock"      readback=":RLA:SP"                          />
+  </device>  
+  <device name="VA-PIRG">
+    <property name="Pressure"           readback=":P"      smon=":STA" />
+    <property name="IMG Enable"         readback=":CTL:SP"             />
+    <property name="Ion Pump Interlock" readback=":RLY:SP"             />
+  </device>
+</types>

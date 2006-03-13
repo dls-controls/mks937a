@@ -1,0 +1,32 @@
+TOP=../..
+
+ifdef EPICS_HOST_ARCH
+
+include $(TOP)/configure/CONFIG
+#----------------------------------------
+#  ADD MACRO DEFINITIONS AFTER THIS LINE
+
+#----------------------------------------------------
+#  Optimization of db files using dbst (DEFAULT: NO)
+#DB_OPT = YES
+
+#----------------------------------------------------
+# In a Diamond Support Module, install
+# templates like this
+#
+DB += simulation_mks937aGauge.template
+DB += simulation_mks937aImg.template
+DB += simulation_mks937aPirg.template
+DB += simulation_mks937a.template
+
+
+include $(TOP)/configure/RULES
+#----------------------------------------
+#  ADD RULES AFTER THIS LINE
+
+else
+
+include $(TOP)/config/CONFIG_APP
+include $(TOP)/config/RULES_ARCHS
+
+endif

@@ -1,0 +1,60 @@
+mks937a - Pete Owens 3-9-2003
+    Application to control an MKS 937A multi-gauge controller via stream device
+
+1-12-2003 - Pete Owens
+    Changed names from PENG to IMG
+16-1-2004 - Pete Owens
+    Created Simulation
+25-2-2004 - Pete Owens
+    Combination Gauge database created
+8-3-2004 - Pete Owens
+    Set points added
+9-3-2004 - Pete Owens
+    Removed Alarm and Warning limits from databases
+19-3-2004 - Pete Owens
+    Installed ADC to handle combination gauge output signals
+14-6-2004 - Pete Owens
+    Added symbols for gauges
+26-7-04 - Pete Owens - Release 2_0
+    Initial version for EPICS_3_13_9
+22-6-05 - Pete Owens - Release 2_6
+    Implemented groups
+13-3-06 - Pete Leicester
+    Moved to subversion. Updated to build for both 3.13 and 3.14 epics.
+    3.14 version depends on StreamDevice2 & asyn.
+    The 3.13 build is unchanged. It was not necessary to change the database files in any way to 
+    get them to work on 3.14.
+    The 3.14 version is based on streamsDevice-2-0 but still uses the same protocol file as the 3.13 version.
+    Two applications are built 'example' and 'simulation' both can be run from xxx_st.boot files in the bin directory.
+    'simulation' builds a simulation database that runs without hardware and can therefore
+    be run on Linux or vxWorks.
+    'example' builds a vxWorks version that runs with the real hardware or a vxWorks simulation 
+    of the harwdare running on a seperate serial port and connected by a crossover cable.
+    The gui is also unchanged and can still be run using example/startgui for 3.13 or 3.14 versions.
+
+Prerequisite:
+    Stream device version 1.5 or later must be used.
+
+The Application consists of the following files:
+    mks937a.protocol       - Stream device protocol file
+    mks937aImg.db          - EPICS database for a inverted magenetron guage 
+    mks937aPirg.db         - EPICS database for a pirani guage
+    mks937aGauge.db        - EPICS database for a combination guage
+    mks937aImg.edl         - EDM panel for a penning guage 
+    mks937aPirg.edl        - EDM panel for a pirani guage
+    mks937aImg-symbol.edl  - EDM symbol for a penning guage 
+    mks937aPirg-symbol.edl - EDM symbol for a pirani guage
+
+The example directory has files to show the application in action:
+    st.cmd             - VxWorks startup script to initialise an IOC
+    mks937a.sub        - substitution files to instantiate the records
+    mks937a-launch.edl - EDM pannel to launch panels for the conected gauges 
+    startgui           - script to start off the user interface
+
+Simulation consists of the equivalent files:
+    simulation_mks937aImg.db 
+    simulation_mks937aPirg.db
+    simulation_st.cmd
+    simulation_mks937a.sub
+
+

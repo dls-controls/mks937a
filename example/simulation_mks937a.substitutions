@@ -1,0 +1,75 @@
+# simulation_mks937a.substitutions
+# Initialise templates for a simulated MKS937A Multi-Sensor System
+# Pete Owens - 7/1/04
+#
+# Based on mks937a.sub 
+#
+# substitutions:
+# device  - device name
+# port    - serial port (steam device code ie /ty/0/1 => ty_0_1)
+# channel - MKS 937A channel number (1-4)
+# dom     - domain
+# id      - ID
+# c       - ADC card number
+# s       - ADC signal number
+#################################################################
+# Controller
+#
+file ../db/simulation_mks937a.template
+{
+pattern {    device     ,  port    }
+        { TS-VA-GCTLR-01, ty_mks_0 }    
+}
+#################################################################
+# Inverted Magnetron gauges on channels 1 & 2
+#
+file ../db/simulation_mks937aImg.template
+{
+pattern {     device  ,  port   ,  channel }
+        { TS-VA-IMG-01, ty_mks_0,     1    }    
+        { TS-VA-IMG-02, ty_mks_0,     2    }
+}
+file ../db/mks937aImgGroup.template
+{
+pattern { device, 
+          img1, img2, img3, img4, img5, img6, img7, img8 }
+        { TS-VA-IMG-99,
+          TS-VA-IMG-01, TS-VA-IMG-01, TS-VA-IMG-01, TS-VA-IMG-01, TS-VA-IMG-01, TS-VA-IMG-02, TS-VA-IMG-02, TS-VA-IMG-02 }
+}
+#################################################################
+# pirani gauges on channels 4 & 5
+#
+file ../db/simulation_mks937aPirg.template
+{
+pattern {     device   ,  port   , channel }
+        { TS-VA-PIRG-01, ty_mks_0,    4    }    
+        { TS-VA-PIRG-02, ty_mks_0,    5    }
+}
+file ../db/mks937aPirgGroup.template
+{
+pattern { device, 
+          pirg1, pirg2, pirg3, pirg4,
+          pirg5, pirg6, pirg7, pirg8 }
+        { TS-VA-PIRG-99,
+          TS-VA-PIRG-01, TS-VA-PIRG-01, TS-VA-PIRG-01, TS-VA-PIRG-01, 
+          TS-VA-PIRG-01, TS-VA-PIRG-02, TS-VA-PIRG-02, TS-VA-PIRG-02 }
+}
+#################################################################
+# Combination gauges
+#
+file ../db/simulation_mks937aGauge.template
+{
+pattern { dom, id,  c, s }
+        {  TS, 01, 50, 0 }    
+        {  TS, 02, 50, 1 }
+}
+file ../db/mks937aGaugeGroup.template
+{
+pattern { device, 
+          gauge1, gauge2, gauge3, gauge4,
+          gauge5, gauge6, gauge7, gauge8 }
+        { TS-VA-GAUGE-99,
+          TS-VA-GAUGE-01, TS-VA-GAUGE-01, TS-VA-GAUGE-01, TS-VA-GAUGE-01, 
+          TS-VA-GAUGE-01, TS-VA-GAUGE-02, TS-VA-GAUGE-02, TS-VA-GAUGE-02 }
+}
+#################################################################

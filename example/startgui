@@ -1,0 +1,5 @@
+#!/bin/sh
+EDMDATAFILES=../mks937aApp/opi/edl:../mks937aApp/opi/symbol:.
+export EDMDATAFILES
+#edm -x -m "device=TS-VAC-PENG-01" mks937a-peng.edl &
+edm -x -eolc mks937a-launch.edl &
