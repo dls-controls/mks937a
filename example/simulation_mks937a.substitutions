@@ -31,9 +31,9 @@ pattern {     device  ,  port   ,  channel }
 }
 file ../db/mks937aImgGroup.template
 {
-pattern { device, 
+pattern { device, delay,
           img1, img2, img3, img4, img5, img6, img7, img8 }
-        { TS-VA-IMG-99,
+        { TS-VA-IMG-99, 1,
           TS-VA-IMG-01, TS-VA-IMG-01, TS-VA-IMG-01, TS-VA-IMG-01, TS-VA-IMG-01, TS-VA-IMG-02, TS-VA-IMG-02, TS-VA-IMG-02 }
 }
 #################################################################
@@ -65,7 +65,7 @@ pattern { dom, id,  c, s }
 }
 file ../db/mks937aGaugeGroup.template
 {
-pattern { device, 
+pattern { device,
           gauge1, gauge2, gauge3, gauge4,
           gauge5, gauge6, gauge7, gauge8 }
         { TS-VA-GAUGE-99,

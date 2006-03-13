@@ -1,421 +1,346 @@
-3 1 0
-803
-64
-281
-244
-arial-medium-r-16.0
-0
-arial-bold-r-16.0
-0
-index
-14
-index
-3
-index
-14
-index
-25
-index
-18
-index
-3
-index
-1
-index
-11
-index
-5
-MKS 937A Gauge Controller - $(device)
-0
-0
-10
-0
-<<<empty>>>
-<<<empty>>>
-0
-0
-arial-medium-r-16.0
-0
-<<<E~O~D>>>
-activeRectangleClass
-2 1 0
-0
-0
-280
-27
-index
-53
-0
-1
-index
-53
-0
-<<<empty>>>
-<<<empty>>>
-0
-<<<empty>>>
-<<<empty>>>
-0
-0
-0
-<<<E~O~D>>>
-activeXTextClass
-2 1 0
-0
-0
-280
-27
-index
-14
-0
-1
-index
-0
-0
-<<<empty>>>
-<<<empty>>>
-0
-<<<empty>>>
-<<<empty>>>
-$(device)
-arial-bold-r-18.0
-1
-0
-<<<empty>>>
-<<<E~O~D>>>
-activeExitButtonClass
-2 1 0
-140
-210
-135
-28
-index
-46
-index
-3
-index
-1
-index
-11
-1
-0
-arial-medium-r-16.0
-Exit
-0
-0
-<<<E~O~D>>>
-activeXTextClass
-2 1 0
-5
-135
-90
-19
-index
-14
-0
-1
-index
-0
-0
-<<<empty>>>
-<<<empty>>>
-0
-<<<empty>>>
-<<<empty>>>
-Slot CC\n
-arial-medium-r-16.0
-0
-0
-<<<empty>>>
-<<<E~O~D>>>
-activeXTextClass
-2 1 0
-5
-160
-100
-19
-index
-14
-0
-1
-index
-0
-0
-<<<empty>>>
-<<<empty>>>
-0
-<<<empty>>>
-<<<empty>>>
-Slot A\n
-arial-medium-r-16.0
-0
-0
-<<<empty>>>
-<<<E~O~D>>>
-activeXTextClass
-2 1 0
-5
-185
-90
-19
-index
-14
-0
-1
-index
-0
-0
-<<<empty>>>
-<<<empty>>>
-0
-<<<empty>>>
-<<<empty>>>
-Slot B\n
-arial-medium-r-16.0
-0
-0
-<<<empty>>>
-<<<E~O~D>>>
-activeXTextClass
-2 1 0
-5
-35
-121
-19
-index
-14
-0
-1
-index
-0
-0
-<<<empty>>>
-<<<empty>>>
-0
-<<<empty>>>
-<<<empty>>>
-Line Frequency\n
-arial-medium-r-16.0
-0
-0
-<<<empty>>>
-<<<E~O~D>>>
-TextupdateClass
-7 0 0
-140
-55
-120
-28
-$(device):UNIT
-0
-0
-index
-18
-1
-index
-3
-<<<empty>>>
-1
-arial-bold-r-16.0
-0
-0 1
-0
-<<<E~O~D>>>
-activeXTextClass
-2 1 0
-5
-60
-121
-19
-index
-14
-0
-1
-index
-0
-0
-<<<empty>>>
-<<<empty>>>
-0
-<<<empty>>>
-<<<empty>>>
-Pressure Unit\n
-arial-medium-r-16.0
-0
-0
-<<<empty>>>
-<<<E~O~D>>>
-TextupdateClass
-7 0 0
-140
-80
-120
-28
-$(device):CTLV
-0
-0
-index
-18
-1
-index
-3
-<<<empty>>>
-1
-arial-bold-r-16.0
-0
-0 1
-0
-<<<E~O~D>>>
-activeXTextClass
-2 1 0
-5
-85
-130
-19
-index
-14
-0
-1
-index
-0
-0
-<<<empty>>>
-<<<empty>>>
-0
-<<<empty>>>
-<<<empty>>>
-Controller Version\n
-arial-medium-r-16.0
-0
-0
-<<<empty>>>
-<<<E~O~D>>>
-TextupdateClass
-7 0 0
-140
-105
-120
-28
-$(device):COMV
-0
-2
-index
-18
-1
-index
-3
-<<<empty>>>
-1
-arial-bold-r-16.0
-0
-0 1
-0
-<<<E~O~D>>>
-activeXTextClass
-2 1 0
-5
-110
-121
-19
-index
-14
-0
-1
-index
-0
-0
-<<<empty>>>
-<<<empty>>>
-0
-<<<empty>>>
-<<<empty>>>
-Comms Version\n
-arial-medium-r-16.0
-0
-0
-<<<empty>>>
-<<<E~O~D>>>
-TextupdateClass
-7 0 0
-140
-30
-120
-28
-$(device):F
-0
-0
-index
-18
-1
-index
-3
-<<<empty>>>
-1
-arial-bold-r-16.0
-0
-0 1
-0
-<<<E~O~D>>>
-TextupdateClass
-7 0 0
-140
-130
-135
-28
-$(device):MCC
-0
-0
-index
-18
-1
-index
-3
-<<<empty>>>
-1
-arial-bold-r-16.0
-0
-0 1
-0
-<<<E~O~D>>>
-TextupdateClass
-7 0 0
-140
-180
-135
-28
-$(device):MB
-0
-0
-index
-18
-1
-index
-3
-<<<empty>>>
-1
-arial-bold-r-16.0
-0
-0 1
-0
-<<<E~O~D>>>
-TextupdateClass
-7 0 0
-140
-155
-135
-28
-$(device):MA
-0
-0
-index
-18
-1
-index
-3
-<<<empty>>>
-1
-arial-bold-r-16.0
-0
-0 1
-0
-<<<E~O~D>>>
+4 0 1
+beginScreenProperties
+major 4
+minor 0
+release 1
+x 704
+y 282
+w 260
+h 200
+font "arial-medium-r-16.0"
+ctlFont "arial-bold-r-16.0"
+btnFont "arial-medium-r-16.0"
+fgColor index 14
+bgColor index 3
+textColor index 14
+ctlFgColor1 index 25
+ctlFgColor2 index 18
+ctlBgColor1 index 3
+ctlBgColor2 index 5
+topShadowColor index 1
+botShadowColor index 11
+title "MKS 937A Gauge Controller - $(device)"
+endScreenProperties
+
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 0
+y 0
+w 260
+h 27
+lineColor index 53
+fill
+fillColor index 53
+lineWidth 0
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 0
+y 0
+w 260
+h 27
+font "arial-bold-r-18.0"
+fontAlign "center"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "$(device)"
+}
+endObjectProperties
+
+# (Exit Button)
+object activeExitButtonClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 130
+y 170
+w 125
+h 25
+fgColor index 46
+bgColor index 3
+topShadowColor index 1
+botShadowColor index 11
+label "Exit"
+font "arial-medium-r-14.0"
+3d
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 5
+y 111
+w 50
+h 16
+font "arial-medium-r-14.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "Slot CC"
+}
+autoSize
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 5
+y 131
+w 40
+h 16
+font "arial-medium-r-14.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "Slot A"
+}
+autoSize
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 5
+y 151
+w 40
+h 16
+font "arial-medium-r-14.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "Slot B"
+}
+autoSize
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 5
+y 31
+w 98
+h 16
+font "arial-medium-r-14.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "Line Frequency"
+}
+autoSize
+endObjectProperties
+
+# (Textupdate)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 130
+y 50
+w 120
+h 16
+controlPv "$(device):UNIT"
+fgColor index 18
+fgAlarm
+bgColor index 3
+fill
+font "arial-bold-r-14.0"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 5
+y 51
+w 89
+h 16
+font "arial-medium-r-14.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "Pressure Unit"
+}
+autoSize
+endObjectProperties
+
+# (Textupdate)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 130
+y 70
+w 120
+h 16
+controlPv "$(device):CTLV"
+fgColor index 18
+fgAlarm
+bgColor index 3
+fill
+font "arial-bold-r-14.0"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 5
+y 71
+w 119
+h 16
+font "arial-medium-r-14.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "Controller Version"
+}
+autoSize
+endObjectProperties
+
+# (Textupdate)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 130
+y 90
+w 120
+h 16
+controlPv "$(device):COMV"
+precision 2
+fgColor index 18
+fgAlarm
+bgColor index 3
+fill
+font "arial-bold-r-14.0"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 5
+y 91
+w 104
+h 16
+font "arial-medium-r-14.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "Comms Version"
+}
+autoSize
+endObjectProperties
+
+# (Textupdate)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 130
+y 30
+w 120
+h 16
+controlPv "$(device):F"
+fgColor index 18
+fgAlarm
+bgColor index 3
+fill
+font "arial-bold-r-14.0"
+endObjectProperties
+
+# (Textupdate)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 130
+y 110
+w 125
+h 16
+controlPv "$(device):MCC"
+fgColor index 18
+fgAlarm
+bgColor index 3
+fill
+font "arial-bold-r-14.0"
+endObjectProperties
+
+# (Textupdate)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 130
+y 150
+w 125
+h 16
+controlPv "$(device):MB"
+fgColor index 18
+fgAlarm
+bgColor index 3
+fill
+font "arial-bold-r-14.0"
+endObjectProperties
+
+# (Textupdate)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 130
+y 130
+w 125
+h 16
+controlPv "$(device):MA"
+fgColor index 18
+fgAlarm
+bgColor index 3
+fill
+font "arial-bold-r-14.0"
+endObjectProperties
+

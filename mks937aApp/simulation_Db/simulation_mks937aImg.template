@@ -47,6 +47,14 @@ record(bo, "$(device):CCHV")
     field(ZNAM, "Off")
     field(ONAM, "On")
 }
+record(bi,"$(device):SWITCHING")
+{
+    field(DESC, "Switching")
+    field(PINI, "YES")
+    field(INP,  "0")
+    field(ZNAM, "")
+    field(ONAM, "Switching")
+}
 ################################################################################
 # Status
 #
