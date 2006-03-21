@@ -1,0 +1,28 @@
+# mks937aInterlock.db
+# Template database to override gauge interlock values
+# This template should be used AFTER the interlock
+# records have been loaded with default values
+# using one of the gauge template files
+# Pete Owens - 21/3/06
+#
+# substitutions:
+# interlock  - interlock subsystem (device:ILK)
+# name       - interlock name
+# level      - level (mbar)
+# high       - limits
+# low
+################################################################################
+record(ao, "$(interlock):SETSP")
+{
+    field(DESC, "$(name)")
+    field(DRVH, "$(high)")
+    field(DRVL, "$(low)")
+    field(DOL , "$(level)")
+}
+record(ai, "$(interlock):SP")
+{
+    field(DESC, "$(name)")
+    field(HIGH, "$(high)")
+    field(LOW,  "$(low)")
+}
+################################################################################

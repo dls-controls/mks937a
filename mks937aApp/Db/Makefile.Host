@@ -23,6 +23,7 @@ DB += mks937aImg.template
 DB += mks937aImgGroup.template
 DB += mks937aGauge.template
 DB += mks937aGaugeGroup.template
+DB += mks937aInterlock.template
 
 #----------------------------------------------------
 # Declare template files which do not show up in DB
