@@ -3,10 +3,10 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 779
-y 48
-w 195
-h 226
+x 124
+y 325
+w 224
+h 288
 font "arial-medium-r-16.0"
 ctlFont "arial-bold-r-16.0"
 btnFont "arial-medium-r-16.0"
@@ -20,7 +20,23 @@ ctlBgColor2 index 5
 topShadowColor index 1
 botShadowColor index 11
 title "MKS 937A Gauge - $(dom)-VA-GAUGE-$(id)"
+showGrid
+snapToGrid
+gridSize 8
 endScreenProperties
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 8
+y 48
+w 208
+h 200
+
+beginGroup
 
 # (Rectangle)
 object activeRectangleClass
@@ -28,14 +44,13 @@ beginObjectProperties
 major 4
 minor 0
 release 0
-x 0
-y 0
-w 195
-h 27
-lineColor index 53
+x 8
+y 48
+w 208
+h 200
+lineColor index 14
 fill
-fillColor index 53
-lineWidth 0
+fillColor index 5
 endObjectProperties
 
 # (Static Text)
@@ -44,47 +59,8 @@ beginObjectProperties
 major 4
 minor 1
 release 0
-x 0
-y 0
-w 195
-h 27
-font "arial-bold-r-18.0"
-fontAlign "center"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-value {
-  "$(dom)-VA-GAUGE-$(id)"
-}
-endObjectProperties
-
-# (Exit Button)
-object activeExitButtonClass
-beginObjectProperties
-major 4
-minor 1
-release 0
-x 155
-y 197
-w 35
-h 25
-fgColor index 46
-bgColor index 3
-topShadowColor index 1
-botShadowColor index 11
-label "Exit"
-font "arial-medium-r-14.0"
-3d
-endObjectProperties
-
-# (Static Text)
-object activeXTextClass
-beginObjectProperties
-major 4
-minor 1
-release 0
-x 5
-y 151
+x 24
+y 188
 w 106
 h 16
 font "arial-medium-r-14.0"
@@ -103,10 +79,10 @@ beginObjectProperties
 major 4
 minor 0
 release 0
-x 0
-y 28
-w 195
-h 115
+x 16
+y 64
+w 192
+h 112
 caseColor index 3
 scaleColor index 16
 scaleAlarm
@@ -137,8 +113,8 @@ beginObjectProperties
 major 4
 minor 1
 release 0
-x 5
-y 175
+x 24
+y 216
 w 43
 h 16
 font "arial-medium-r-14.0"
@@ -157,17 +133,17 @@ beginObjectProperties
 major 10
 minor 0
 release 0
-x 80
-y 174
+x 96
+y 212
 w 110
-h 14
+h 24
 controlPv "$(dom)-VA-GAUGE-$(id):GAUGE"
-fgColor index 18
+fgColor index 16
 fgAlarm
-bgColor index 3
+bgColor index 10
 fill
-font "arial-bold-r-14.0"
-fontAlign "right"
+font "arial-medium-r-14.0"
+fontAlign "center"
 endObjectProperties
 
 # (Textupdate)
@@ -176,10 +152,10 @@ beginObjectProperties
 major 10
 minor 0
 release 0
-x 120
-y 147
+x 136
+y 184
 w 70
-h 22
+h 24
 controlPv "$(dom)-VA-GAUGE-$(id):P"
 displayMode "exp"
 precision 1
@@ -193,16 +169,58 @@ lineWidth 2
 lineAlarm
 endObjectProperties
 
+endGroup
+
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 0
+y 0
+w 224
+h 32
+font "arial-bold-r-16.0"
+fontAlign "center"
+fgColor index 14
+bgColor index 53
+value {
+  "$(dom)-VA-GAUGE-$(id)"
+}
+endObjectProperties
+
+# (Exit Button)
+object activeExitButtonClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 168
+y 256
+w 48
+h 24
+fgColor index 46
+bgColor index 3
+topShadowColor index 1
+botShadowColor index 11
+label "Exit"
+font "arial-medium-r-14.0"
+3d
+endObjectProperties
+
 # (Related Display)
 object relatedDisplayClass
 beginObjectProperties
 major 4
 minor 0
 release 0
-x 45
-y 197
-w 50
-h 25
+x 56
+y 256
+w 48
+h 24
 fgColor index 44
 bgColor index 3
 topShadowColor index 1
@@ -228,10 +246,10 @@ beginObjectProperties
 major 4
 minor 0
 release 0
-x 5
-y 197
-w 35
-h 25
+x 8
+y 256
+w 40
+h 24
 fgColor index 44
 bgColor index 3
 topShadowColor index 1
@@ -257,10 +275,10 @@ beginObjectProperties
 major 4
 minor 0
 release 0
-x 100
-y 197
-w 50
-h 25
+x 112
+y 256
+w 48
+h 24
 fgColor index 43
 bgColor index 3
 topShadowColor index 1
@@ -271,5 +289,38 @@ numCmds 1
 command {
   0 "buildStripToolconfig.py $(dom)-VA-GAUGE-$(id):PLOG $(dom)-VA-IMG-$(id):PLOG $(dom)-VA-PIRG-$(id):PLOG log_mbar"
 }
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 8
+y 40
+w 48
+h 16
+font "arial-medium-r-12.0"
+fontAlign "center"
+fgColor index 1
+bgColor index 8
+value {
+  "Details"
+}
+endObjectProperties
+
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 8
+y 40
+w 48
+h 16
+lineColor index 14
+fillColor index 3
 endObjectProperties
 

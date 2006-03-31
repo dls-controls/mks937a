@@ -3,10 +3,10 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 644
-y 134
-w 215
-h 140
+x 658
+y 477
+w 232
+h 208
 font "arial-medium-r-16.0"
 ctlFont "arial-bold-r-16.0"
 btnFont "arial-medium-r-16.0"
@@ -20,23 +20,10 @@ ctlBgColor2 index 5
 topShadowColor index 1
 botShadowColor index 11
 title "MKS 937A IMG Interlocks - $(device)"
+showGrid
+snapToGrid
+gridSize 8
 endScreenProperties
-
-# (Rectangle)
-object activeRectangleClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 0
-y 0
-w 215
-h 42
-lineColor index 53
-fill
-fillColor index 53
-lineWidth 0
-endObjectProperties
 
 # (Static Text)
 object activeXTextClass
@@ -46,33 +33,82 @@ minor 1
 release 0
 x 0
 y 0
-w 215
-h 42
-font "arial-bold-r-18.0"
+w 232
+h 40
+font "arial-bold-r-16.0"
 fontAlign "center"
 fgColor index 14
-bgColor index 0
-useDisplayBg
+bgColor index 53
 value {
   "$(device)"
   "Override Interlocks"
 }
 endObjectProperties
 
-# (Textupdate)
-object TextupdateClass
+# (Exit Button)
+object activeExitButtonClass
 beginObjectProperties
-major 10
+major 4
+minor 1
+release 0
+x 160
+y 176
+w 64
+h 24
+fgColor index 46
+bgColor index 3
+topShadowColor index 1
+botShadowColor index 11
+label "Exit"
+font "arial-medium-r-14.0"
+3d
+endObjectProperties
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
 minor 0
 release 0
-x 5
-y 90
-w 135
+x 8
+y 48
+w 216
+h 120
+
+beginGroup
+
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 8
+y 56
+w 216
+h 112
+lineColor index 14
+fill
+fillColor index 5
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 8
+y 48
+w 48
 h 16
-controlPv "$(device):RLA:SP.DESC"
-fgColor index 14
-bgColor index 3
-font "arial-medium-r-14.0"
+font "arial-medium-r-12.0"
+fontAlign "center"
+fgColor index 1
+bgColor index 8
+value {
+  "Details"
+}
 endObjectProperties
 
 # (Rectangle)
@@ -81,16 +117,12 @@ beginObjectProperties
 major 4
 minor 0
 release 0
-x 5
-y 87
-w 135
-h 21
-lineColor index 3
-fill
+x 8
+y 48
+w 48
+h 16
+lineColor index 14
 fillColor index 3
-visPv "$(device):RLA:EXISTS"
-visMin "0"
-visMax "1"
 endObjectProperties
 
 # (Textupdate)
@@ -99,10 +131,26 @@ beginObjectProperties
 major 10
 minor 0
 release 0
-x 5
-y 70
+x 16
+y 136
 w 135
-h 16
+h 20
+controlPv "$(device):RLA:SP.DESC"
+fgColor index 14
+bgColor index 3
+font "arial-medium-r-14.0"
+endObjectProperties
+
+# (Textupdate)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 16
+y 106
+w 135
+h 20
 controlPv "$(device):RLY:SP.DESC"
 fgColor index 14
 bgColor index 3
@@ -115,33 +163,14 @@ beginObjectProperties
 major 10
 minor 0
 release 0
-x 5
-y 50
+x 16
+y 74
 w 135
-h 16
+h 20
 controlPv "$(device):PRO:SP.DESC"
 fgColor index 14
 bgColor index 3
 font "arial-medium-r-14.0"
-endObjectProperties
-
-# (Exit Button)
-object activeExitButtonClass
-beginObjectProperties
-major 4
-minor 1
-release 0
-x 135
-y 111
-w 70
-h 25
-fgColor index 46
-bgColor index 3
-topShadowColor index 1
-botShadowColor index 11
-label "Exit"
-font "arial-medium-r-14.0"
-3d
 endObjectProperties
 
 # (Text Control)
@@ -150,19 +179,17 @@ beginObjectProperties
 major 4
 minor 0
 release 0
-x 135
-y 49
-w 70
-h 20
+x 144
+y 72
+w 72
+h 24
 controlPv "$(device):PRO:SETSP"
 format "exponential"
-font "arial-bold-r-14.0"
+font "arial-medium-r-14.0"
 fontAlign "center"
 fgColor index 25
-bgColor index 3
-useDisplayBg
+bgColor index 1
 editable
-autoHeight
 motifWidget
 limitsFromDb
 nullPv "$(device):PRO:SETSP"
@@ -181,19 +208,17 @@ beginObjectProperties
 major 4
 minor 0
 release 0
-x 135
-y 69
-w 70
-h 20
+x 144
+y 104
+w 72
+h 24
 controlPv "$(device):RLY:SETSP"
 format "exponential"
-font "arial-bold-r-14.0"
+font "arial-medium-r-14.0"
 fontAlign "center"
 fgColor index 25
-bgColor index 3
-useDisplayBg
+bgColor index 1
 editable
-autoHeight
 motifWidget
 limitsFromDb
 nullPv "$(device):RLY:SETSP"
@@ -212,28 +237,49 @@ beginObjectProperties
 major 4
 minor 0
 release 0
-x 135
-y 89
+x 144
+y 136
 w 70
 h 20
 controlPv "$(device):RLA:SETSP"
 format "exponential"
-font "arial-bold-r-14.0"
+font "arial-medium-r-14.0"
 fontAlign "center"
 fgColor index 25
-bgColor index 3
-useDisplayBg
+bgColor index 1
 editable
 autoHeight
 motifWidget
 limitsFromDb
 nullPv "$(device):RLA:EXISTS"
-nullColor index 3
+nullColor index 18
 nullCondition "nullEq0"
 smartRefresh
 fastUpdate
 useHexPrefix
 newPos
 objType "controls"
+endObjectProperties
+
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 16
+y 136
+w 200
+h 24
+lineColor index 5
+fill
+fillColor index 5
+visPv "$(device):RLA:EXISTS"
+visMin "0"
+visMax "1"
+endObjectProperties
+
+endGroup
+
 endObjectProperties
 

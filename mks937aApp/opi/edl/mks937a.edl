@@ -3,10 +3,10 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 704
-y 282
-w 260
-h 200
+x 127
+y 430
+w 288
+h 224
 font "arial-medium-r-16.0"
 ctlFont "arial-bold-r-16.0"
 btnFont "arial-medium-r-16.0"
@@ -20,6 +20,9 @@ ctlBgColor2 index 5
 topShadowColor index 1
 botShadowColor index 11
 title "MKS 937A Gauge Controller - $(device)"
+showGrid
+snapToGrid
+gridSize 8
 endScreenProperties
 
 # (Rectangle)
@@ -28,14 +31,13 @@ beginObjectProperties
 major 4
 minor 0
 release 0
-x 0
-y 0
-w 260
-h 27
-lineColor index 53
+x 8
+y 48
+w 272
+h 136
+lineColor index 14
 fill
-fillColor index 53
-lineWidth 0
+fillColor index 5
 endObjectProperties
 
 # (Static Text)
@@ -46,13 +48,12 @@ minor 1
 release 0
 x 0
 y 0
-w 260
-h 27
-font "arial-bold-r-18.0"
+w 288
+h 32
+font "arial-bold-r-16.0"
 fontAlign "center"
 fgColor index 14
-bgColor index 0
-useDisplayBg
+bgColor index 53
 value {
   "$(device)"
 }
@@ -64,10 +65,10 @@ beginObjectProperties
 major 4
 minor 1
 release 0
-x 130
-y 170
-w 125
-h 25
+x 216
+y 192
+w 64
+h 24
 fgColor index 46
 bgColor index 3
 topShadowColor index 1
@@ -83,8 +84,8 @@ beginObjectProperties
 major 4
 minor 1
 release 0
-x 5
-y 111
+x 16
+y 128
 w 50
 h 16
 font "arial-medium-r-14.0"
@@ -103,8 +104,8 @@ beginObjectProperties
 major 4
 minor 1
 release 0
-x 5
-y 131
+x 16
+y 144
 w 40
 h 16
 font "arial-medium-r-14.0"
@@ -123,8 +124,8 @@ beginObjectProperties
 major 4
 minor 1
 release 0
-x 5
-y 151
+x 16
+y 160
 w 40
 h 16
 font "arial-medium-r-14.0"
@@ -143,8 +144,8 @@ beginObjectProperties
 major 4
 minor 1
 release 0
-x 5
-y 31
+x 16
+y 64
 w 98
 h 16
 font "arial-medium-r-14.0"
@@ -163,14 +164,14 @@ beginObjectProperties
 major 10
 minor 0
 release 0
-x 130
-y 50
-w 120
+x 144
+y 80
+w 128
 h 16
 controlPv "$(device):UNIT"
-fgColor index 18
+fgColor index 16
 fgAlarm
-bgColor index 3
+bgColor index 10
 fill
 font "arial-bold-r-14.0"
 endObjectProperties
@@ -181,8 +182,8 @@ beginObjectProperties
 major 4
 minor 1
 release 0
-x 5
-y 51
+x 16
+y 80
 w 89
 h 16
 font "arial-medium-r-14.0"
@@ -201,14 +202,14 @@ beginObjectProperties
 major 10
 minor 0
 release 0
-x 130
-y 70
-w 120
+x 144
+y 96
+w 128
 h 16
 controlPv "$(device):CTLV"
-fgColor index 18
+fgColor index 16
 fgAlarm
-bgColor index 3
+bgColor index 10
 fill
 font "arial-bold-r-14.0"
 endObjectProperties
@@ -219,8 +220,8 @@ beginObjectProperties
 major 4
 minor 1
 release 0
-x 5
-y 71
+x 16
+y 96
 w 119
 h 16
 font "arial-medium-r-14.0"
@@ -239,15 +240,15 @@ beginObjectProperties
 major 10
 minor 0
 release 0
-x 130
-y 90
-w 120
+x 144
+y 112
+w 128
 h 16
 controlPv "$(device):COMV"
 precision 2
-fgColor index 18
+fgColor index 16
 fgAlarm
-bgColor index 3
+bgColor index 10
 fill
 font "arial-bold-r-14.0"
 endObjectProperties
@@ -258,8 +259,8 @@ beginObjectProperties
 major 4
 minor 1
 release 0
-x 5
-y 91
+x 16
+y 112
 w 104
 h 16
 font "arial-medium-r-14.0"
@@ -278,14 +279,14 @@ beginObjectProperties
 major 10
 minor 0
 release 0
-x 130
-y 30
-w 120
+x 144
+y 64
+w 128
 h 16
 controlPv "$(device):F"
-fgColor index 18
+fgColor index 16
 fgAlarm
-bgColor index 3
+bgColor index 10
 fill
 font "arial-bold-r-14.0"
 endObjectProperties
@@ -296,14 +297,14 @@ beginObjectProperties
 major 10
 minor 0
 release 0
-x 130
-y 110
-w 125
+x 144
+y 128
+w 128
 h 16
 controlPv "$(device):MCC"
-fgColor index 18
+fgColor index 16
 fgAlarm
-bgColor index 3
+bgColor index 10
 fill
 font "arial-bold-r-14.0"
 endObjectProperties
@@ -314,14 +315,14 @@ beginObjectProperties
 major 10
 minor 0
 release 0
-x 130
-y 150
-w 125
+x 144
+y 160
+w 128
 h 16
 controlPv "$(device):MB"
-fgColor index 18
+fgColor index 16
 fgAlarm
-bgColor index 3
+bgColor index 10
 fill
 font "arial-bold-r-14.0"
 endObjectProperties
@@ -332,15 +333,48 @@ beginObjectProperties
 major 10
 minor 0
 release 0
-x 130
-y 130
-w 125
+x 144
+y 144
+w 128
 h 16
 controlPv "$(device):MA"
-fgColor index 18
+fgColor index 16
 fgAlarm
-bgColor index 3
+bgColor index 10
 fill
 font "arial-bold-r-14.0"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 8
+y 40
+w 48
+h 16
+font "arial-medium-r-12.0"
+fontAlign "center"
+fgColor index 1
+bgColor index 8
+value {
+  "Details"
+}
+endObjectProperties
+
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 8
+y 40
+w 48
+h 16
+lineColor index 14
+fillColor index 3
 endObjectProperties
 
