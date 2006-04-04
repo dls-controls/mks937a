@@ -24,10 +24,12 @@ EPICS_BASE=/home/epics/R3.14.7/base
 ASYN=/home/diamond/R3.14.7/prod/support/asyn/4-3
 STREAM=/home/diamond/R3.14.7/prod/support/streamDevice/2-0-beta1
 PRESSARR=/home/diamond/R3.14.7/prod/support/pressArr_subrec/dls2-2
-IPAC=/home/diamond/R3.14.7/prod/support/ipac/2-8dls4-0
-HY8515=/home/diamond/R3.14.7/prod/support/Hy8515/3-0
-UTILITY=/home/diamond/R3.14.7/prod/support/utility/dls2-4
-HY8401=/home/diamond/R3.14.7/prod/support/Hy8401ip/3-0
+
+# Uncomment these for testing
+#IPAC=/home/diamond/R3.14.7/prod/support/ipac/2-8dls4-2
+#HY8515=/home/diamond/R3.14.7/prod/support/Hy8515/3-1
+#UTILITY=/home/diamond/R3.14.7/prod/support/utility/dls2-4
+#HY8401=/home/diamond/R3.14.7/prod/support/Hy8401ip/3-1
 
 # External module definitions (local).
 
