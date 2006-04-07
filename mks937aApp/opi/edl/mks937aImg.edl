@@ -126,45 +126,6 @@ fill
 fillColor index 5
 endObjectProperties
 
-# (Textupdate)
-object TextupdateClass
-beginObjectProperties
-major 10
-minor 0
-release 0
-x 152
-y 296
-w 70
-h 24
-controlPv "$(device):RLA:SP"
-displayMode "exp"
-precision 1
-fgColor index 16
-fgAlarm
-bgColor index 12
-fill
-font "arial-bold-r-14.0"
-fontAlign "center"
-lineWidth 2
-lineAlarm
-endObjectProperties
-
-# (Textupdate)
-object TextupdateClass
-beginObjectProperties
-major 10
-minor 0
-release 0
-x 16
-y 300
-w 135
-h 16
-controlPv "$(device):RLA:SP.DESC"
-fgColor index 14
-bgColor index 3
-font "arial-medium-r-14.0"
-endObjectProperties
-
 # (Static Text)
 object activeXTextClass
 beginObjectProperties
@@ -214,7 +175,7 @@ release 0
 x 72
 y 212
 w 150
-h 24
+h 22
 controlPv "$(device):STA"
 fgColor index 16
 fgAlarm
@@ -233,7 +194,7 @@ release 0
 x 152
 y 184
 w 70
-h 24
+h 22
 controlPv "$(device):P"
 displayMode "exp"
 precision 1
@@ -288,7 +249,7 @@ release 0
 x 152
 y 240
 w 70
-h 24
+h 22
 controlPv "$(device):PRO:SP"
 displayMode "exp"
 precision 1
@@ -311,7 +272,7 @@ release 0
 x 152
 y 268
 w 70
-h 24
+h 22
 controlPv "$(device):RLY:SP"
 displayMode "exp"
 precision 1
@@ -390,24 +351,6 @@ complexNeedle
 scaleMax 10
 labelFontTag "arial-medium-r-14.0"
 scaleFontTag "arial-bold-r-14.0"
-endObjectProperties
-
-# (Rectangle)
-object activeRectangleClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 16
-y 292
-w 208
-h 32
-lineColor index 5
-fill
-fillColor index 5
-visPv "$(device):RLA:EXISTS"
-visMin "0"
-visMax "1"
 endObjectProperties
 
 # (Rectangle)
@@ -517,5 +460,64 @@ fgAlarm
 bgColor index 10
 font "arial-bold-r-14.0"
 fontAlign "right"
+endObjectProperties
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 16
+y 296
+w 206
+h 22
+
+beginGroup
+
+# (Textupdate)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 16
+y 300
+w 135
+h 16
+controlPv "$(device):RLA:SP.DESC"
+fgColor index 14
+bgColor index 3
+font "arial-medium-r-14.0"
+endObjectProperties
+
+# (Textupdate)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 152
+y 296
+w 70
+h 22
+controlPv "$(device):RLA:SP"
+displayMode "exp"
+precision 1
+fgColor index 16
+fgAlarm
+bgColor index 12
+fill
+font "arial-bold-r-14.0"
+fontAlign "center"
+lineWidth 2
+lineAlarm
+endObjectProperties
+
+endGroup
+
+visPv "$(device):RLA:EXISTS"
+visMin "0"
+visMax "1"
 endObjectProperties
 

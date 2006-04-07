@@ -3,8 +3,8 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 119
-y 406
+x 124
+y 427
 w 240
 h 340
 font "arial-medium-r-16.0"
@@ -155,7 +155,7 @@ release 0
 x 136
 y 184
 w 88
-h 24
+h 22
 controlPv "$(device):P"
 displayMode "exp"
 precision 1
@@ -178,7 +178,7 @@ release 0
 x 56
 y 212
 w 168
-h 24
+h 22
 controlPv "$(device):STA"
 fgColor index 16
 fgAlarm
@@ -213,9 +213,9 @@ beginObjectProperties
 major 10
 minor 0
 release 0
-x 13
-y 244
-w 135
+x 16
+y 243
+w 120
 h 16
 controlPv "$(device):CTL:SP.DESC"
 fgColor index 14
@@ -229,9 +229,9 @@ beginObjectProperties
 major 10
 minor 0
 release 0
-x 13
-y 272
-w 135
+x 16
+y 271
+w 120
 h 16
 controlPv "$(device):RLY:SP.DESC"
 fgColor index 14
@@ -248,7 +248,7 @@ release 0
 x 136
 y 240
 w 88
-h 24
+h 22
 controlPv "$(device):CTL:SP"
 displayMode "exp"
 precision 1
@@ -271,7 +271,7 @@ release 0
 x 136
 y 268
 w 88
-h 24
+h 22
 controlPv "$(device):RLY:SP"
 displayMode "exp"
 precision 1

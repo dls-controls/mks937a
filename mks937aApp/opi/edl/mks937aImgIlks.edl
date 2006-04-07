@@ -64,19 +64,6 @@ font "arial-medium-r-14.0"
 3d
 endObjectProperties
 
-# (Group)
-object activeGroupClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 8
-y 48
-w 216
-h 120
-
-beginGroup
-
 # (Rectangle)
 object activeRectangleClass
 beginObjectProperties
@@ -123,22 +110,6 @@ w 48
 h 16
 lineColor index 14
 fillColor index 3
-endObjectProperties
-
-# (Textupdate)
-object TextupdateClass
-beginObjectProperties
-major 10
-minor 0
-release 0
-x 16
-y 136
-w 135
-h 20
-controlPv "$(device):RLA:SP.DESC"
-fgColor index 14
-bgColor index 3
-font "arial-medium-r-14.0"
 endObjectProperties
 
 # (Textupdate)
@@ -231,6 +202,19 @@ newPos
 objType "controls"
 endObjectProperties
 
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 16
+y 136
+w 198
+h 20
+
+beginGroup
+
 # (Text Control)
 object activeXTextDspClass
 beginObjectProperties
@@ -261,25 +245,26 @@ newPos
 objType "controls"
 endObjectProperties
 
-# (Rectangle)
-object activeRectangleClass
+# (Textupdate)
+object TextupdateClass
 beginObjectProperties
-major 4
+major 10
 minor 0
 release 0
 x 16
 y 136
-w 200
-h 24
-lineColor index 5
-fill
-fillColor index 5
-visPv "$(device):RLA:EXISTS"
-visMin "0"
-visMax "1"
+w 135
+h 20
+controlPv "$(device):RLA:SP.DESC"
+fgColor index 14
+bgColor index 3
+font "arial-medium-r-14.0"
 endObjectProperties
 
 endGroup
 
+visPv "$(device):RLA:EXISTS"
+visMin "0"
+visMax "1"
 endObjectProperties
 

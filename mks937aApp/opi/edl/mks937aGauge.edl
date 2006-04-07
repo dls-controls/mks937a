@@ -25,19 +25,6 @@ snapToGrid
 gridSize 8
 endScreenProperties
 
-# (Group)
-object activeGroupClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 8
-y 48
-w 208
-h 200
-
-beginGroup
-
 # (Rectangle)
 object activeRectangleClass
 beginObjectProperties
@@ -51,126 +38,6 @@ h 200
 lineColor index 14
 fill
 fillColor index 5
-endObjectProperties
-
-# (Static Text)
-object activeXTextClass
-beginObjectProperties
-major 4
-minor 1
-release 0
-x 24
-y 188
-w 106
-h 16
-font "arial-medium-r-14.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-value {
-  "Pressure (mbar)"
-}
-autoSize
-endObjectProperties
-
-# (Meter)
-object activeMeterClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 16
-y 64
-w 192
-h 112
-caseColor index 3
-scaleColor index 16
-scaleAlarm
-labelColor index 14
-fgColor index 16
-fgAlarm
-bgColor index 12
-topShadowColor index 1
-botShadowColor index 11
-readPv "$(dom)-VA-GAUGE-$(id):PLOG"
-showScale
-scaleFormat "FFloat"
-scaleLimitsFromDb
-useDisplayBg
-labelIntervals 7
-majorIntervals 2
-minorIntervals 1
-complexNeedle
-3d
-scaleMax 10
-labelFontTag "arial-medium-r-14.0"
-scaleFontTag "arial-bold-r-14.0"
-endObjectProperties
-
-# (Static Text)
-object activeXTextClass
-beginObjectProperties
-major 4
-minor 1
-release 0
-x 24
-y 216
-w 43
-h 16
-font "arial-medium-r-14.0"
-fgColor index 14
-bgColor index 0
-useDisplayBg
-value {
-  "Gauge"
-}
-autoSize
-endObjectProperties
-
-# (Textupdate)
-object TextupdateClass
-beginObjectProperties
-major 10
-minor 0
-release 0
-x 96
-y 212
-w 110
-h 24
-controlPv "$(dom)-VA-GAUGE-$(id):GAUGE"
-fgColor index 16
-fgAlarm
-bgColor index 10
-fill
-font "arial-medium-r-14.0"
-fontAlign "center"
-endObjectProperties
-
-# (Textupdate)
-object TextupdateClass
-beginObjectProperties
-major 10
-minor 0
-release 0
-x 136
-y 184
-w 70
-h 24
-controlPv "$(dom)-VA-GAUGE-$(id):P"
-displayMode "exp"
-precision 1
-fgColor index 16
-fgAlarm
-bgColor index 12
-fill
-font "arial-bold-r-14.0"
-fontAlign "center"
-lineWidth 2
-lineAlarm
-endObjectProperties
-
-endGroup
-
 endObjectProperties
 
 # (Static Text)
@@ -322,5 +189,121 @@ w 48
 h 16
 lineColor index 14
 fillColor index 3
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 24
+y 188
+w 106
+h 16
+font "arial-medium-r-14.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "Pressure (mbar)"
+}
+autoSize
+endObjectProperties
+
+# (Meter)
+object activeMeterClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 16
+y 64
+w 192
+h 112
+caseColor index 3
+scaleColor index 16
+scaleAlarm
+labelColor index 14
+fgColor index 16
+fgAlarm
+bgColor index 12
+topShadowColor index 1
+botShadowColor index 11
+readPv "$(dom)-VA-GAUGE-$(id):PLOG"
+showScale
+scaleFormat "FFloat"
+scaleLimitsFromDb
+useDisplayBg
+labelIntervals 7
+majorIntervals 2
+minorIntervals 1
+complexNeedle
+3d
+scaleMax 10
+labelFontTag "arial-medium-r-14.0"
+scaleFontTag "arial-bold-r-14.0"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 24
+y 216
+w 43
+h 16
+font "arial-medium-r-14.0"
+fgColor index 14
+bgColor index 0
+useDisplayBg
+value {
+  "Gauge"
+}
+autoSize
+endObjectProperties
+
+# (Textupdate)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 96
+y 214
+w 110
+h 24
+controlPv "$(dom)-VA-GAUGE-$(id):GAUGE"
+fgColor index 16
+fgAlarm
+bgColor index 10
+fill
+font "arial-medium-r-14.0"
+fontAlign "center"
+endObjectProperties
+
+# (Textupdate)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 136
+y 184
+w 70
+h 24
+controlPv "$(dom)-VA-GAUGE-$(id):P"
+displayMode "exp"
+precision 1
+fgColor index 16
+fgAlarm
+bgColor index 12
+fill
+font "arial-bold-r-14.0"
+fontAlign "center"
+lineWidth 2
+lineAlarm
 endObjectProperties
 

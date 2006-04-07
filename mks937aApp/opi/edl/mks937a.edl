@@ -173,7 +173,7 @@ fgColor index 16
 fgAlarm
 bgColor index 10
 fill
-font "arial-bold-r-14.0"
+font "arial-medium-r-14.0"
 endObjectProperties
 
 # (Static Text)
@@ -211,7 +211,7 @@ fgColor index 16
 fgAlarm
 bgColor index 10
 fill
-font "arial-bold-r-14.0"
+font "arial-medium-r-14.0"
 endObjectProperties
 
 # (Static Text)
@@ -250,7 +250,7 @@ fgColor index 16
 fgAlarm
 bgColor index 10
 fill
-font "arial-bold-r-14.0"
+font "arial-medium-r-14.0"
 endObjectProperties
 
 # (Static Text)
@@ -288,7 +288,7 @@ fgColor index 16
 fgAlarm
 bgColor index 10
 fill
-font "arial-bold-r-14.0"
+font "arial-medium-r-14.0"
 endObjectProperties
 
 # (Textupdate)
@@ -306,7 +306,7 @@ fgColor index 16
 fgAlarm
 bgColor index 10
 fill
-font "arial-bold-r-14.0"
+font "arial-medium-r-14.0"
 endObjectProperties
 
 # (Textupdate)
@@ -324,7 +324,7 @@ fgColor index 16
 fgAlarm
 bgColor index 10
 fill
-font "arial-bold-r-14.0"
+font "arial-medium-r-14.0"
 endObjectProperties
 
 # (Textupdate)
@@ -342,7 +342,7 @@ fgColor index 16
 fgAlarm
 bgColor index 10
 fill
-font "arial-bold-r-14.0"
+font "arial-medium-r-14.0"
 endObjectProperties
 
 # (Static Text)

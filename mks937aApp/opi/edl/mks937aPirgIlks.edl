@@ -6,7 +6,7 @@ release 1
 x 70
 y 476
 w 192
-h 168
+h 172
 font "arial-medium-r-16.0"
 ctlFont "arial-bold-r-16.0"
 btnFont "arial-medium-r-16.0"
@@ -52,7 +52,7 @@ major 4
 minor 1
 release 0
 x 120
-y 136
+y 140
 w 64
 h 24
 fgColor index 46
@@ -71,7 +71,7 @@ major 4
 minor 0
 release 0
 x 8
-y 136
+y 140
 w 80
 h 24
 fgColor index 25
@@ -85,19 +85,6 @@ indicatorPv "$(device):CTL:ENABLE"
 font "arial-medium-r-14.0"
 endObjectProperties
 
-# (Group)
-object activeGroupClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 8
-y 48
-w 176
-h 80
-
-beginGroup
-
 # (Rectangle)
 object activeRectangleClass
 beginObjectProperties
@@ -107,7 +94,7 @@ release 0
 x 8
 y 56
 w 176
-h 72
+h 76
 lineColor index 14
 fill
 fillColor index 5
@@ -234,9 +221,5 @@ w 48
 h 16
 lineColor index 14
 fillColor index 3
-endObjectProperties
-
-endGroup
-
 endObjectProperties
 
