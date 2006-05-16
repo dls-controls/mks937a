@@ -3,8 +3,8 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 124
-y 427
+x 134
+y 367
 w 240
 h 340
 font "arial-medium-r-16.0"
@@ -348,7 +348,7 @@ displayFileName {
   0 "mks937aPirgIlks.edl"
 }
 setPosition {
-  0 "button"
+  0 "parentWindow"
 }
 endObjectProperties
 

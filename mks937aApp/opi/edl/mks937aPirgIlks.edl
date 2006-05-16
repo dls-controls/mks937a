@@ -3,10 +3,10 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 70
-y 476
-w 192
-h 172
+x 96
+y 512
+w 276
+h 176
 font "arial-medium-r-16.0"
 ctlFont "arial-bold-r-16.0"
 btnFont "arial-medium-r-16.0"
@@ -25,6 +25,21 @@ snapToGrid
 gridSize 8
 endScreenProperties
 
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 8
+y 56
+w 260
+h 80
+lineColor index 14
+fill
+fillColor index 5
+endObjectProperties
+
 # (Static Text)
 object activeXTextClass
 beginObjectProperties
@@ -33,7 +48,7 @@ minor 1
 release 0
 x 0
 y 0
-w 192
+w 276
 h 40
 font "arial-bold-r-16.0"
 fontAlign "center"
@@ -51,8 +66,8 @@ beginObjectProperties
 major 4
 minor 1
 release 0
-x 120
-y 140
+x 204
+y 144
 w 64
 h 24
 fgColor index 46
@@ -70,8 +85,8 @@ beginObjectProperties
 major 4
 minor 0
 release 0
-x 8
-y 140
+x 180
+y 72
 w 80
 h 24
 fgColor index 25
@@ -83,21 +98,6 @@ botShadowColor index 11
 controlPv "$(device):CTL:ENABLE"
 indicatorPv "$(device):CTL:ENABLE"
 font "arial-medium-r-14.0"
-endObjectProperties
-
-# (Rectangle)
-object activeRectangleClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 8
-y 56
-w 176
-h 76
-lineColor index 14
-fill
-fillColor index 5
 endObjectProperties
 
 # (Textupdate)
