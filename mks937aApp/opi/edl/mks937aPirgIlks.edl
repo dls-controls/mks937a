@@ -3,10 +3,10 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 157
-y 538
+x 210
+y 356
 w 208
-h 216
+h 224
 font "arial-medium-r-16.0"
 ctlFont "arial-bold-r-16.0"
 btnFont "arial-medium-r-16.0"
@@ -34,7 +34,7 @@ release 0
 x 8
 y 56
 w 192
-h 120
+h 128
 lineColor index 14
 fill
 fillColor index 5
@@ -82,7 +82,7 @@ major 4
 minor 1
 release 0
 x 136
-y 184
+y 192
 w 64
 h 24
 fgColor index 46
@@ -134,7 +134,7 @@ major 4
 minor 0
 release 0
 x 24
-y 152
+y 156
 w 160
 h 24
 
@@ -147,7 +147,7 @@ major 10
 minor 0
 release 0
 x 24
-y 148
+y 152
 w 136
 h 24
 controlPv "$(device):RLY:SETSP.DESC"
@@ -163,7 +163,7 @@ major 4
 minor 0
 release 0
 x 112
-y 148
+y 152
 w 72
 h 24
 controlPv "$(device):RLY:SETSP"
