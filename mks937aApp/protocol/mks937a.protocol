@@ -6,6 +6,7 @@
 # $1 = channel number: 1 - 5
 # $2 = setpoint:       RLY, PRO or CTL
 
+locktimeout = 10000;
 terminator   = CR;
 replytimeout = 1000;
 readtimeout  = 1000;

@@ -22,7 +22,7 @@ EPICS_BASE=/home/epics/R3.14.7/base
 
 # External module definitions (prod release).
 ASYN=/home/diamond/R3.14.7/prod/support/asyn/4-3
-STREAM=/home/diamond/R3.14.7/prod/support/streamDevice/2-0
+STREAM=/home/diamond/R3.14.7/prod/support/streamDevice/2-0dls1-0
 PRESSARR=/home/diamond/R3.14.7/prod/support/pressArr_subrec/dls2-2
 
 # Uncomment these for testing
