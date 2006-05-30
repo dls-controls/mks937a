@@ -6,11 +6,15 @@
 # $1 = channel number: 1 - 5
 # $2 = setpoint:       RLY, PRO or CTL
 
-locktimeout = 10000;
+locktimeout = 5000;
 terminator   = CR;
 replytimeout = 1000;
 readtimeout  = 1000;
 extrainput   = Ignore;
+
+# Send an initial dummy command to clear out any garbage the mks has already received.
+# This makes it more likely that the first command sent is received OK.
+@init{out " "; in "\?";}
 
 pressure { out "R\$1"; in "%f"; }
 raw      { out "R\$1"; in "%s"; }
