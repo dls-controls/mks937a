@@ -3,8 +3,8 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 658
-y 477
+x 749
+y 236
 w 232
 h 208
 font "arial-medium-r-16.0"
@@ -264,7 +264,7 @@ endObjectProperties
 endGroup
 
 visPv "$(device):RLA:EXISTS"
-visMin "0"
-visMax "1"
+visMin "1"
+visMax "2"
 endObjectProperties
 
