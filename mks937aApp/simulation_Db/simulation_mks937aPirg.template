@@ -96,7 +96,7 @@ record(ai, "$(device):INP")
     field(LOPR, "0")
 }
 #
-#% archiver 1 Monitor
+#% archiver 10
 #% controldesk Pressure readback
 #
 record(calc, "$(device):P")
@@ -124,6 +124,7 @@ record(calc, "$(device):PLOG")
     field(INPA, "$(device):P")
     field(HOPR, "3")
     field(LOPR, "-3")
+    field(ADEL, "0.025")
 }
 ################################################################################
 # Relay - Ion Pump Interlock

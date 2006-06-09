@@ -106,7 +106,7 @@ record(mbbi, "$(device):STA")
 ################################################################################
 # Pressure
 #
-#% archiver 1 Monitor
+#% archiver 10
 #% controldesk Pressure readback
 #
 record(ai, "$(device):P")
@@ -132,6 +132,7 @@ record(calc, "$(device):PLOG")
     field(INPA, "$(device):P")
     field(HOPR, "-2")
     field(LOPR, "-11")
+    field(ADEL, "0.025")
 }
 ################################################################################
 # Control - IMG Enable
