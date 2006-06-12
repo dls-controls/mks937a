@@ -3,8 +3,8 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 749
-y 236
+x 470
+y 198
 w 232
 h 208
 font "arial-medium-r-16.0"
@@ -156,7 +156,7 @@ w 72
 h 24
 controlPv "$(device):PRO:SETSP"
 format "exponential"
-font "arial-medium-r-14.0"
+font "arial-bold-r-14.0"
 fontAlign "center"
 fgColor index 25
 bgColor index 1
@@ -185,7 +185,7 @@ w 72
 h 24
 controlPv "$(device):RLY:SETSP"
 format "exponential"
-font "arial-medium-r-14.0"
+font "arial-bold-r-14.0"
 fontAlign "center"
 fgColor index 25
 bgColor index 1
@@ -227,7 +227,7 @@ w 70
 h 20
 controlPv "$(device):RLA:SETSP"
 format "exponential"
-font "arial-medium-r-14.0"
+font "arial-bold-r-14.0"
 fontAlign "center"
 fgColor index 25
 bgColor index 1

@@ -3,8 +3,8 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 744
-y 214
+x 465
+y 176
 w 240
 h 432
 font "arial-medium-r-16.0"
@@ -177,10 +177,9 @@ y 212
 w 150
 h 22
 controlPv "$(device):STA"
-fgColor index 16
+fgColor index 18
 fgAlarm
 bgColor index 10
-fill
 font "arial-bold-r-14.0"
 fontAlign "right"
 endObjectProperties

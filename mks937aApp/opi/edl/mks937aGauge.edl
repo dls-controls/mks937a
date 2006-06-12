@@ -3,8 +3,8 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 129
-y 346
+x 206
+y 145
 w 224
 h 288
 font "arial-medium-r-16.0"
@@ -276,11 +276,10 @@ y 214
 w 110
 h 24
 controlPv "$(dom)-VA-GAUGE-$(id):GAUGE"
-fgColor index 16
+fgColor index 18
 fgAlarm
 bgColor index 10
-fill
-font "arial-medium-r-14.0"
+font "arial-bold-r-14.0"
 fontAlign "center"
 endObjectProperties
 
