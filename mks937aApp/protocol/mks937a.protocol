@@ -14,7 +14,9 @@ extrainput   = Ignore;
 
 # Send an initial dummy command to clear out any garbage the mks has already received.
 # This makes it more likely that the first command sent is received OK.
-@init{out " "; in "\?";}
+# NB we dont wait for a response to the dummy command because if it didnt arrive (e.g. rs232 unplugged) then
+# streams would issue a replyTimeout exception and stop the ioc.
+@init{out " ";}
 
 pressure { out "R\$1"; in "%f"; }
 raw      { out "R\$1"; in "%s"; }
