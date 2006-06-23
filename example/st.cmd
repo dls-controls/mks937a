@@ -7,9 +7,9 @@
 #	MKS 937A units on ports 0 & 1
 #
 
-#mks937aTop = "/home/pho/diamond/mks937a"
-mks937aTop = "/home/diamond/R3.13.9/work/support/mks937a/Rx-y"
-diamondTop = "/home/diamond/R3.13.9/work/support/superTop/Rx-y"
+mks937aTop = "/home/pho76/diamond/mks937a"
+#mks937aTop = "/home/diamond/R3.13.9/work/support/mks937a/Rx-y"
+diamondTop = "/home/diamond/R3.13.9/prod/support/superTop/Rx-y"
 
 IPSLOTA = 0
 IPSLOTB = 1
