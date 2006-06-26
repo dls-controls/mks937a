@@ -1,0 +1,95 @@
+# mks937aImgMean.template
+# Template database to calculate the mean pressure from a number of IMGs
+# Pete Owens - 26/6/06
+#
+# substitutions:
+# device - device name
+# img1-8 - names of gauges 
+################################################################################
+# MEAN
+#
+record(genSub, "$(device):MEAN") {
+  field(DESC, "Mean Pressure")
+  field(INAM, "mks937aMeanInit")
+  field(SNAM, "mks937aMeanCalc")
+    field(EFLG,"ALWAYS")
+  field(INPA, "1.0")
+  field(INPB, "5.0")
+  field(FTA, "DOUBLE")
+  field(FTB, "DOUBLE")
+  field(FTC, "DOUBLE")
+  field(FTD, "DOUBLE")
+  field(FTE, "DOUBLE")
+  field(FTF, "DOUBLE")
+  field(FTG, "DOUBLE")
+  field(FTH, "DOUBLE")
+  field(FTI, "LONG")
+  field(FTJ, "LONG")
+  field(OUTA, "$(device):P")
+   field(OUTB, "$(device):STA")
+  field(FTVA, "DOUBLE")
+  field(FTVB, "LONG")
+}
+
+################################################################################
+# Status
+#
+record(mbbi, "$(device):STA")
+{
+    field(DESC, "Status")
+    field(ZRST, "OK")
+    field(ONST, "OK")
+    field(TWST, "Above Range")
+    field(THST, "At Atmosphere")
+    field(FRST, "Low Emission")
+    field(FVST, "Filament Off")
+    field(SXST, "HV Off")
+    field(SVST, "Startup Delay")
+    field(EIST, "Below Range")
+    field(NIST, "Controlled")
+    field(TEST, "Protected State")
+    field(ELST, "No Gauge")
+    field(TVST, "Not Connected")
+    field(TTST, "Wrong Gauge")
+    field(FTST, "Bad Command")
+    field(FFST, "Locked Out")
+    field(UNSV, "MAJOR")
+    field(ZRSV, "NO_ALARM")
+    field(ONSV, "NO_ALARM")
+    field(TWSV, "MINOR")
+    field(THSV, "MINOR")
+    field(FRSV, "MAJOR")
+    field(FVSV, "MAJOR")
+    field(SXSV, "MAJOR")
+    field(SVSV, "MINOR")
+    field(EISV, "NO_ALARM")
+    field(NISV, "MINOR")
+    field(TESV, "MINOR")
+    field(ELSV, "MAJOR")
+    field(TVSV, "MAJOR")
+    field(TTSV, "MAJOR")
+    field(FTSV, "MAJOR")
+    field(FFSV, "MAJOR")
+}
+################################################################################
+# Pressure
+#
+record(ai, "$(device):P")
+{
+    field(DESC, "Pressure")
+    field(EGU,  "mbar")
+    field(PREC, "11")
+    field(HOPR, "1000")
+    field(LOPR, "0")
+}
+record(calc, "$(device):PLOG")
+{
+    field(DESC, "log Pressure")
+    field(EGU,  "log")
+    field(CALC, "LOG(A)")
+    field(INPA, "$(device):P")
+    field(SCAN, "1 second")
+    field(HOPR, "-2")
+    field(LOPR, "-11")
+}
+################################################################################
