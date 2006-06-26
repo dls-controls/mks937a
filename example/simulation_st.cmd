@@ -14,12 +14,14 @@ cd "bin/ppc604"
 ld < iocCore
 ld < baseLib   
 ld < pressArrLib
+ld < genSubRecord.o
 
 ###########################################################
 
 cd diamondTop
 cd "dbd" 
 dbLoadDatabase "baseApp.dbd"
+dbLoadDatabase "genSubRecord.dbd"
 
 ###########################################################
 # Load the databses & start the IOC

@@ -72,4 +72,11 @@ pattern { device,
           TS-VA-GAUGE-01, TS-VA-GAUGE-01, TS-VA-GAUGE-01, TS-VA-GAUGE-01, 
           TS-VA-GAUGE-01, TS-VA-GAUGE-02, TS-VA-GAUGE-02, TS-VA-GAUGE-02 }
 }
+file ../db/mks937aImgMean.template
+{
+pattern { device
+           }
+        { TS-VA-MIMG-01
+           }
+}
 #################################################################

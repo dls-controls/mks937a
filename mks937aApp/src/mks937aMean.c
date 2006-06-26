@@ -74,6 +74,24 @@ long mks937aMeanInit (struct genSubRecord *psub)
 */
 long mks937aMeanCalc (struct genSubRecord *psub)
 {
+    long n;
+    long nImgs;
+    double p[10]; /* input pressure */
+    double s[10]; /* input status */
+ 
+    /*
+    * Extract inputs
+    */
+    nImgs = (long *) psub->a;
+    p[0] = (double *)psub->b;
+    p[1] = (double *)psub->c;
+    s[0] = (long *)psub->l;
+    s[0] = (long *)psub->m;
+
+    *(double *)psub->vala = (p[0] + p[1]) / 2;
+
+    n= nImgs;
+    return n;
 #ifdef XXXXX
 //	long int dest;
 //

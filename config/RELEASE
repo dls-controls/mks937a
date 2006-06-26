@@ -9,6 +9,10 @@
 #
 # Add your declarations here
 
-TEMPLATE_TOP=/home/epics/R3.13.9/base/templates/makeBaseApp/top
+EPICS_RELEASE=R3.13.9
+TEMPLATE_TOP=/home/epics/$(EPICS_RELEASE)/base/templates/makeBaseApp/top
 #SHARE=
-EPICS_BASE=/home/epics/R3.13.9/base
+EPICS_BASE=/home/epics/$(EPICS_RELEASE)/base
+#GenSub record
+GENSUB=/home/diamond/$(EPICS_RELEASE)/prod/support/gensub/2-3
+
