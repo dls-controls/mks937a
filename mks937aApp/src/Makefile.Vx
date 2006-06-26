@@ -1,0 +1,19 @@
+# Makefile.Vx
+TOP = ../../..
+include $(TOP)/config/CONFIG_APP
+#----------------------------------------
+#  ADD MACRO DEFINITIONS AFTER THIS LINE
+
+SRCS.c += ../mks937aMean.c
+BIN_INSTALLS += mks937aMean.o
+
+#LIBOBJS += $(SRCS.c:../%.c=%.o)
+#LIBOBJS += $(EPICS_BASE_BIN)/genSubRecord.o
+#LIBNAME = pscLib
+
+#Note that the command line that builds the
+#library $(LIBNAME) may be HUGE (>3kB)
+#
+include $(TOP)/config/RULES.Vx
+#----------------------------------------
+#  ADD RULES AFTER THIS LINE
