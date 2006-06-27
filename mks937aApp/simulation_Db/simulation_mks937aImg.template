@@ -106,7 +106,7 @@ record(mbbi, "$(device):STA")
 ################################################################################
 # Pressure
 #
-#% archiver 10
+#% archiver 1 Monitor
 #% controldesk Pressure readback
 #
 record(ai, "$(device):P")
@@ -120,6 +120,15 @@ record(ai, "$(device):P")
     field(PREC, "11")
     field(HOPR, "0.01")
     field(LOPR, "0")
+}
+record(calcout, "$(device):ADEL")
+{
+    field(DESC, "deadband")
+    field(CALC, "A/B")
+    field(OUT,  "$(device):P.ADEL")
+    field(INPA, "$(device):P")
+    field(INPB, "20")
+    field(SCAN, "10 second")
 }
 #
 #% archiver 1 Monitor

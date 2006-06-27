@@ -7,7 +7,9 @@
 # nimgs  - number of gauges
 # img1-8 - names of gauges 
 ################################################################################
-# MEAN
+# Mean Pressure
+#
+#% archiver 1 Monitor
 #
 record(genSub, "$(device):MEAN")
 {

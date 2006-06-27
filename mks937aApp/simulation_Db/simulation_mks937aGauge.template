@@ -41,7 +41,7 @@ record(mbbi, "$(dom)-VA-GAUGE-$(id):GAUGE")
 # Pressure
 #
 #% controldesk Pressure readback
-#% archiver 10
+#% archiver 0.1 Monitor
 #
 record(sel, "$(dom)-VA-GAUGE-$(id):P")
 {
@@ -58,6 +58,15 @@ record(sel, "$(dom)-VA-GAUGE-$(id):P")
     field(LOPR, "0")
     field(HIGH, "1.0e-7")
     field(HSV,  "MINOR")
+}
+record(calcout, "$(dom)-VA-GAUGE-$(id):ADEL")
+{
+    field(DESC, "deadband")
+    field(CALC, "A/B")
+    field(OUT,  "$(dom)-VA-GAUGE-$(id):P.ADEL")
+    field(INPA, "$(dom)-VA-GAUGE-$(id):P")
+    field(INPB, "20")
+    field(SCAN, "10 second")
 }
 #
 #% archiver 0.1 Monitor

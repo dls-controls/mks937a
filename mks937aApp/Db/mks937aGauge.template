@@ -58,7 +58,7 @@ record(ai, "$(dom)-VA-GAUGE-$(id):PLOG")
 }
 #
 #% controldesk Pressure readback
-#% archiver 10
+#% archiver 0.1 Monitor
 #
 record(calc, "$(dom)-VA-GAUGE-$(id):P")
 {
@@ -70,6 +70,15 @@ record(calc, "$(dom)-VA-GAUGE-$(id):P")
     field(SCAN, ".1 second")
     field(HOPR, "1000")
     field(LOPR, "0")
+}
+record(calcout, "$(dom)-VA-GAUGE-$(id):ADEL")
+{
+    field(DESC, "deadband")
+    field(CALC, "A/B")
+    field(OUT,  "$(dom)-VA-GAUGE-$(id):P.ADEL")
+    field(INPA, "$(dom)-VA-GAUGE-$(id):P")
+    field(INPB, "20")
+    field(SCAN, "10 second")
 }
 ################################################################################
 # Control - IMG Enable (link from IMG to PIRG)

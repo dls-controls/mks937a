@@ -3,8 +3,8 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 206
-y 145
+x 1044
+y 660
 w 224
 h 288
 font "arial-medium-r-16.0"
@@ -240,7 +240,8 @@ majorIntervals 2
 minorIntervals 1
 complexNeedle
 3d
-scaleMax 10
+scaleMin -11
+scaleMax 3
 labelFontTag "arial-medium-r-14.0"
 scaleFontTag "arial-bold-r-14.0"
 endObjectProperties
