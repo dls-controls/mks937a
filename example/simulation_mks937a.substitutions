@@ -74,9 +74,11 @@ pattern { device,
 }
 file ../db/mks937aImgMean.template
 {
-pattern { device
-           }
-        { TS-VA-MIMG-01
-           }
+pattern { device, nimgs, 
+          img1, img2, img3, img4, img5, img6, img7, img8, img9, img10 }
+        { TS-VA-MIMG-01, 2,
+          TS-VA-IMG-01, TS-VA-IMG-02, 
+          TS-VA-IMG-01, TS-VA-IMG-01, TS-VA-IMG-01, TS-VA-IMG-01, 
+          TS-VA-IMG-01, TS-VA-IMG-01, TS-VA-IMG-01, TS-VA-IMG-01 }
 }
 #################################################################

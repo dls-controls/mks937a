@@ -16,6 +16,10 @@ ld < baseLib
 ld < pressArrLib
 ld < genSubRecord.o
 
+cd mks937aTop
+cd "bin/ppc604"
+ld < mks937aMean.o
+
 ###########################################################
 
 cd diamondTop
