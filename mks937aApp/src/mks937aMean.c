@@ -109,3 +109,10 @@ long mks937aMeanCalc (struct genSubRecord *psub)
 }
 /*******************************************************************************
 */
+
+/* Only register functions in R3.14 */
+#ifdef EPICS_R3_14
+epicsRegisterFunction(mks937aMeanInit);
+epicsRegisterFunction(mks937aMeanCalc);
+#endif
+

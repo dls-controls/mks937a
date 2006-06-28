@@ -3,13 +3,14 @@ TOP = ..
 ifdef EPICS_HOST_ARCH
 
 include $(TOP)/configure/CONFIG
-# Uncomment for testing
-DIRS := $(DIRS) $(filter-out $(DIRS), $(wildcard *src*))
-DIRS := $(DIRS) $(filter-out $(DIRS), $(wildcard *Src*))
+DIRS := $(DIRS) $(filter-out $(DIRS), src)
 DIRS := $(DIRS) $(filter-out $(DIRS), $(wildcard *db*))
 DIRS := $(DIRS) $(filter-out $(DIRS), $(wildcard *Db*))
 DIRS := $(DIRS) $(filter-out $(DIRS), $(wildcard *opi*))
 DIRS += protocol
+# Uncomment for testing
+#DIRS := $(DIRS) $(filter-out $(DIRS), $(wildcard *src*))
+#DIRS := $(DIRS) $(filter-out $(DIRS), $(wildcard *Src*))
 include $(TOP)/configure/RULES_DIRS
 
 else

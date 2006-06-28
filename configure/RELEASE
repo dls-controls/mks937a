@@ -21,6 +21,7 @@ TEMPLATE_TOP=$(EPICS_BASE)/templates/makeBaseApp/top
 EPICS_BASE=/home/epics/R3.14.7/base
 
 # External module definitions (prod release).
+GENSUB=/home/diamond/R3.14.7/prod/support/genSub/1-6dls2-4
 ASYN=/home/diamond/R3.14.7/prod/support/asyn/4-3
 STREAM=/home/diamond/R3.14.7/prod/support/streamDevice/2-0dls1-0
 PRESSARR=/home/diamond/R3.14.7/prod/support/pressArr_subrec/dls2-2
@@ -28,7 +29,7 @@ PRESSARR=/home/diamond/R3.14.7/prod/support/pressArr_subrec/dls2-2
 # Uncomment these for testing
 #IPAC=/home/diamond/R3.14.7/prod/support/ipac/2-8dls4-2
 #HY8515=/home/diamond/R3.14.7/prod/support/Hy8515/3-1
-#UTILITY=/home/diamond/R3.14.7/prod/support/utility/dls2-4
+#UTILITY=/home/diamond/R3.14.7/prod/support/utility/dls2-6
 #HY8401=/home/diamond/R3.14.7/prod/support/Hy8401ip/3-1
 
 # External module definitions (local).

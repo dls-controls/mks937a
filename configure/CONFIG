@@ -8,7 +8,7 @@ include $(TOP)/configure/CONFIG_APP
 
 # To restrict the build to a list *without* the host arch, redefine BUILD_ARCHS
 # here, to included only those archs to build
-#BUILD_ARCHS = 
+BUILD_ARCHS = vxWorks-ppc604_long
 
 # Use this when your IOC and the host use different paths
 # to access the application. Typically this will be 
