@@ -104,14 +104,14 @@ record(sel, "$(device):SELSTA")
 {
     field(DESC, "Select Status")
     field(SELM, "High Signal")
-    field(INPA, "$(img1):STA")
-    field(INPB, "$(img2):STA")
-    field(INPC, "$(img3):STA")
-    field(INPD, "$(img4):STA")
-    field(INPE, "$(img5):STA")
-    field(INPF, "$(img6):STA")
-    field(INPG, "$(img7):STA")
-    field(INPH, "$(img8):STA")
+    field(INPA, "$(img1):STA MS")
+    field(INPB, "$(img2):STA MS")
+    field(INPC, "$(img3):STA MS")
+    field(INPD, "$(img4):STA MS")
+    field(INPE, "$(img5):STA MS")
+    field(INPF, "$(img6):STA MS")
+    field(INPG, "$(img7):STA MS")
+    field(INPH, "$(img8):STA MS")
 }
 ################################################################################
 # Pressure
