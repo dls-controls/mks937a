@@ -116,6 +116,7 @@ record(mbbi, "$(device):STA")
 record(ai, "$(device):P")
 {
     field(DESC, "Pressure")
+    field(FLNK, "$(device):PLOG")
     field(EGU,  "mbar")
     field(PREC, "11")
     field(HOPR, "1000")
@@ -124,10 +125,10 @@ record(ai, "$(device):P")
 record(calc, "$(device):PLOG")
 {
     field(DESC, "log Pressure")
+    field(FLNK, "$(device):PDYN")
     field(EGU,  "log")
     field(CALC, "LOG(A)")
     field(INPA, "$(device):P")
-    field(SCAN, "1 second")
     field(HOPR, "-2")
     field(LOPR, "-11")
 }
@@ -141,23 +142,17 @@ record(calc, "$(device):PDYN")
     field(CALC, "A/B")
     field(INPA, "$(device):P MS")
     field(INPB, "$(device):I PP MS")
-    field(SCAN, "1 second")
 }
 record(calc, "$(device):I")
 {
     field(DESC, "Beam Current")
     field(EGU,  "mA")
     field(CALC, "MAX(A,B)")
-#    field(INPA, "$(current) MS")
-    field(INPA, "$(device):SIGNAL MS")
-    field(INPB, "1.0")
+    field(INPA, "$(current) MS")
+    field(INPB, "0.999")
     field(LOW,  "1.1")
-    field(LOLO, "1.001")
+    field(LOLO, "1.0")
     field(LSV,  "MINOR")
-    field(LLSV, "UNDEFINED")
-}
-record(ai, "$(device):SIGNAL")
-{
-	field (VAL, "1.0")
+    field(LLSV, "INVALID")
 }
 ################################################################################
