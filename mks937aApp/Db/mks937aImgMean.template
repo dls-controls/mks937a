@@ -3,9 +3,10 @@
 # Pete Owens - 26/6/06
 #
 # substitutions:
-# device - device name
-# nimgs  - number of gauges
-# img1-8 - names of gauges 
+# device  - device name
+# current - beam current
+# nimgs   - number of gauges
+# img1-8  - names of gauges 
 ################################################################################
 # Mean Pressure
 #
@@ -129,5 +130,34 @@ record(calc, "$(device):PLOG")
     field(SCAN, "1 second")
     field(HOPR, "-2")
     field(LOPR, "-11")
+}
+################################################################################
+# Dynamic Pressure
+#
+record(calc, "$(device):PDYN")
+{
+    field(DESC, "Dynamic Pressure")
+    field(EGU,  "mbar/mA")
+    field(CALC, "A/B")
+    field(INPA, "$(device):P MS")
+    field(INPB, "$(device):I PP MS")
+    field(SCAN, "1 second")
+}
+record(calc, "$(device):I")
+{
+    field(DESC, "Beam Current")
+    field(EGU,  "mA")
+    field(CALC, "MAX(A,B)")
+#    field(INPA, "$(current) MS")
+    field(INPA, "$(device):SIGNAL MS")
+    field(INPB, "1.0")
+    field(LOW,  "1.1")
+    field(LOLO, "1.001")
+    field(LSV,  "MINOR")
+    field(LLSV, "UNDEFINED")
+}
+record(ai, "$(device):SIGNAL")
+{
+	field (VAL, "1.0")
 }
 ################################################################################
