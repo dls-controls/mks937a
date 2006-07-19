@@ -73,6 +73,8 @@ record(genSub, "$(device):MEAN")
 ################################################################################
 # Status
 #
+#% archiver 1 Monitor
+#
 record(mbbi, "$(device):STA")
 {
     field(DESC, "Status")
@@ -113,6 +115,8 @@ record(mbbi, "$(device):STA")
 ################################################################################
 # Pressure
 #
+#% archiver 1 Monitor
+#
 record(ai, "$(device):P")
 {
     field(DESC, "Pressure")
@@ -122,6 +126,9 @@ record(ai, "$(device):P")
     field(HOPR, "1000")
     field(LOPR, "0")
 }
+#
+#% archiver 1 Monitor
+#
 record(calc, "$(device):PLOG")
 {
     field(DESC, "log Pressure")
@@ -134,6 +141,8 @@ record(calc, "$(device):PLOG")
 }
 ################################################################################
 # Dynamic Pressure
+#
+#% archiver 1 Monitor
 #
 record(calc, "$(device):PDYN")
 {
