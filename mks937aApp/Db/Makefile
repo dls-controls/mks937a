@@ -20,6 +20,7 @@ DB += mks937aPirgGroup.template
 DB += mks937aImg.template
 DB += mks937aImgGroup.template
 DB += mks937aImgMean.template
+DB += mks937aImgDummy.template
 DB += mks937aGauge.template
 DB += mks937aGaugeGroup.template
 DB += mks937aInterlock.template

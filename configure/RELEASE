@@ -18,19 +18,23 @@ TEMPLATE_TOP=$(EPICS_BASE)/templates/makeBaseApp/top
 #SNCSEQ=/home/diamond/R3.14.7/prod/support/seq/2-0-10
 
 # EPICS_BASE usually appears last so other apps can override stuff:
-EPICS_BASE=/home/epics/R3.14.7/base
+EPICS_BASE=/home/epics/R3.14.8.2/base
+
+SUPPORT=/home/diamond/R3.14.8.2/prod/support
+WORK=/home/diamond/R3.14.8.2/work/support
+
 
 # External module definitions (prod release).
-GENSUB=/home/diamond/R3.14.7/prod/support/genSub/1-6dls2-4
-ASYN=/home/diamond/R3.14.7/prod/support/asyn/4-3
-STREAM=/home/diamond/R3.14.7/prod/support/streamDevice/2-0dls1-0
-PRESSARR=/home/diamond/R3.14.7/prod/support/pressArr_subrec/dls2-2
+GENSUB=		$(SUPPORT)/genSub/1-6dls2-5
+ASYN=		$(SUPPORT)/asyn/4-6
+STREAM=		$(SUPPORT)/streamDevice/2-1
+PRESSARR=	$(SUPPORT)/pressArr_subrec/dls2-3
 
 # Uncomment these for testing
-#IPAC=/home/diamond/R3.14.7/prod/support/ipac/2-8dls4-2
-#HY8515=/home/diamond/R3.14.7/prod/support/Hy8515/3-1
-#UTILITY=/home/diamond/R3.14.7/prod/support/utility/dls2-6
-#HY8401=/home/diamond/R3.14.7/prod/support/Hy8401ip/3-1
+#IPAC=		$(SUPPORT)/ipac/2-8dls4-3
+#HY8515=	$(SUPPORT)/Hy8515/3-2
+#UTILITY=	$(SUPPORT)/utility/dls2-7
+#HY8401=	$(SUPPORT)/Hy8401ip/3-2
 
 # External module definitions (local).
 
