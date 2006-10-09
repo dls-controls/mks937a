@@ -55,8 +55,11 @@ record(ai, "$(dom)-VA-GAUGE-$(id):PLOG") {
 #  field(EGUF, "4.6")
 #  field(EGUL, "-28.6")
 # torr to mbar add .15
-  field(EGUF, "4.75")
-  field(EGUL, "-28.45")
+#  field(EGUF, "4.75")
+#  field(EGUL, "-28.45")
+# P = (1000/760)*10^((V/0.6)-12)
+  field(EGUF, "4.786")
+  field(EGUL, "-28.548")
   field(HOPR, "3")
   field(LOPR, "-11")
   field(HIGH, "-7")
