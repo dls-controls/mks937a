@@ -3,8 +3,8 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 442
-y 186
+x 899
+y 61
 w 240
 h 340
 font "arial-medium-r-16.0"
@@ -59,40 +59,6 @@ fill
 fillColor index 5
 endObjectProperties
 
-# (Meter)
-object activeMeterClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 16
-y 64
-w 208
-h 112
-caseColor index 3
-scaleColor index 16
-scaleAlarm
-labelColor index 14
-fgColor index 16
-fgAlarm
-bgColor index 12
-topShadowColor index 1
-botShadowColor index 11
-readPv "$(device):PLOG"
-showScale
-scaleFormat "FFloat"
-scaleLimitsFromDb
-useDisplayBg
-labelIntervals 6
-majorIntervals 1
-minorIntervals 1
-complexNeedle
-3d
-scaleMax 10
-labelFontTag "arial-medium-r-14.0"
-scaleFontTag "arial-bold-r-14.0"
-endObjectProperties
-
 # (Static Text)
 object activeXTextClass
 beginObjectProperties
@@ -132,7 +98,7 @@ beginObjectProperties
 major 4
 minor 1
 release 0
-x 13
+x 16
 y 188
 w 106
 h 16
@@ -152,9 +118,9 @@ beginObjectProperties
 major 10
 minor 0
 release 0
-x 136
+x 152
 y 184
-w 88
+w 70
 h 22
 controlPv "$(device):P"
 displayMode "exp"
@@ -193,7 +159,7 @@ beginObjectProperties
 major 4
 minor 1
 release 0
-x 13
+x 16
 y 216
 w 100
 h 16
@@ -244,9 +210,9 @@ beginObjectProperties
 major 10
 minor 0
 release 0
-x 136
+x 152
 y 240
-w 88
+w 70
 h 22
 controlPv "$(device):CTL:SP"
 displayMode "exp"
@@ -267,9 +233,9 @@ beginObjectProperties
 major 10
 minor 0
 release 0
-x 136
+x 152
 y 268
-w 88
+w 70
 h 22
 controlPv "$(device):RLY:SP"
 displayMode "exp"
@@ -349,5 +315,41 @@ displayFileName {
 setPosition {
   0 "parentWindow"
 }
+endObjectProperties
+
+# (Logarithmic Meter)
+object activeLogMeterClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 16
+y 64
+w 208
+h 109
+caseColor index 3
+caseAlarm
+scaleColor index 16
+scaleAlarm
+labelColor index 14
+fgColor index 16
+fgAlarm
+bgColor index 12
+topShadowColor index 1
+botShadowColor index 11
+readPv "$(device):P"
+showScale
+scaleFormat "Exponential"
+scaleLimitsFromDb
+useDisplayBg
+labelIntervals 6
+majorIntervals 1
+minorIntervals 1
+complexNeedle
+3d
+scaleMin 0.001
+scaleMax 1000
+labelFontTag "arial-bold-r-14.0"
+scaleFontTag "arial-medium-r-10.0"
 endObjectProperties
 

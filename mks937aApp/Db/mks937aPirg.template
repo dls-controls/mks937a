@@ -62,7 +62,7 @@ record(mbbi, "$(device):STA") {
   field(FFSV, "MAJOR")
 }
 
-# ############################################################################
+#############################################################################
 # Pressure
 # 
 # % archiver 1 Monitor
@@ -75,7 +75,7 @@ record(ai, "$(device):P") {
   field(EGU, "mbar")
   field(PREC, "3")
   field(HOPR, "1000")
-  field(LOPR, "0")
+  field(LOPR, "0.001")
   field(SDIS, "$(device):PDIS")
   field(DISS, "INVALID")
 }

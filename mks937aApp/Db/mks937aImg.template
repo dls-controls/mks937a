@@ -97,7 +97,7 @@ record(ai, "$(device):P") {
   field(EGU, "mBar")
   field(PREC, "11")
   field(HOPR, "0.01")
-  field(LOPR, "0")
+  field(LOPR, "1.0E-11")
   field(SDIS, "$(device):PDIS")
   field(DISS, "INVALID")
 }

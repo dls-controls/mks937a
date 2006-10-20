@@ -3,7 +3,7 @@
 # Example to test simulated mks937a stream device application
 #
 
-mks937aTop = "/home/pho76/diamond/mks937a"
+mks937aTop = "/home/diamond/R3.14.7/work/support/mks937a"
 #mks937aTop = "/home/diamond/R3.13.9/work/support/mks937a/Rx-y"
 diamondTop = "/home/diamond/R3.13.9/prod/support/superTop/Rx-y"
 

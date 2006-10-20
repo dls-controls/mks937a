@@ -55,7 +55,7 @@ record(sel, "$(dom)-VA-GAUGE-$(id):P")
     field(INPB, "$(dom)-VA-PIRG-$(id):P")
     field(INPC, "$(dom)-VA-PIRG-$(id):P")
     field(HOPR, "1000")
-    field(LOPR, "0")
+    field(LOPR, "1.0E-11")
     field(HIGH, "1.0e-7")
     field(HSV,  "MINOR")
 }

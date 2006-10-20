@@ -3,8 +3,8 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 465
-y 176
+x 597
+y 134
 w 240
 h 432
 font "arial-medium-r-16.0"
@@ -318,40 +318,6 @@ lineColor index 14
 fillColor index 3
 endObjectProperties
 
-# (Meter)
-object activeMeterClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 16
-y 64
-w 208
-h 112
-caseColor index 3
-scaleColor index 16
-scaleAlarm
-labelColor index 14
-fgColor index 16
-fgAlarm
-bgColor index 12
-topShadowColor index 1
-botShadowColor index 11
-readPv "$(device):PLOG"
-showScale
-scaleFormat "FFloat"
-scaleLimitsFromDb
-useDisplayBg
-labelIntervals 9
-majorIntervals 1
-minorIntervals 1
-complexNeedle
-3d
-scaleMax 10
-labelFontTag "arial-medium-r-14.0"
-scaleFontTag "arial-bold-r-14.0"
-endObjectProperties
-
 # (Rectangle)
 object activeRectangleClass
 beginObjectProperties
@@ -518,5 +484,41 @@ endGroup
 visPv "$(device):RLA:EXISTS"
 visMin "1"
 visMax "2"
+endObjectProperties
+
+# (Logarithmic Meter)
+object activeLogMeterClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 16
+y 64
+w 208
+h 112
+caseColor index 3
+caseAlarm
+scaleColor index 16
+scaleAlarm
+labelColor index 14
+fgColor index 16
+fgAlarm
+bgColor index 12
+topShadowColor index 1
+botShadowColor index 11
+readPv "$(device):P"
+showScale
+scaleFormat "Exponential"
+scaleLimitsFromDb
+useDisplayBg
+labelIntervals 9
+majorIntervals 1
+minorIntervals 1
+complexNeedle
+3d
+scaleMin 1e-11
+scaleMax 0.01
+labelFontTag "arial-bold-r-14.0"
+scaleFontTag "arial-medium-r-10.0"
 endObjectProperties
 
