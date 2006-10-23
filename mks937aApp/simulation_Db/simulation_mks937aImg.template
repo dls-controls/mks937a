@@ -139,9 +139,29 @@ record(calc, "$(device):PLOG")
     field(EGU,  "log")
     field(CALC, "LOG(A)")
     field(INPA, "$(device):P MS")
+    field(FLNK, "$(device):PMAX")
     field(HOPR, "-2")
     field(LOPR, "-11")
     field(ADEL, "0.025")
+}
+record(ai, "$(device):PMAX")
+{
+    field(DESC, "Max Pressure")
+    field(INP,  "$(device):P MS")
+    field(FLNK, "$(device):PMIN")
+    field(EGU,  "mBar")
+    field(PREC, "11")
+    field(HOPR, "0.01")
+    field(LOPR, "1.0E-11")
+}
+record(ai, "$(device):PMIN")
+{
+    field(DESC, "Min Pressure")
+    field(INP,  "$(device):P MS")
+    field(EGU,  "mBar")
+    field(PREC, "11")
+    field(HOPR, "0.01")
+    field(LOPR, "1.0E-11")
 }
 ################################################################################
 # Control - IMG Enable

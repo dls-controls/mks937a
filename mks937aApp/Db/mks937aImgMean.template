@@ -20,9 +20,10 @@ record(genSub, "$(device):MEAN")
     field(EFLG, "ON CHANGE")
     field(SCAN, "1 second")
     field(PHAS, "2")
-    field(OUTA, "$(device):P PP")
-    field(OUTB, "$(device):P.ADEL")
-    field(OUTC, "$(device):STA PP")
+    field(OUTA, "$(device):STA PP")
+    field(OUTB, "$(device):P PP")
+    field(OUTC, "$(device):PMAX PP")
+    field(OUTD, "$(device):PMIN PP")
     field(INPA, "$(nimgs)")
     field(INPB, "$(img1):P")
     field(INPC, "$(img2):P")
@@ -44,9 +45,10 @@ record(genSub, "$(device):MEAN")
     field(INPS, "$(img8):STA")
     field(INPT, "$(img9):STA")
     field(INPU, "$(img10):STA")
-    field(FTVA, "DOUBLE")
+    field(FTVA, "LONG")
     field(FTVB, "DOUBLE")
-    field(FTVC, "LONG")
+    field(FTVC, "DOUBLE")
+    field(FTVD, "DOUBLE")
     field(FTA,  "LONG")
     field(FTB,  "DOUBLE")
     field(FTC,  "DOUBLE")
@@ -138,6 +140,81 @@ record(calc, "$(device):PLOG")
     field(INPA, "$(device):P")
     field(HOPR, "-2")
     field(LOPR, "-11")
+}
+#
+#% archiver 1 Monitor
+#
+record(ai, "$(device):PMAX")
+{
+    field(DESC, "Pressure")
+    field(FLNK, "$(device):PMAXLOG")
+    field(EGU,  "mbar")
+    field(PREC, "11")
+    field(HOPR, "0.01")
+    field(LOPR, "1.0E-11")
+}
+#
+#% archiver 1 Monitor
+#
+record(calc, "$(device):PMAXLOG")
+{
+    field(DESC, "log max Pressure")
+    field(EGU,  "log")
+    field(CALC, "LOG(A)")
+    field(INPA, "$(device):PMAX")
+    field(HOPR, "-2")
+    field(LOPR, "-11")
+}
+#
+#% archiver 1 Monitor
+#
+record(ai, "$(device):PMIN")
+{
+    field(DESC, "Pressure")
+    field(FLNK, "$(device):PMINLOG")
+    field(EGU,  "mbar")
+    field(PREC, "11")
+    field(HOPR, "0.01")
+    field(LOPR, "1.0E-11")
+}
+#
+#% archiver 1 Monitor
+#
+record(calc, "$(device):PMINLOG")
+{
+    field(DESC, "log min Pressure")
+    field(EGU,  "log")
+    field(CALC, "LOG(A)")
+    field(INPA, "$(device):PMIN")
+    field(HOPR, "-2")
+    field(LOPR, "-11")
+}
+record(calcout, "$(device):ADEL")
+{
+    field(DESC, "deadband")
+    field(CALC, "A/B")
+    field(OUT,  "$(device):P.ADEL")
+    field(INPA, "$(device):P")
+    field(INPB, "20")
+    field(SCAN, "10 second")
+}
+record(calcout, "$(device):PMAXADEL")
+{
+    field(DESC, "deadband")
+    field(CALC, "A/B")
+    field(OUT,  "$(device):PMAX.ADEL")
+    field(INPA, "$(device):P")
+    field(INPB, "20")
+    field(SCAN, "10 second")
+}
+record(calcout, "$(device):PMINADEL")
+{
+    field(DESC, "deadband")
+    field(CALC, "A/B")
+    field(OUT,  "$(device):PMIN.ADEL")
+    field(INPA, "$(device):PMIN")
+    field(INPB, "20")
+    field(SCAN, "10 second")
 }
 ################################################################################
 # Dynamic Pressure

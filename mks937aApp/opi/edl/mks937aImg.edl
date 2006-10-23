@@ -3,8 +3,8 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 597
-y 134
+x 658
+y 94
 w 240
 h 432
 font "arial-medium-r-16.0"
@@ -24,6 +24,21 @@ showGrid
 snapToGrid
 gridSize 8
 endScreenProperties
+
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 8
+y 344
+w 224
+h 48
+lineColor index 14
+fill
+fillColor index 5
+endObjectProperties
 
 # (Static Text)
 object activeXTextClass
@@ -50,9 +65,9 @@ beginObjectProperties
 major 4
 minor 1
 release 0
-x 168
+x 162
 y 400
-w 64
+w 70
 h 24
 fgColor index 46
 bgColor index 3
@@ -71,7 +86,7 @@ minor 0
 release 0
 x 8
 y 400
-w 56
+w 70
 h 24
 fgColor index 43
 bgColor index 3
@@ -91,9 +106,9 @@ beginObjectProperties
 major 4
 minor 0
 release 0
-x 72
+x 84
 y 400
-w 80
+w 72
 h 24
 fgColor index 43
 bgColor index 3
@@ -318,21 +333,6 @@ lineColor index 14
 fillColor index 3
 endObjectProperties
 
-# (Rectangle)
-object activeRectangleClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 8
-y 344
-w 224
-h 48
-lineColor index 14
-fill
-fillColor index 5
-endObjectProperties
-
 # (Static Text)
 object activeXTextClass
 beginObjectProperties
@@ -372,7 +372,7 @@ beginObjectProperties
 major 4
 minor 0
 release 0
-x 136
+x 152
 y 360
 w 70
 h 25
@@ -407,24 +407,6 @@ value {
   "Cold Cathode"
 }
 autoSize
-endObjectProperties
-
-# (Textupdate)
-object TextupdateClass
-beginObjectProperties
-major 10
-minor 0
-release 0
-x 128
-y 364
-w 90
-h 17
-controlPv "$(device):SWITCHING"
-fgColor index 18
-fgAlarm
-bgColor index 10
-font "arial-bold-r-14.0"
-fontAlign "right"
 endObjectProperties
 
 # (Group)
@@ -520,5 +502,23 @@ scaleMin 1e-11
 scaleMax 0.01
 labelFontTag "arial-bold-r-14.0"
 scaleFontTag "arial-medium-r-10.0"
+endObjectProperties
+
+# (Textupdate)
+object TextupdateClass
+beginObjectProperties
+major 10
+minor 0
+release 0
+x 128
+y 364
+w 90
+h 17
+controlPv "$(device):SWITCHING"
+fgColor index 18
+fgAlarm
+bgColor index 10
+font "arial-bold-r-14.0"
+fontAlign "right"
 endObjectProperties
 

@@ -44,15 +44,17 @@ long mks937aMeanInit (struct genSubRecord *psub)
 */
 long mks937aMeanCalc (struct genSubRecord *psub)
 {
-    long n      = 0;            /* counter                                */
-    long status = STA_NO_GAUGE; /* output status       (output -> VALC)   */
-    long nImgs  = 0;            /* number of IMGs      (input  <- INPA)   */
-    long nGood  = 0;            /* number of good IMGs (return value)     */ 
-    double sum      = 0.0;      /* sum of IMG pressures                   */
-    double mean     = 0.0;      /* mean pressure       (output -> VALA)   */
-    double deadband = 0.0;      /* archive deadband    (output -> VALB)   */
-    double p[10];               /* input pressure      (input  <- INPB-K) */
-    double s[10];               /* input status        (input  <- INPL-U) */
+    long   n        = 0;            /* counter                                */
+    long   status   = STA_NO_GAUGE; /* output status       (output -> VALA)   */
+    long   nImgs    = 0;            /* number of IMGs      (input  <- INPA)   */
+    long   nGood    = 0;            /* number of good IMGs (return value)     */ 
+    double sum      = 0.0;          /* sum of IMG pressures                   */
+    double mean     = 0.0;          /* mean pressure       (output -> VALB)   */
+    double pmax     = P_MIN;        /* maximum pressure    (output -> VALC)   */
+    double pmin     = P_MAX;        /* mimimum pressure    (output -> VALD)   */
+    double deadband = 0.0;          /* archive deadband    (output -> VALB)   */
+    double p[10];                   /* input pressure      (input  <- INPB-K) */
+    double s[10];                   /* input status        (input  <- INPL-U) */
 
     /*
     * Extract inputs
@@ -88,6 +90,8 @@ long mks937aMeanCalc (struct genSubRecord *psub)
         {
             sum += p[n];
             nGood++;
+            pmax = (p[n] > pmax) ? p[n] : pmax;
+            pmin = (p[n] < pmin) ? p[n] : pmin;
         }
     }
 
@@ -101,9 +105,10 @@ long mks937aMeanCalc (struct genSubRecord *psub)
     /*
     * Set outputs
     */
-    *(double *) psub->vala = mean; 
-    *(double *) psub->valb = deadband; 
-    *(long *)   psub->valc = status;
+    *(long *)   psub->vala = status;
+    *(double *) psub->valb = mean; 
+    *(double *) psub->valc = pmax; 
+    *(double *) psub->vald = pmin; 
 
     return nGood;
 }
