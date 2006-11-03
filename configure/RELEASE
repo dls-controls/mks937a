@@ -15,19 +15,19 @@ TEMPLATE_TOP=$(EPICS_BASE)/templates/makeBaseApp/top
 #INSTALL_LOCATION_APP=<fullpathname>
 
 #If using the sequencer, uncomment this line:
-#SNCSEQ=/home/diamond/R3.14.7/prod/support/seq/2-0-10
+#SNCSEQ=/dls_sw/diamond/R3.14.7/prod/support/seq/2-0-10
 
 # EPICS_BASE usually appears last so other apps can override stuff:
-EPICS_BASE=/home/epics/R3.14.8.2/base
+EPICS_BASE=/dls_sw/epics/R3.14.8.2/base
 
-SUPPORT=/home/diamond/R3.14.8.2/prod/support
-WORK=/home/diamond/R3.14.8.2/work/support
+SUPPORT=/dls_sw/prod/R3.14.8.2/support
+WORK=/dls_sw/work/R3.14.8.2/support
 
 
 # External module definitions (prod release).
 GENSUB=		$(SUPPORT)/genSub/1-6dls2-5
 ASYN=		$(SUPPORT)/asyn/4-6
-STREAM=		$(SUPPORT)/streamDevice/2-1
+STREAM=		$(SUPPORT)/streamDevice/2-2
 PRESSARR=	$(SUPPORT)/pressArr_subrec/dls2-3
 
 # Uncomment these for testing
