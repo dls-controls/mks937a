@@ -9,6 +9,8 @@
 #include <vxWorks.h>
 #include <types.h>
 #include <genSubRecord.h>
+#include <epicsExport.h>
+#include <registryFunction.h>
 
 #define STA_OK       (0)
 #define STA_OK1      (1)
