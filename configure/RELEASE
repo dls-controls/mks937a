@@ -27,7 +27,7 @@ WORK=/dls_sw/work/R3.14.8.2/support
 # External module definitions (prod release).
 GENSUB=		$(SUPPORT)/genSub/1-6dls2-5
 ASYN=		$(SUPPORT)/asyn/4-9
-STREAM=		$(SUPPORT)/streamDevice/2-3dls4
+STREAM=		$(SUPPORT)/streamDevice/2-3dls6
 PRESSARR=	$(SUPPORT)/pressArr_subrec/dls2-4
 
 # Uncomment these for testing
