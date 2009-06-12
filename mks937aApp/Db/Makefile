@@ -24,7 +24,6 @@ DB += mks937aImgDummy.template
 DB += mks937aGauge.template
 DB += mks937aGaugeGroup.template
 DB += mks937aInterlock.template
-DB += mks937aInterlockFlink.template
 
 #----------------------------------------------------
 # In a Diamond IOC Application, build db files from
