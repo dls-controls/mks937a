@@ -16,6 +16,10 @@
 # port    - serial port (steam device code ie /ty/0/1 => ty_0_1)
 # channel - MKS 937A channel number (1-4)
 ################################################################################
+
+# This associates an edm screen with the template
+# % gui, $(name), edm, mks937aPirg.edl, device=$(device)
+
 # Status
 #
 #% archiver 10 Monitor
