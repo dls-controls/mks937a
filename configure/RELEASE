@@ -28,6 +28,7 @@ WORK=/dls_sw/work/R3.14.8.2/support
 GENSUB=		$(SUPPORT)/genSub/1-6dls2-5
 #ASYN=		$(SUPPORT)/asyn/4-9
 #STREAM=		$(SUPPORT)/streamDevice/2-3dls6
+STREAMS=        $(SUPPORT)/streamDevice/2-4dls2-1
 #PRESSARR=	$(SUPPORT)/pressArr_subrec/dls2-4
 
 # Uncomment these for testing
