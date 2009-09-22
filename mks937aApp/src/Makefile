@@ -24,6 +24,8 @@ mks937a_SRCS += mks937aMean.c
 
 mks937a_LIBS += $(EPICS_BASE_IOC_LIBS)
 
+DATA += mks937a_sim.py
+
 include $(TOP)/configure/RULES
 
 else
