@@ -1,0 +1,16 @@
+#################################################################
+# mks937a.substitutions
+# Initialise templates for an MKS 937A Gauge Controller
+#
+# substitutions:
+# device  - device name
+# port    - serial port (steam device code ie /ty/0/1 => ty_0_1)
+# adr     - address (01 - 99)
+#################################################################
+#
+file mks937a.template
+{
+pattern {    device   ,  port}
+        {    MKS937ASIM-01, "asynmks937a"}
+}
+
