@@ -17,6 +17,7 @@ include $(TOP)/configure/CONFIG
 DB += mks937a.template
 DB += mks937aPirg.template
 DB += mks937aPirgGroup.template
+DB += mks937aPirgDummy.template
 DB += mks937aImg.template
 DB += mks937aImgGroup.template
 DB += mks937aImgMean.template
