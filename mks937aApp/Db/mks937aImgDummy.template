@@ -54,3 +54,63 @@ record(mbbi, "$(device):STA") {
   field(FTSV, "MAJOR")
   field(FFSV, "MAJOR")
 }
+
+################################################################################
+# Control - IMG Enable
+#
+# The gauge template provides 3 records with the same name with but with the PIRG device name
+# which have links to the equivalent records in the img template
+# eg. ME01D-VA-PIRG-02:CTL:SP from the gauge template links to ME01D-VA-IMG-02:CTL:SP in the
+# img template.
+#
+record(ao, "$(device):CTL:SETSP") {
+  field(DESC, "IMG Enable")
+# For the dummy just eat the data from the FLNK and OUT fields in the gauge template.
+# The real img template forward links to a sequence record thus.
+#  field(FLNK, "$(device):CTL:SEQ")
+  field(EGU, "mbar")
+  field(PREC, "1")
+  field(HOPR, "9.5e-1")
+  field(LOPR, "2.7e-3")
+  field(DRVH, "9.5e-1")
+  field(DRVL, "2.7e-3")
+  field(DOL, "1.0e-2")
+}
+
+record(mbbo, "$(device):CTL:ENABLE") {
+  field(DESC, "Enable Control Setpoint")
+# This record receives the pirg FLNK and OUT field links from the gauge template.
+# For the dummy just accept the data.
+# The real img template forward links to a sequence record thus.
+#  field(FLNK, "$(device):CTL:SEQ")
+  field(ZRST, "Force On I/L")
+  field(ONST, "I/L Operating")
+  field(ZRVL, "1")
+  field(ONVL, "2")
+  field(ZRSV, "MAJOR")
+  field(ONSV, "NO_ALARM")
+  field(DOL, "1")
+  field(PINI, "YES")
+}
+
+# The real img template runs a stream protocol request to get the information.
+# For the dummy, just set some value.
+record(ai, "$(device):CTL:SP") {
+  field(DESC, "IMG Enable")
+  field(SCAN, "Passive")
+  field(INP, "1.0e-2")
+  field(PINI, "YES")
+  field(EGU, "mbar")
+  field(PREC, "1")
+  field(HOPR, "9.5e-1")
+  field(LOPR, "2.7e-3")
+  field(HIHI, "9.6e-1")
+  field(LOLO, "2.6e-3")
+  field(HIGH, "1.1e-2")
+  field(LOW, "9.0e-3")
+  field(HHSV, "MAJOR")
+  field(LLSV, "MAJOR")
+  field(HSV, "MINOR")
+  field(LSV, "MINOR")
+}
+
