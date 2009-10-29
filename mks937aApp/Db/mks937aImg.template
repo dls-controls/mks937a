@@ -15,6 +15,79 @@
 # device  - device name
 # port    - serial port (steam device code ie /ty/0/1 => ty_0_1)
 # channel - MKS 937A channel number (1-4)
+#
+# The above are macros that must be set and if left undefined will produce
+# unexpanded macro error messages.  The following are optional and will
+# default to an appropriate hardwired value if no value is passed for
+# expansion. They are provided to allow the default set points to be changed.
+# Once the set point needs to be changed it may be necessary to alter 
+# various other fields defining the range of allowed values.
+# For the majority of applications the defaults should be used.  The levels
+# should only be changed at the request of the vacuum group for non-standard
+# vacuum systems.
+#
+# ctlsp_level = the desired control setpoint value.
+# ctlsp_drvh  = the DRVH field on control setpoint records 
+#              (limits max value of control setpoint)
+# ctlsp_drvl  = the DRVL field on control setpoint records.
+#              (limits min value of control setpoint)
+# ctlsp_hopr  = the HOPR field on control setpoint records
+#              (high operator value - helps display set correct range).
+# ctlsp_lopr  = the LOPR field on control setpoint records
+#              (low operator value - helps display set correct range).
+# ctlsp_hihi  = the HIHI alarm field on the control setpoint record.
+# ctlsp_lolo  = the LOLO alarm field on the control setpoint record.
+# ctlsp_high  = the HIGH alarm field on the control setpoint record.
+# cltsp_low   = the LOW alarm field on the control setpoint record.
+# ctlsp_desc  = the DESC field on the control setpoint record.
+#
+# prosp_level = the desired protection setpoint value.
+# prosp_drvh  = the DRVH field on protection setpoint records 
+#              (limits max value of protection setpoint)
+# prosp_drvl  = the DRVL field on protection setpoint records.
+#              (limits min value of protection setpoint)
+# prosp_hopr  = the HOPR field on protection setpoint records
+#              (high operator value - helps display set correct range).
+# prosp_lopr  = the LOPR field on protection setpoint records
+#              (low operator value - helps display set correct range).
+# prosp_hihi  = the HIHI alarm field on the protection setpoint record.
+# prosp_lolo  = the LOLO alarm field on the protection setpoint record.
+# prosp_high  = the HIGH alarm field on the protection setpoint record.
+# prosp_low   = the LOW alarm field on the protection setpoint record.
+# prosp_desc  = the DESC field on the protection setpoint record
+#		(appears as a label on the Img EDM screen).
+#
+# rlysp_level = the desired relay setpoint value.
+# rlysp_drvh  = the DRVH field on relay setpdoint records 
+#              (limits max value of relay setpoint)
+# rlysp_drvl  = the DRVL field on relay setpoint records.
+#              (limits min value of relay setpoint)
+# rlysp_hopr  = the HOPR field on relay setpoint records
+#              (high operator value - helps display set correct range).
+# rlysp_lopr  = the LOPR field on relay setpoint records
+#              (low operator value - helps display set correct range).
+# rlysp_hihi  = the HIHI alarm field on the relay setpoint record.
+# rlysp_lolo  = the LOLO alarm field on the relay setpoint record.
+# rlysp_high  = the HIGH alarm field on the relay setpoint record.
+# rlysp_low   = the LOW alarm field on the relay setpoint record.
+# rlysp_desc  = the DESC field on the relay setpoint record
+#		(appears as a label on the Img EDM screen).
+#
+# rlasp_level = the desired second relay setpoint value.
+# rlasp_drvh  = the DRVH field on second relay setpoint records 
+#              (limits max value of second relay setpoint)
+# rlasp_drvl  = the DRVL field on second relay setpoint records.
+#              (limits min value of second relay setpoint)
+# rlasp_hopr  = the HOPR field on second relay setpoint records
+#              (high operator value - helps display set correct range).
+# rlasp_lopr  = the LOPR field on second relay setpoint records
+#              (low operator value - helps display set correct range).
+# rlasp_hihi  = the HIHI alarm field on the second relay setpoint record.
+# rlasp_lolo  = the LOLO alarm field on the second relay setpoint record.
+# rlasp_high  = the HIGH alarm field on the second relay setpoint record.
+# rlasp_low   = the LOW alarm field on the second relay setpoint record.
+# rlasp_desc  = the DESC field on the second relay setpoint record.
+#
 ################################################################################
 
 # This associates an edm screen with the template
@@ -151,15 +224,15 @@ record(ai, "$(device):PMIN")
 # Control - IMG Enable
 #
 record(ao, "$(device):CTL:SETSP") {
-  field(DESC, "IMG Enable")
+  field(DESC, "$(ctlsp_desc=IMG Enable)")
   field(FLNK, "$(device):CTL:SEQ")
   field(EGU, "mbar")
   field(PREC, "1")
-  field(HOPR, "9.5e-1")
-  field(LOPR, "2.7e-3")
-  field(DRVH, "9.5e-1")
-  field(DRVL, "2.7e-3")
-  field(DOL, "1.0e-2")
+  field(HOPR, "$(ctlsp_hopr=9.5e-1)")
+  field(LOPR, "$(ctlsp_lopr=2.7e-3)")
+  field(DRVH, "$(ctlsp_drvh=9.5e-1)")
+  field(DRVL, "$(ctlsp_drvl=2.7e-3)")
+  field(DOL, "$(ctlsp_level=1.0e-2)")
 }
 
 record(mbbo, "$(device):CTL:ENABLE") {
@@ -186,18 +259,18 @@ record(seq, "$(device):CTL:SEQ") {
 }
 
 record(ai, "$(device):CTL:SP") {
-  field(DESC, "IMG Enable")
+  field(DESC, "$(ctlsp_desc=IMG Enable)")
   field(DTYP, "stream")
   field(INP, "@mks937a.protocol getsp($(channel),CTL) $(port) 0")
   field(SCAN, "1 second")
   field(EGU, "mbar")
   field(PREC, "1")
-  field(HOPR, "9.5e-1")
-  field(LOPR, "2.7e-3")
-  field(HIHI, "9.6e-1")
-  field(LOLO, "2.6e-3")
-  field(HIGH, "1.1e-2")
-  field(LOW, "9.0e-3")
+  field(HOPR, "$(ctlsp_hopr=9.5e-1)")
+  field(LOPR, "$(ctlsp_lopr=2.7e-3)")
+  field(HIHI, "$(ctlsp_hihi=9.6e-1)")
+  field(LOLO, "$(ctlsp_lolo=2.6e-3)")
+  field(HIGH, "$(ctlsp_high=1.1e-2)")
+  field(LOW, "$(ctlsp_low=9.0e-3)")
   field(HHSV, "MAJOR")
   field(LLSV, "MAJOR")
   field(HSV, "MINOR")
@@ -222,15 +295,15 @@ record(bo, "$(device):CTL:DIS") {
 #% archiver 10 Monitor
 #
 record(ao, "$(device):PRO:SETSP") {
-  field(DESC, "IMG Overpressure")
+  field(DESC, "$(prosp_desc=IMG Overpressure)")
   field(FLNK, "$(device):PRO:SEQ")
   field(EGU, "mbar")
   field(PREC, "1")
-  field(HOPR, "1.0e-2")
-  field(LOPR, "1.3e-5")
-  field(DRVH, "1.0e-2")
-  field(DRVL, "1.3e-5")
-  field(DOL, "5.0e-4")
+  field(HOPR, "$(prosp_hopr=1.0e-2)")
+  field(LOPR, "$(prosp_lopr=1.3e-5)")
+  field(DRVH, "$(prosp_drvh=1.0e-2)")
+  field(DRVL, "$(prosp_drvl=1.3e-5)")
+  field(DOL, "$(prosp_level=5.0e-4)")
 }
 
 #
@@ -264,18 +337,18 @@ record(seq, "$(device):PRO:SEQ") {
 #% controldesk IMG Overpressure readback
 #
 record(ai, "$(device):PRO:SP") {
-  field(DESC, "IMG Overpressure")
+  field(DESC, "$(prosp_desc=IMG Overpressure)")
   field(DTYP, "stream")
   field(INP, "@mks937a.protocol getsp($(channel),PRO) $(port) 0")
   field(SCAN, "1 second")
   field(EGU, "mbar")
   field(PREC, "1")
-  field(HOPR, "1.0e-2")
-  field(LOPR, "1.3e-5")
-  field(HIHI, "1.1e-2")
-  field(LOLO, "1.2e-5")
-  field(HIGH, "5.1e-4")
-  field(LOW, "4.9e-4")
+  field(HOPR, "$(prosp_hopr=1.0e-2)")
+  field(LOPR, "$(prosp_lopr=1.3e-5)")
+  field(HIHI, "$(prosp_hihi=1.1e-2)")
+  field(LOLO, "$(prosp_lolo=1.2e-5)")
+  field(HIGH, "$(prosp_high=5.1e-4)")
+  field(LOW, "$(prosp_low=4.9e-4)")
   field(HHSV, "MAJOR")
   field(LLSV, "MAJOR")
   field(HSV, "MINOR")
@@ -300,15 +373,15 @@ record(bo, "$(device):PRO:DIS") {
 #% archiver 10 Monitor
 #
 record(ao, "$(device):RLY:SETSP") {
-  field(DESC, "Valve I/L")
+  field(DESC, "$(rlysp_desc=Valve I/L)")
   field(FLNK, "$(device):RLY:SEQ")
   field(EGU, "mbar")
   field(PREC, "1")
-  field(HOPR, "1.2e-2")
-  field(LOPR, "2.7e-10")
-  field(DRVH, "1.2e-2")
-  field(DRVL, "2.7e-10")
-  field(DOL, "1.0e-6")
+  field(HOPR, "$(rlysp_hopr=1.2e-2)")
+  field(LOPR, "$(rlysp_lopr=2.7e-10)")
+  field(DRVH, "$(rlysp_drvh=1.2e-2)")
+  field(DRVL, "$(rlysp_drvl=2.7e-10)")
+  field(DOL, "$(rlysp_level=1.0e-6)")
 }
 
 #
@@ -342,18 +415,18 @@ record(seq, "$(device):RLY:SEQ") {
 #% controldesk Valve Interlock readback
 #
 record(ai, "$(device):RLY:SP") {
-  field(DESC, "Valve Interlock")
+  field(DESC, "$(rlysp_desc=Valve Interlock)")
   field(DTYP, "stream")
   field(INP, "@mks937a.protocol getsp($(channel),RLY) $(port) 0")
   field(SCAN, "1 second")
   field(EGU, "mbar")
   field(PREC, "1")
-  field(HOPR, "1.2e-2")
-  field(LOPR, "2.7e-10")
-  field(HIHI, "1.3e-2")
-  field(LOLO, "2.6e-10")
-  field(HIGH, "1.1e-6")
-  field(LOW, "9.0e-7")
+  field(HOPR, "$(rlysp_hopr=1.2e-2)")
+  field(LOPR, "$(rlysp_lopr=2.7e-10)")
+  field(HIHI, "$(rlysp_hihi=1.3e-2)")
+  field(LOLO, "$(rlysp_lolo=2.6e-10)")
+  field(HIGH, "$(rlysp_high=1.1e-6)")
+  field(LOW, "$(rlysp_low=9.0e-7)")
   field(HHSV, "MAJOR")
   field(LLSV, "MAJOR")
   field(HSV, "MINOR")
@@ -387,14 +460,14 @@ record(calc, "$(device):RLA:EXISTS") {
 #% archiver 10 Monitor
 #
 record(ao, "$(device):RLA:SETSP") {
-  field(DESC, "MPS Interlock")
+  field(DESC, "$(rlasp_desc=MPS Interlock)")
   field(FLNK, "$(device):RLA:SEQ")
   field(EGU, "mbar")
   field(PREC, "1")
-  field(HOPR, "1.2e-2")
-  field(LOPR, "2.7e-10")
-  field(DRVH, "1.2e-2")
-  field(DRVL, "2.7e-10")
+  field(HOPR, "$(rlasp_hopr=1.2e-2)")
+  field(LOPR, "$(rlasp_lopr=2.7e-10)")
+  field(DRVH, "$(rlasp_drvh=1.2e-2)")
+  field(DRVL, "$(rlasp_drvl=2.7e-10)")
   field(DISA, "$(channel)")
   field(DOL, "1.0e-7")
 }
@@ -432,18 +505,18 @@ record(seq, "$(device):RLA:SEQ") {
 #% controldesk MPS Interlock readback
 #
 record(ai, "$(device):RLA:SP") {
-  field(DESC, "MPS Interlock")
+  field(DESC, "$(rlasp_desc=MPS Interlock)")
   field(DTYP, "stream")
   field(INP, "@mks937a.protocol getsp(3,RLY) $(port) 0")
   field(SCAN, "1 second")
   field(EGU, "mbar")
   field(PREC, "1")
-  field(HOPR, "1.2e-2")
-  field(LOPR, "2.7e-10")
-  field(HIHI, "1.3e-2")
-  field(LOLO, "2.6e-10")
-  field(HIGH, "1.1e-7")
-  field(LOW, "9.0e-8")
+  field(HOPR, "$(rlasp_hopr=1.2e-2)")
+  field(LOPR, "$(rlasp_lopr=2.7e-10)")
+  field(HIHI, "$(rlasp_hihi=1.3e-2)")
+  field(LOLO, "$(rlasp_lolo=2.6e-10)")
+  field(HIGH, "$(rlasp_high=1.1e-7)")
+  field(LOW, "$(rlasp_low=9.0e-8)")
   field(HHSV, "MAJOR")
   field(LLSV, "MAJOR")
   field(HSV, "MINOR")

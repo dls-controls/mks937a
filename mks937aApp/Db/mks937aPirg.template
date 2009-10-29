@@ -15,6 +15,33 @@
 # device  - device name
 # port    - serial port (steam device code ie /ty/0/1 => ty_0_1)
 # channel - MKS 937A channel number (1-4)
+#
+# The above are macros that must be set and if left undefined will produce
+# unexpanded macro error messages.  The following are optional and will
+# default to an appropriate hardwired value if no value is passed for
+# expansion. They are provided to allow the default set points to be changed.
+# Once the set point needs to be changed it may be necessary to alter 
+# various other fields defining the range of allowed values.
+# For the majority of applications the defaults should be used.  The levels
+# should only be changed at the request of the vacuum group for non-standard
+# vacuum systems.
+#
+# rlysp_level = the desired relay setpoint value for the PIRG device.
+# rlysp_drvh  = the DRVH field on control setpoint records 
+#              (limits max value of relay setpoint)
+# rlysp_drvl  = the DRVL field on relay setpoint records.
+#              (limits min value of relay setpoint)
+# rlysp_hopr  = the HOPR field on relay setpoint records
+#              (high operator value - helps display set correct range).
+# rlysp_lopr  = the LOPR field on relay setpoint records
+#              (low operator value - helps display set correct range).
+# rlysp_hihi  = the HIHI alarm field on the relay setpoint record.
+# rlysp_lolo  = the LOLO alarm field on the relay setpoint record.
+# rlysp_high  = the HIGH alarm field on the relay setpoint record.
+# rlysp_low   = the LOW alarm field on the relay setpoint record.
+# rlysp_desc  = the DESC field on the relay setpoint records
+#		(appears as a label on the Pirg EDM screen).
+#
 ################################################################################
 
 # This associates an edm screen with the template
@@ -112,15 +139,15 @@ record(calc, "$(device):PLOG") {
 #% archiver 10 Monitor
 #
 record(ao, "$(device):RLY:SETSP") {
-  field(DESC, "Ion Pump I/L")
+  field(DESC, "$(rlysp_desc=Ion Pump I/L)")
   field(FLNK, "$(device):RLY:SEQ")
   field(EGU, "mbar")
   field(PREC, "1")
-  field(HOPR, "1.2e2")
-  field(LOPR, "2.7e-3")
-  field(DRVH, "1.2e2")
-  field(DRVL, "2.7e-3")
-  field(DOL, "1.0e-2")
+  field(HOPR, "$(rlysp_hopr=1.2e2)")
+  field(LOPR, "$(rlysp_lopr=2.7e-3)")
+  field(DRVH, "$(rlysp_drvh=1.2e2)")
+  field(DRVL, "$(rlysp_drvl=2.7e-3)")
+  field(DOL, "$(rlysp_level=1.0e-2)")
 }
 
 #
@@ -154,18 +181,18 @@ record(seq, "$(device):RLY:SEQ") {
 #% controldesk Ion Pump Interlock readback
 #
 record(ai, "$(device):RLY:SP") {
-  field(DESC, "Ion Pump I/L")
+  field(DESC, "$(rlysp_desc=Ion Pump I/L)")
   field(DTYP, "stream")
   field(INP, "@mks937a.protocol getsp($(channel),RLY) $(port) 0")
   field(SCAN, "1 second")
   field(EGU, "mbar")
   field(PREC, "1")
-  field(HOPR, "1.2e2")
-  field(LOPR, "2.7e-3")
-  field(HIHI, "1.0e3")
-  field(LOLO, "2.6e-3")
-  field(HIGH, "1.1e-2")
-  field(LOW, "9.0e-3")
+  field(HOPR, "$(rlysp_hopr=1.2e2)")
+  field(LOPR, "$(rlysp_lopr=2.7e-3)")
+  field(HIHI, "$(rlysp_hihi=1.0e3)")
+  field(LOLO, "$(rlysp_lolo=2.6e-3)")
+  field(HIGH, "$(rlysp_high=1.1e-2)")
+  field(LOW, "$(rlysp_low=9.0e-3)")
   field(HHSV, "MAJOR")
   field(LLSV, "MAJOR")
   field(HSV, "MINOR")
