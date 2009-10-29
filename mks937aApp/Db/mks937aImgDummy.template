@@ -10,7 +10,27 @@
 #
 # substitutions:
 # device  - device name
-
+#
+# The above are macros that must be set and if left undefined will produce
+# unexpanded macro error messages.  The following are optional and will
+# default to an appropriate hard-coded value if no value is passed for
+# expansion. They are provided to parallel those in the Img template.
+#
+# ctlsp_level  = the desired control setpoint value.			
+# ctlsp_drvh   = the DRVH field on control setpoint records 		
+#                (limits max value of control setpoint)			
+# ctlsp_drvl   = the DRVL field on control setpoint records.
+#                (limits min value of control setpoint)			
+# ctlsp_hopr   = the HOPR field on control setpoint records		
+#                (high operator value - helps display set correct range).
+# ctlsp_lopr   = the LOPR field on control setpoint records		
+#                (low operator value - helps display set correct range).
+# ctlsp_hihi   = the HIHI alarm field on the control setpoint record.
+# ctlsp_lolo   = the LOLO alarm field on the control setpoint record. 
+# ctlsp_high   = the HIGH alarm field on the control setpoint record. 
+# ctlsp_low    = the LOW alarm field on the control setpoint record.  
+# ctlsp_desc   = the DESC field on the control setpoint record.       
+#
 ################################################################################
 # Status
 #
@@ -64,17 +84,17 @@ record(mbbi, "$(device):STA") {
 # img template.
 #
 record(ao, "$(device):CTL:SETSP") {
-  field(DESC, "IMG Enable")
+  field(DESC, "$(ctlsp_desc=IMG Enable)")
 # For the dummy just eat the data from the FLNK and OUT fields in the gauge template.
 # The real img template forward links to a sequence record thus.
 #  field(FLNK, "$(device):CTL:SEQ")
   field(EGU, "mbar")
   field(PREC, "1")
-  field(HOPR, "9.5e-1")
-  field(LOPR, "2.7e-3")
-  field(DRVH, "9.5e-1")
-  field(DRVL, "2.7e-3")
-  field(DOL, "1.0e-2")
+  field(HOPR, "$(ctlsp_hopr=9.5e-1)")
+  field(LOPR, "$(ctlsp_lopr=2.7e-3)")
+  field(DRVH, "$(ctlsp_drvh=9.5e-1)")
+  field(DRVL, "$(ctlsp_drvl=2.7e-3)")
+  field(DOL, "$(ctlsp_level=1.0e-2)")
 }
 
 record(mbbo, "$(device):CTL:ENABLE") {
@@ -96,18 +116,18 @@ record(mbbo, "$(device):CTL:ENABLE") {
 # The real img template runs a stream protocol request to get the information.
 # For the dummy, just set some value.
 record(ai, "$(device):CTL:SP") {
-  field(DESC, "IMG Enable")
+  field(DESC, "$(ctlsp_desc=IMG Enable)")
   field(SCAN, "Passive")
   field(INP, "1.0e-2")
   field(PINI, "YES")
   field(EGU, "mbar")
   field(PREC, "1")
-  field(HOPR, "9.5e-1")
-  field(LOPR, "2.7e-3")
-  field(HIHI, "9.6e-1")
-  field(LOLO, "2.6e-3")
-  field(HIGH, "1.1e-2")
-  field(LOW, "9.0e-3")
+  field(HOPR, "$(ctlsp_hopr=9.5e-1)")
+  field(LOPR, "$(ctlsp_lopr=2.7e-3)")
+  field(HIHI, "$(ctlsp_hihi=9.6e-1)")
+  field(LOLO, "$(ctlsp_lolo=2.6e-3)")
+  field(HIGH, "$(ctlsp_high=1.1e-2)")
+  field(LOW, "$(ctlsp_low=9.0e-3)")
   field(HHSV, "MAJOR")
   field(LLSV, "MAJOR")
   field(HSV, "MINOR")
