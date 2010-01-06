@@ -4,39 +4,37 @@
 
 
 # mks937aGauge.db
-# Template database for a combination guage connected to
-# two channels of an MKS937A Multi-Sensor System
-# Pete Owens - 23/2/04
+#% macro, __doc__, Template database for a combination guage connected to 
+# two channels of an MKS937A Multi-Sensor System 
+# A note on the optional macros: they default to an appropriate hard-coded 
+# value if no value is passed for expansion. 
+# They are provided to allow the default set points to be changed. 
+# Once the set point needs to be changed it may be necessary to alter  
+# various other fields defining the range of allowed values. 
+# For the majority of applications the defaults should be used.  The levels 
+# should only be changed at the request of the vacuum group for non-standard 
+# vacuum systems.
 #
 # Run on PHAS 1 to get most up to date values from IMG and Pirani
 # 
-# substitutions:
-# dom - domain
-# id  - id
-# c   - ADC card number
-# s   - ADC signal number
+# required substitutions:
+#% macro, dom, Domain 5 char string (e.g. BL11I)
+#% macro, id,  ID number as 2 digit string (e.g. 01)
+#% macro, c,   ADC card number
+#% macro, s,   ADC signal number
 #
-# The above are macros that must be set and if left undefined will produce
-# unexpanded macro error messages.  The following are optional and will
-# default to an appropriate hard-coded value if no value is passed for
-# expansion. They are provided to allow the default set points to be changed.
-# Once the set point needs to be changed it may be necessary to alter 
-# various other fields defining the range of allowed values and the
-# description. For the majority of applications the defaults should be used.
-# The levels should only be changed at the request of the vacuum group for 
-# non-standard vacuum systems.
-#
-# ctlsp_level = the desired control setpoint value (actually for the Pirg).
-# ctlsp_drvh  = the DRVH field on control setpoint records 
-#              (limits max value of control setpoint)
-# ctlsp_drvl  = the DRVL field on control setpoint records.
-#              (limits min value of control setpoint)
-# ctlsp_hopr  = the HOPR field on control setpoint records
-#              (high operator value - helps display set correct range).
-# ctlsp_lopr  = the LOPR field on control setpoint records
-#              (low operator value - helps display set correct range).
-# ctlsp_desc  = the DESC field on control setpoint records
-#		(appears as a label on the Pirg EDM screen).
+# optional substitutions:
+#% macro, ctlsp_level, The desired control setpoint value (actually for the Pirg).
+#% macro, ctlsp_drvh,  The DRVH field on control setpoint records. 
+#                      (limits max value of control setpoint)
+#% macro, ctlsp_drvl,  The DRVL field on control setpoint records. 
+#                      (limits min value of control setpoint)
+#% macro, ctlsp_hopr,  The HOPR field on control setpoint records. 
+#                      (high operator value - helps display set correct range).
+#% macro, ctlsp_lopr,  The LOPR field on control setpoint records. 
+#                      (low operator value - helps display set correct range).
+#% macro, ctlsp_desc,  The DESC field on control setpoint records. 
+#		               (appears as a label on the Pirg EDM screen).
 #
 ################################################################################
 # Select Active Gauge (IMG or PIRG)

@@ -404,7 +404,7 @@ record(bo, "$(device):PRO:DIS")
 #
 record(ao, "$(device):RLY:SETSP")
 {
-    field(DESC, "$(rlysp_desc=Valve I/L)")
+    field(DESC, "$(rlysp_desc=Valve Interlock)")
     field(FLNK, "$(device):RLY:SEQ")
     field(EGU,  "mbar")
     field(PREC, "1")
@@ -498,7 +498,7 @@ record(calc, "$(device):RLA:EXISTS")
 #
 record(ao, "$(device):RLA:SETSP")
 {
-    field(DESC, "$(rlasp_desc=MPS I/L)")
+    field(DESC, "$(rlasp_desc=MPS Interlock)")
     field(FLNK, "$(device):RLA:SEQ")
     field(EGU,  "mbar")
     field(PREC, "1")

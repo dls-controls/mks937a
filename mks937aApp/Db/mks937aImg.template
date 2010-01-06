@@ -4,89 +4,84 @@
 
 
 # mks937aImg.db
-# Template database for an inverted magnetron guage connected to
-# one channel of an MKS937A Multi-Sensor System
-# Pete Owens - 29/8/03
-#
-# This file is the same as mks937aPirg.db with one additional
-# record for enabling the cold cathode
-#
-# substitutions:
-# device  - device name
-# port    - serial port (steam device code ie /ty/0/1 => ty_0_1)
-# channel - MKS 937A channel number (1-4)
-#
-# The above are macros that must be set and if left undefined will produce
-# unexpanded macro error messages.  The following are optional and will
-# default to an appropriate hard-coded value if no value is passed for
-# expansion. They are provided to allow the default set points to be changed.
-# Once the set point needs to be changed it may be necessary to alter 
-# various other fields defining the range of allowed values.
-# For the majority of applications the defaults should be used.  The levels
-# should only be changed at the request of the vacuum group for non-standard
+#% macro, __doc__, Template database for an inverted magnetron guage connected 
+# to one channel of an MKS937A Multi-Sensor System 
+# A note on the optional macros: they default to an appropriate hard-coded 
+# value if no value is passed for expansion. 
+# They are provided to allow the default set points to be changed. 
+# Once the set point needs to be changed it may be necessary to alter  
+# various other fields defining the range of allowed values. 
+# For the majority of applications the defaults should be used.  The levels 
+# should only be changed at the request of the vacuum group for non-standard 
 # vacuum systems.
 #
-# ctlsp_level = the desired control setpoint value.
-# ctlsp_drvh  = the DRVH field on control setpoint records 
-#              (limits max value of control setpoint)
-# ctlsp_drvl  = the DRVL field on control setpoint records.
-#              (limits min value of control setpoint)
-# ctlsp_hopr  = the HOPR field on control setpoint records
-#              (high operator value - helps display set correct range).
-# ctlsp_lopr  = the LOPR field on control setpoint records
-#              (low operator value - helps display set correct range).
-# ctlsp_hihi  = the HIHI alarm field on the control setpoint record.
-# ctlsp_lolo  = the LOLO alarm field on the control setpoint record.
-# ctlsp_high  = the HIGH alarm field on the control setpoint record.
-# cltsp_low   = the LOW alarm field on the control setpoint record.
-# ctlsp_desc  = the DESC field on the control setpoint record.
+# required substitutions:
+#% macro, device,  device name
+#% macro, port,    serial port (steam device code ie /ty/0/1 => ty_0_1)
+#% macro, channel, MKS 937A channel number (1-4)
 #
-# prosp_level = the desired protection setpoint value.
-# prosp_drvh  = the DRVH field on protection setpoint records 
-#              (limits max value of protection setpoint)
-# prosp_drvl  = the DRVL field on protection setpoint records.
-#              (limits min value of protection setpoint)
-# prosp_hopr  = the HOPR field on protection setpoint records
-#              (high operator value - helps display set correct range).
-# prosp_lopr  = the LOPR field on protection setpoint records
-#              (low operator value - helps display set correct range).
-# prosp_hihi  = the HIHI alarm field on the protection setpoint record.
-# prosp_lolo  = the LOLO alarm field on the protection setpoint record.
-# prosp_high  = the HIGH alarm field on the protection setpoint record.
-# prosp_low   = the LOW alarm field on the protection setpoint record.
-# prosp_desc  = the DESC field on the protection setpoint record
-#		(appears as a label on the Img EDM screen).
+# optional substitutions:
+#% macro, name,        Object name, and gui association name
+#% macro, ctlsp_level, The desired control setpoint value.
+#% macro, ctlsp_drvh,  The DRVH field on control setpoint records 
+#                      (limits max value of control setpoint)
+#% macro, ctlsp_drvl,  The DRVL field on control setpoint records. 
+#                      (limits min value of control setpoint)
+#% macro, ctlsp_hopr,  The HOPR field on control setpoint records 
+#                      (high operator value - helps display set correct range).
+#% macro, ctlsp_lopr,  The LOPR field on control setpoint records 
+#                      (low operator value - helps display set correct range).
+#% macro, ctlsp_hihi,  The HIHI alarm field on the control setpoint record.
+#% macro, ctlsp_lolo,  The LOLO alarm field on the control setpoint record.
+#% macro, ctlsp_high,  The HIGH alarm field on the control setpoint record.
+#% macro, ctlsp_low ,  The LOW alarm field on the control setpoint record.
+#% macro, ctlsp_desc,  The DESC field on the control setpoint record.
 #
-# rlysp_level = the desired relay setpoint value.
-# rlysp_drvh  = the DRVH field on relay setpdoint records 
-#              (limits max value of relay setpoint)
-# rlysp_drvl  = the DRVL field on relay setpoint records.
-#              (limits min value of relay setpoint)
-# rlysp_hopr  = the HOPR field on relay setpoint records
-#              (high operator value - helps display set correct range).
-# rlysp_lopr  = the LOPR field on relay setpoint records
-#              (low operator value - helps display set correct range).
-# rlysp_hihi  = the HIHI alarm field on the relay setpoint record.
-# rlysp_lolo  = the LOLO alarm field on the relay setpoint record.
-# rlysp_high  = the HIGH alarm field on the relay setpoint record.
-# rlysp_low   = the LOW alarm field on the relay setpoint record.
-# rlysp_desc  = the DESC field on the relay setpoint record
-#		(appears as a label on the Img EDM screen).
+#% macro, prosp_level, The desired protection setpoint value.
+#% macro, prosp_drvh,  The DRVH field on protection setpoint records 
+#                      (limits max value of protection setpoint)
+#% macro, prosp_drvl,  The DRVL field on protection setpoint records. 
+#                      (limits min value of protection setpoint)
+#% macro, prosp_hopr,  The HOPR field on protection setpoint records 
+#                      (high operator value - helps display set correct range).
+#% macro, prosp_lopr,  The LOPR field on protection setpoint records 
+#                      (low operator value - helps display set correct range).
+#% macro, prosp_hihi,  The HIHI alarm field on the protection setpoint record.
+#% macro, prosp_lolo,  The LOLO alarm field on the protection setpoint record.
+#% macro, prosp_high,  The HIGH alarm field on the protection setpoint record.
+#% macro, prosp_low ,  The LOW alarm field on the protection setpoint record.
+#% macro, prosp_desc,  The DESC field on the protection setpoint record 
+#                      (appears as a label on the Img EDM screen).
 #
-# rlasp_level = the desired second relay setpoint value.
-# rlasp_drvh  = the DRVH field on second relay setpoint records 
-#              (limits max value of second relay setpoint)
-# rlasp_drvl  = the DRVL field on second relay setpoint records.
-#              (limits min value of second relay setpoint)
-# rlasp_hopr  = the HOPR field on second relay setpoint records
-#              (high operator value - helps display set correct range).
-# rlasp_lopr  = the LOPR field on second relay setpoint records
-#              (low operator value - helps display set correct range).
-# rlasp_hihi  = the HIHI alarm field on the second relay setpoint record.
-# rlasp_lolo  = the LOLO alarm field on the second relay setpoint record.
-# rlasp_high  = the HIGH alarm field on the second relay setpoint record.
-# rlasp_low   = the LOW alarm field on the second relay setpoint record.
-# rlasp_desc  = the DESC field on the second relay setpoint record.
+#% macro, rlysp_level, The desired relay setpoint value.
+#% macro, rlysp_drvh,  The DRVH field on relay setpdoint records 
+#                      (limits max value of relay setpoint)
+#% macro, rlysp_drvl,  The DRVL field on relay setpoint records. 
+#                      (limits min value of relay setpoint)
+#% macro, rlysp_hopr,  The HOPR field on relay setpoint records 
+#                      (high operator value - helps display set correct range).
+#% macro, rlysp_lopr,  The LOPR field on relay setpoint records 
+#                      (low operator value - helps display set correct range).
+#% macro, rlysp_hihi,  The HIHI alarm field on the relay setpoint record.
+#% macro, rlysp_lolo,  The LOLO alarm field on the relay setpoint record.
+#% macro, rlysp_high,  The HIGH alarm field on the relay setpoint record.
+#% macro, rlysp_low ,  The LOW alarm field on the relay setpoint record.
+#% macro, rlysp_desc,  The DESC field on the relay setpoint record 
+#                      (appears as a label on the Img EDM screen).
+#
+#% macro, rlasp_drvh,  The DRVH field on second relay setpoint records 
+#                      (limits max value of second relay setpoint)
+#% macro, rlasp_drvl,  The DRVL field on second relay setpoint records. 
+#                      (limits min value of second relay setpoint)
+#% macro, rlasp_hopr,  The HOPR field on second relay setpoint records 
+#                      (high operator value - helps display set correct range).
+#% macro, rlasp_lopr,  The LOPR field on second relay setpoint records 
+#                      (low operator value - helps display set correct range).
+#% macro, rlasp_hihi,  The HIHI alarm field on the second relay setpoint record.
+#% macro, rlasp_lolo,  The LOLO alarm field on the second relay setpoint record.
+#% macro, rlasp_high,  The HIGH alarm field on the second relay setpoint record.
+#% macro, rlasp_low ,  The LOW alarm field on the second relay setpoint record.
+#% macro, rlasp_desc,  The DESC field on the second relay setpoint record.
 #
 ################################################################################
 
@@ -373,7 +368,7 @@ record(bo, "$(device):PRO:DIS") {
 #% archiver 10 Monitor
 #
 record(ao, "$(device):RLY:SETSP") {
-  field(DESC, "$(rlysp_desc=Valve I/L)")
+  field(DESC, "$(rlysp_desc=Valve Interlock)")
   field(FLNK, "$(device):RLY:SEQ")
   field(EGU, "mbar")
   field(PREC, "1")

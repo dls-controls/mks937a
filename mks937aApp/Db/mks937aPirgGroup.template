@@ -1,10 +1,17 @@
 # mks937aPirgGroup.template
-# Template database for a group of up to 8 Pirani Gauges
+#% macro, __doc__, Template database for a group of up to 8 Pirani Gauges
 # Pete Owens - 9/5/05
 #
 # substitutions:
-# device  - device name
-# pirg1-8 - names of gauges in group
+#% macro, device, device name
+#% macro, pirg1, pirg 1 device name
+#% macro, pirg2, pirg 2 device name
+#% macro, pirg3, pirg 3 device name
+#% macro, pirg4, pirg 4 device name
+#% macro, pirg5, pirg 5 device name
+#% macro, pirg6, pirg 6 device name
+#% macro, pirg7, pirg 7 device name
+#% macro, pirg8, pirg 8 device name
 ################################################################################
 # Status
 #

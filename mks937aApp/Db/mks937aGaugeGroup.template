@@ -1,10 +1,19 @@
 # mks937aGaugeGroup.template
-# Template database for a group of up to 8 MKS937A combination gauges
+#% macro, __doc__, Template database for a group of up to 8 MKS937A 
+# combination gauges
 # Pete Owens - 5/5/05
 #
 # substitutions:
-# device   - device name
-# gauge1-8 - names of gauges in group
+#% macro, device, device name
+#% macro, gauge1, gauge 1 device name
+#% macro, gauge2, gauge 2 device name
+#% macro, gauge3, gauge 3 device name
+#% macro, gauge4, gauge 4 device name
+#% macro, gauge5, gauge 5 device name
+#% macro, gauge6, gauge 6 device name
+#% macro, gauge7, gauge 7 device name
+#% macro, gauge8, gauge 8 device name
+
 ################################################################################
 # Select Active Gauge (IMG or PIRG)
 #

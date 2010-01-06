@@ -1,10 +1,10 @@
 # mks937a.db
-# Template database for an MKS937A Multi-Sensor System
+#% macro, __doc__, Template database for an MKS937A Multi-Sensor System
 # Pete Owens - 9/3/04
 #
 # substitutions:
-# device  - device name
-# port    - serial port (steam device code ie /ty/0/1 => ty_0_1)
+#% macro, device, Device name
+#% macro, port,   Asyn Port name, e.g. ty_40_0
 ################################################################################
 # Line Frequency
 #

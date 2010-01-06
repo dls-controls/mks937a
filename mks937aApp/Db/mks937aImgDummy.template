@@ -4,32 +4,33 @@
 
 
 # mks937aImgDummy.db
-# Template database for a dummy inverted magnetron gauge 
-# Just enough to keep the Gauge template happy
+#% macro, __doc__, Template database for a dummy inverted magnetron gauge  
+# Just enough to keep the Gauge template happy 
+# Note on optional macros: these will default to an appropriate hard-coded 
+# value if no value is passed for expansion. They are provided to parallel 
+# those in the Img template.
+
 # Peter Denison - 2/08/06
 #
-# substitutions:
-# device  - device name
+# required substitutions:
+#% macro, device, device name
 #
-# The above are macros that must be set and if left undefined will produce
-# unexpanded macro error messages.  The following are optional and will
-# default to an appropriate hard-coded value if no value is passed for
-# expansion. They are provided to parallel those in the Img template.
+# optional substitutions:
 #
-# ctlsp_level  = the desired control setpoint value.			
-# ctlsp_drvh   = the DRVH field on control setpoint records 		
-#                (limits max value of control setpoint)			
-# ctlsp_drvl   = the DRVL field on control setpoint records.
-#                (limits min value of control setpoint)			
-# ctlsp_hopr   = the HOPR field on control setpoint records		
-#                (high operator value - helps display set correct range).
-# ctlsp_lopr   = the LOPR field on control setpoint records		
-#                (low operator value - helps display set correct range).
-# ctlsp_hihi   = the HIHI alarm field on the control setpoint record.
-# ctlsp_lolo   = the LOLO alarm field on the control setpoint record. 
-# ctlsp_high   = the HIGH alarm field on the control setpoint record. 
-# ctlsp_low    = the LOW alarm field on the control setpoint record.  
-# ctlsp_desc   = the DESC field on the control setpoint record.       
+#% macro, ctlsp_level, The desired control setpoint value.
+#% macro, ctlsp_drvh , The DRVH field on control setpoint records 
+#                      (limits max value of control setpoint)
+#% macro, ctlsp_drvl , The DRVL field on control setpoint records. 
+#                      (limits min value of control setpoint)
+#% macro, ctlsp_hopr , The HOPR field on control setpoint records 
+#                      (high operator value - helps display set correct range).
+#% macro, ctlsp_lopr , The LOPR field on control setpoint records 
+#                      (low operator value - helps display set correct range).
+#% macro, ctlsp_hihi , The HIHI alarm field on the control setpoint record.
+#% macro, ctlsp_lolo , The LOLO alarm field on the control setpoint record.
+#% macro, ctlsp_high , The HIGH alarm field on the control setpoint record.
+#% macro, ctlsp_low  , The LOW alarm field on the control setpoint record.
+#% macro, ctlsp_desc , The DESC field on the control setpoint record.
 #
 ################################################################################
 # Status

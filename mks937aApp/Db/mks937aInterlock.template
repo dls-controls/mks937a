@@ -1,16 +1,16 @@
 # mks937aInterlock.db
-# Template database to override gauge interlock values
-# This template should be used AFTER the interlock
-# records have been loaded with default values
-# using one of the gauge template files
+#% macro, __doc__, Template database to override gauge interlock values 
+# This template should be used AFTER the interlock 
+# records have been loaded with default values 
+# using one of the gauge template files 
 # Pete Owens - 21/3/06
 #
 # substitutions:
-# interlock  - interlock subsystem (device:ILK)
-# name       - interlock name
-# level      - level (mbar)
-# high       - limits
-# low
+#% macro, interlock, interlock subsystem (device:ILK)
+#% macro, name, interlock name string
+#% macro, level, level (mbar)
+#% macro, high, high limit
+#% macro, low, low limit
 ################################################################################
 record(ao, "$(interlock):SETSP")
 {

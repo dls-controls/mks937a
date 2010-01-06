@@ -4,7 +4,7 @@
 
 
 # mks937aPirgDummy.template
-# Template database for a dummy pirani gauge 
+#% macro, __doc__, Template database for a dummy pirani gauge. 
 # Just enough to keep the Gauge template happy
 # Linda Pratt 28/09/2009
 #
@@ -15,7 +15,7 @@
 # from before with just the status record.
 #
 # substitutions:
-# device  - device name
+#% macro, device, device name
 #
 ################################################################################
 # Status
