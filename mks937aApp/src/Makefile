@@ -10,7 +10,7 @@ USR_CFLAGS += -DEPICS_R3_14
 # build a mks937a library
 #
 
-LIBRARY_IOC += mks937a
+LIBRARY_IOC_vxWorks += mks937a
 
 # install support.dbd into <top>/dbd
 DBD += mks937a.dbd
