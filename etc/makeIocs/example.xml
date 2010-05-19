@@ -1,29 +1,23 @@
 <?xml version="1.0" ?>
 <components arch="linux-x86">
-	<pyDrv.serial_sim_instance module="mks937a_sim" name="mks937aSim" pyCls="mks937a"/>
-	<asyn.AsynIP name="mks937aAsyn" port="172.23.111.180:7001" simulation="mks937aSim"/>
+	<asyn.AsynIP name="mks937aAsyn" port="172.23.111.180:7001" simulation="localhost:"/>
 	<mks937a.mks937a device="device" port="mks937aAsyn"/>
-	<pyDrv.serial_sim_instance module="mks937a_sim" name="mks937aSim" pyCls="mks937a"/>
-	<asyn.AsynIP name="mks937aAsyn" port="172.23.111.180:7001" simulation="mks937aSim"/>
-	<mks937a.mks937aPirg device="device" channel="channel" port="mks937aAsyn"/>
+	<asyn.AsynIP name="mks937aAsyn" port="172.23.111.180:7001" simulation="localhost:"/>
+	<mks937a.mks937aPirg channel="channel" device="device" port="mks937aAsyn"/>
 	<mks937a.mks937aPirgGroup device="device" pirg1="pirg1" pirg2="pirg2" pirg3="pirg3" pirg4="pirg4" pirg5="pirg5" pirg6="pirg6" pirg7="pirg7" pirg8="pirg8"/>
-	<pyDrv.serial_sim_instance module="mks937a_sim" name="mks937aSim" pyCls="mks937a"/>
-	<asyn.AsynIP name="mks937aAsyn" port="172.23.111.180:7001" simulation="mks937aSim"/>
-	<mks937a.mks937aImg device="device" channel="channel" port="mks937aAsyn"/>
-	<mks937a.mks937aImgGroup device="device" delay="delay" img1="img1" img2="img2" img3="img3" img4="img4" img5="img5" img6="img6" img7="img7" img8="img8"/>
-	<mks937a.mks937aImgMean device="device" nimgs="nimgs" img1="img1" img2="img2" img3="img3" img4="img4" img5="img5" img6="img6" img7="img7" img8="img8" img9="img9" img10="img10" current="current"/>
+	<asyn.AsynIP name="mks937aAsyn" port="172.23.111.180:7001" simulation="localhost:"/>
+	<mks937a.mks937aImg channel="channel" device="device" port="mks937aAsyn"/>
+	<mks937a.mks937aImgGroup delay="delay" device="device" img1="img1" img2="img2" img3="img3" img4="img4" img5="img5" img6="img6" img7="img7" img8="img8"/>
+	<mks937a.mks937aImgMean current="current" device="device" img1="img1" img10="img10" img2="img2" img3="img3" img4="img4" img5="img5" img6="img6" img7="img7" img8="img8" img9="img9" nimgs="nimgs"/>
 	<mks937a.mks937aImgDummy device="device"/>
-	<mks937a.mks937aGauge dom="dom" id="id" c="c" s="s"/>
-	<mks937a.mks937aGaugeGroup device="device" gauge1="gauge1" gauge2="gauge2" gauge3="gauge3" gauge4="gauge4" gauge5="gauge5" gauge6="gauge6" gauge7="gauge7" gauge8="gauge8" dom="dom" id="id"/>
-	<mks937a.mks937aInterlock interlock="interlock" name="name" high="high" low="low" level="level"/>
+	<mks937a.mks937aGauge c="c" dom="dom" id="id" s="s"/>
+	<mks937a.mks937aGaugeGroup device="device" dom="dom" gauge1="gauge1" gauge2="gauge2" gauge3="gauge3" gauge4="gauge4" gauge5="gauge5" gauge6="gauge6" gauge7="gauge7" gauge8="gauge8" id="id"/>
+	<mks937a.mks937aInterlock high="high" interlock="interlock" level="level" low="low" name="name"/>
 	<mks937a.simulation_mks937aGauge dom="dom" id="id"/>
-	<pyDrv.serial_sim_instance module="mks937a_sim" name="mks937aSim" pyCls="mks937a"/>
-	<asyn.AsynIP name="mks937aAsyn" port="172.23.111.180:7001" simulation="mks937aSim"/>
-	<mks937a.simulation_mks937aImg device="device" channel="channel" port="mks937aAsyn"/>
-	<pyDrv.serial_sim_instance module="mks937a_sim" name="mks937aSim" pyCls="mks937a"/>
-	<asyn.AsynIP name="mks937aAsyn" port="172.23.111.180:7001" simulation="mks937aSim"/>
-	<mks937a.simulation_mks937aPirg device="device" channel="channel" port="mks937aAsyn"/>
-	<pyDrv.serial_sim_instance module="mks937a_sim" name="mks937aSim" pyCls="mks937a"/>
-	<asyn.AsynIP name="mks937aAsyn" port="172.23.111.180:7001" simulation="mks937aSim"/>
+	<asyn.AsynIP name="mks937aAsyn" port="172.23.111.180:7001" simulation="localhost:"/>
+	<mks937a.simulation_mks937aImg channel="channel" device="device" port="mks937aAsyn"/>
+	<asyn.AsynIP name="mks937aAsyn" port="172.23.111.180:7001" simulation="localhost:"/>
+	<mks937a.simulation_mks937aPirg channel="channel" device="device" port="mks937aAsyn"/>
+	<asyn.AsynIP name="mks937aAsyn" port="172.23.111.180:7001" simulation="localhost:"/>
 	<mks937a.simulation_mks937a device="device" port="mks937aAsyn"/>
 </components>
