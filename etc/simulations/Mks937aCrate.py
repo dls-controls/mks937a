@@ -2,6 +2,7 @@ from pkg_resources import require
 require('dls_serial_sim')
 from dls_serial_sim import serial_device
 
+# Represents a single channel of the gauge control crate.
 class Mks937aChannel(object):
 
     def __init__(self, name, type):
@@ -27,28 +28,35 @@ class Mks937aChannel(object):
             result = 'NOGAUGE!'
         return result
 
+# The MKS937A gauge control crate.  Each crate has five channels, two IMG, two
+# pirani and one unused.  The crate can supply interlock source signals.
 class Mks937aCrate(serial_device):
 
-    def __init__(self, name='', tcpPort=9100):
+    def __init__(self, name='', tcpPort=9100, ui=None):
         print "Create MKS937A crate %s" % name
-        serial_device.__init__(self)
+        serial_device.__init__(self, ui=ui)
         self.name = name
         self.gauges = {}
-        self.gauges[1] = mks937aChannel(name+':1', 'img')
-        self.gauges[2] = mks937aChannel(name+':2', 'img')
-        self.gauges[3] = mks937aChannel(name+':3', '')
-        self.gauges[4] = mks937aChannel(name+':4', 'pirani')
-        self.gauges[5] = mks937aChannel(name+':5', 'pirani')
+        self.gauges[1] = Mks937aChannel(name+':1', 'img')
+        self.gauges[2] = Mks937aChannel(name+':2', 'img')
+        self.gauges[3] = Mks937aChannel(name+':3', '')
+        self.gauges[4] = Mks937aChannel(name+':4', 'pirani')
+        self.gauges[5] = Mks937aChannel(name+':5', 'pirani')
+        serial_device.Terminator = "\r"
         self.start_ip(tcpPort)
 
-    def getInterlock(self, signal):
+    def createUi(self):
+        '''Override to create the user interface for the simulation.'''
+        return TerminalWindow()
+    
+    def getInterlock(self, signal, bit):
         result = False
-        gauge = self.gauges[signal[0]]
-        if signal[1] == 1:
+        gauge = self.gauges[signal]
+        if bit == 0:
             result = gauge.pressure <= gauge.relaySetPoint
         return result
 
-    def getGauge(self, number):
+    def gauge(self, number):
         result = None
         if number in self.gauges:
             result = self.gauges[number]
@@ -111,6 +119,7 @@ class Mks937aCrate(serial_device):
                 result = "CcCcCv"
                 printMessage = False
         if printMessage:
-            print "%s==>%s" % (repr(command), repr(result))
+            text = "%s==>%s" % (repr(command), repr(result))
+            self.diagnostic(text, 1)
         return result
 
