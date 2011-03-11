@@ -4,10 +4,16 @@
 *
 * Pete Owens
 * 26/6/06
+ *
+ * Remove unecessary vxworks.h and types.h headers
+ * to allow build target linux_x86.
+ * Soft-iocs may need to use the mean calculations.
+ *
+ * Ian Gillingham
+ * 11/3/2011
+ * 
 */
 
-#include <vxWorks.h>
-#include <types.h>
 #include <genSubRecord.h>
 #include <epicsExport.h>
 #include <registryFunction.h>
