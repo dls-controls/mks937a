@@ -12,7 +12,7 @@ class Mks937aChannel(object):
         self.controlSetPoint = 0.0
         self.relaySetPoint = 0.0
         self.protectionSetPoint = 0.0
-        self.coldCathodeEnable = False
+        self.coldCathodeEnable = True
 
     def getPressure(self):
         result = '%.1E' % self.pressure
