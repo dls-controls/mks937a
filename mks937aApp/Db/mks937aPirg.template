@@ -41,7 +41,7 @@
 ################################################################################
 
 # This associates an edm screen with the template
-# % gui, $(name), edm, mks937aPirg.edl, device=$(device)
+# % gui, $(name=), edm, mks937aPirg.edl, device=$(device)
 
 # Status
 #
