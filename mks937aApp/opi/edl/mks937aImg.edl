@@ -3,8 +3,8 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 658
-y 94
+x 293
+y 49
 w 240
 h 432
 font "arial-medium-r-16.0"
@@ -22,7 +22,7 @@ botShadowColor index 11
 title "MKS 937A Inverted Magenetron Gauge - $(device)"
 showGrid
 snapToGrid
-gridSize 8
+gridSize 4
 endScreenProperties
 
 # (Rectangle)
@@ -82,7 +82,7 @@ endObjectProperties
 object shellCmdClass
 beginObjectProperties
 major 4
-minor 0
+minor 2
 release 0
 x 8
 y 400
@@ -104,7 +104,7 @@ endObjectProperties
 object relatedDisplayClass
 beginObjectProperties
 major 4
-minor 0
+minor 2
 release 0
 x 84
 y 400
@@ -472,7 +472,7 @@ endObjectProperties
 object activeLogMeterClass
 beginObjectProperties
 major 4
-minor 0
+minor 1
 release 0
 x 16
 y 64
@@ -491,15 +491,16 @@ botShadowColor index 11
 readPv "$(device):P"
 showScale
 scaleFormat "Exponential"
+scalePrecision "0"
 scaleLimitsFromDb
 useDisplayBg
-labelIntervals 9
-majorIntervals 1
-minorIntervals 1
+labelIntervals "9"
+majorIntervals "1"
+minorIntervals "1"
 complexNeedle
 3d
-scaleMin 1e-11
-scaleMax 0.01
+scaleMin "1e-11"
+scaleMax "0.01"
 labelFontTag "arial-bold-r-14.0"
 scaleFontTag "arial-medium-r-10.0"
 endObjectProperties
@@ -520,5 +521,54 @@ fgAlarm
 bgColor index 10
 font "arial-bold-r-14.0"
 fontAlign "right"
+endObjectProperties
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 124
+y 348
+w 104
+h 40
+
+beginGroup
+
+# (Related Display)
+object relatedDisplayClass
+beginObjectProperties
+major 4
+minor 2
+release 0
+x 124
+y 348
+w 104
+h 40
+fgColor index 43
+bgColor index 3
+topShadowColor index 1
+botShadowColor index 11
+font "arial-medium-r-14.0"
+buttonLabel "Switch on/off"
+numPvs 4
+numDsps 1
+displayFileName {
+  0 "mks937aImgWarning.edl"
+}
+menuLabel {
+  0 "Switch on/off"
+}
+setPosition {
+  0 "button"
+}
+endObjectProperties
+
+endGroup
+
+visPv "S(device):OFFWARN"
+visMin "1"
+visMax "2"
 endObjectProperties
 
