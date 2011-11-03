@@ -588,4 +588,13 @@ record(bo, "$(device):RLA:DIS")
     field(DISA, "$(channel)")
     field(DISV, "1")
 }
+
+record(bi, "$(device):OFFWARN") 
+{
+  field(DESC, "Warning for OFF button")
+  field(PINI, "YES")
+  field(INP, "$(offwarn=0)")
+  field(ZNAM, "Warning off")
+  field(ONAM, "Warning on")
+}
 ################################################################################
