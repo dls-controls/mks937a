@@ -23,6 +23,10 @@
 #% macro, c,   ADC card number
 #% macro, s,   ADC signal number
 #
+# gui substitutions:
+#% macro, name,        The device's name for gui purposes
+#% macro, GCTLR,       The gauge controller PV prefix, for gui purposes
+#
 # optional substitutions:
 #% macro, ctlsp_level, The desired control setpoint value (actually for the Pirg).
 #% macro, ctlsp_drvh,  The DRVH field on control setpoint records. 
@@ -35,6 +39,9 @@
 #                      (low operator value - helps display set correct range).
 #% macro, ctlsp_desc,  The DESC field on control setpoint records. 
 #		               (appears as a label on the Pirg EDM screen).
+#
+# GCTLR used for the controller button
+# % gui, $(name=), edm, mks937aGauge.edl, dom=$(dom), id=$(id), GCTLR=$(GCTLR=)
 #
 ################################################################################
 # Select Active Gauge (IMG or PIRG)
