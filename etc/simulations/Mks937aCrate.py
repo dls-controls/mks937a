@@ -1,6 +1,7 @@
-from pkg_resources import require
-require('dls_serial_sim')
-from dls_serial_sim import serial_device
+#from pkg_resources import require
+#require('dls_serial_sim')
+#from dls_serial_sim import serial_device
+from serial_sim import serial_device
 
 # Represents a single channel of the gauge control crate.
 class Mks937aChannel(object):
@@ -33,9 +34,8 @@ class Mks937aChannel(object):
 class Mks937aCrate(serial_device):
 
     def __init__(self, name='', tcpPort=9100, ui=None):
-        print "Create MKS937A crate %s" % name
-        serial_device.__init__(self, ui=ui)
         self.name = name
+        serial_device.__init__(self, ui=ui)
         self.gauges = {}
         self.gauges[1] = Mks937aChannel(name+':1', 'img')
         self.gauges[2] = Mks937aChannel(name+':2', 'img')
@@ -44,6 +44,7 @@ class Mks937aCrate(serial_device):
         self.gauges[5] = Mks937aChannel(name+':5', 'pirani')
         serial_device.Terminator = "\r"
         self.start_ip(tcpPort)
+        self.diagnostic("Created MKS937A crate %s" % name)
 
     def createUi(self):
         '''Override to create the user interface for the simulation.'''
