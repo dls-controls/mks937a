@@ -1,7 +1,10 @@
-#from pkg_resources import require
-#require('dls_serial_sim')
-#from dls_serial_sim import serial_device
-from serial_sim import serial_device
+#!/bin/env dls-python2.6
+
+if __name__=="__main__":
+    from pkg_resources import require
+    require("dls_serial_sim")
+
+from dls_serial_sim import serial_device, CreateSimulation
 
 # Represents a single channel of the gauge control crate.
 class Mks937aChannel(object):
@@ -9,7 +12,7 @@ class Mks937aChannel(object):
     def __init__(self, name, type):
         self.name = name
         self.type = type
-        self.pressure = 1.0
+        self.pressure = 0.0001
         self.controlSetPoint = 0.0
         self.relaySetPoint = 0.0
         self.protectionSetPoint = 0.0
@@ -33,7 +36,7 @@ class Mks937aChannel(object):
 # pirani and one unused.  The crate can supply interlock source signals.
 class Mks937aCrate(serial_device):
 
-    def __init__(self, name='', tcpPort=9100, ui=None):
+    def __init__(self, name='', tcpPort=None, ui=None):
         self.name = name
         serial_device.__init__(self, ui=ui)
         self.gauges = {}
@@ -43,7 +46,8 @@ class Mks937aCrate(serial_device):
         self.gauges[4] = Mks937aChannel(name+':4', 'pirani')
         self.gauges[5] = Mks937aChannel(name+':5', 'pirani')
         serial_device.Terminator = "\r"
-        self.start_ip(tcpPort)
+        if tcpPort:
+            self.start_ip(tcpPort)
         self.diagnostic("Created MKS937A crate %s" % name)
 
     def createUi(self):
@@ -121,6 +125,11 @@ class Mks937aCrate(serial_device):
                 printMessage = False
         if printMessage:
             text = "%s==>%s" % (repr(command), repr(result))
-            self.diagnostic(text, 1)
+            self.diagnostic(text, 4)
         return result
+
+if __name__=="__main__":
+    # run our simulation on the command line. Run this file with -h for help
+    CreateSimulation(Mks937aCrate)
+    raw_input()
 

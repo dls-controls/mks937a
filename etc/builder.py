@@ -44,7 +44,8 @@ class mks937aGauge(AutoSubstitution):
 
     TemplateFile = 'mks937aGauge.template'
     
-class mks937aGauge_sim(Substitution):
+class mks937aGauge_sim(AutoSubstitution):
+    WarnMacros = False
     TemplateFile = 'simulation_mks937aGauge.template'
 SetSimulation(mks937aGauge, mks937aGauge_sim) 
 

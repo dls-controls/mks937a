@@ -1,23 +1,8 @@
 <?xml version="1.0" ?>
 <components arch="linux-x86">
-	<asyn.AsynIP name="mks937aAsyn" port="172.23.111.180:7001" simulation="localhost:"/>
-	<mks937a.mks937a device="device" port="mks937aAsyn"/>
-	<asyn.AsynIP name="mks937aAsyn" port="172.23.111.180:7001" simulation="localhost:"/>
-	<mks937a.mks937aPirg channel="channel" device="device" port="mks937aAsyn"/>
-	<mks937a.mks937aPirgGroup device="device" pirg1="pirg1" pirg2="pirg2" pirg3="pirg3" pirg4="pirg4" pirg5="pirg5" pirg6="pirg6" pirg7="pirg7" pirg8="pirg8"/>
-	<asyn.AsynIP name="mks937aAsyn" port="172.23.111.180:7001" simulation="localhost:"/>
-	<mks937a.mks937aImg channel="channel" device="device" port="mks937aAsyn"/>
-	<mks937a.mks937aImgGroup delay="delay" device="device" img1="img1" img2="img2" img3="img3" img4="img4" img5="img5" img6="img6" img7="img7" img8="img8"/>
-	<mks937a.mks937aImgMean current="current" device="device" img1="img1" img10="img10" img2="img2" img3="img3" img4="img4" img5="img5" img6="img6" img7="img7" img8="img8" img9="img9" nimgs="nimgs"/>
-	<mks937a.mks937aImgDummy device="device"/>
-	<mks937a.mks937aGauge c="c" dom="dom" id="id" s="s"/>
-	<mks937a.mks937aGaugeGroup device="device" dom="dom" gauge1="gauge1" gauge2="gauge2" gauge3="gauge3" gauge4="gauge4" gauge5="gauge5" gauge6="gauge6" gauge7="gauge7" gauge8="gauge8" id="id"/>
-	<mks937a.mks937aInterlock high="high" interlock="interlock" level="level" low="low" name="name"/>
-	<mks937a.simulation_mks937aGauge dom="dom" id="id"/>
-	<asyn.AsynIP name="mks937aAsyn" port="172.23.111.180:7001" simulation="localhost:"/>
-	<mks937a.simulation_mks937aImg channel="channel" device="device" port="mks937aAsyn"/>
-	<asyn.AsynIP name="mks937aAsyn" port="172.23.111.180:7001" simulation="localhost:"/>
-	<mks937a.simulation_mks937aPirg channel="channel" device="device" port="mks937aAsyn"/>
-	<asyn.AsynIP name="mks937aAsyn" port="172.23.111.180:7001" simulation="localhost:"/>
-	<mks937a.simulation_mks937a device="device" port="mks937aAsyn"/>
+	<asyn.AsynIP name="ty_gauge" port="localhost:7001" simulation="localhost:7001"/>
+	<mks937a.mks937a device="TEST-VA-GCTLR-01" name="GCTLR" port="ty_gauge"/>
+	<mks937a.mks937aGauge GCTLR="TEST-VA-GCTLR-01" c="40" dom="TEST" id="01" name="GAUGE" s="1"/>
+	<mks937a.mks937aPirg GCTLR="GCTLR" channel="4" device="TEST-VA-PIRG-01" name="PIRG"/>
+	<mks937a.mks937aImg GCTLR="GCTLR" channel="1" device="TEST-VA-IMG-01" name="IMG"/>
 </components>
