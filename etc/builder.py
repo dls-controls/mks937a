@@ -62,3 +62,6 @@ class mks937aPirgGroup(AutoSubstitution):
 class mks937aImgDummy(AutoSubstitution):
     TemplateFile = 'mks937aImgDummy.template'
 
+class mks937aPirgDummy(AutoSubstitution):
+    TemplateFile = 'mks937aPirgDummy.template'
+    
