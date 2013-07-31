@@ -22,6 +22,14 @@
 #% macro, id,  ID number as 2 digit string (e.g. 01)
 #% macro, c,   ADC card number
 #% macro, s,   ADC signal number
+# 
+#   Note that as of 31st July 2013, the DTYP and INP fields allow flexibility
+#   for implementation on non-VME systems, where the analogue input would be 
+#   derived from another record and DTYP might be Soft Channel.
+#   In the non-VME use case, do not define 'c' and 's', instead define 'aiinp'
+#   and 'aitype': typically 'aiinp' -> "0" (or another record) and 'aitype' -> 'Soft Channel'.
+#   Ian Gillingham: 31/7/13
+
 #
 # gui substitutions:
 #% macro, name,        The device's name for gui purposes
@@ -71,13 +79,17 @@ record(mbbi, "$(dom)-VA-GAUGE-$(id):GAUGE") {
 
 ################################################################################
 # Pressure
+#   Note that as of 31st July 2013, the DTYP and INP fields allow flexibility
+#   for implementation on non-VME systems, where the analogue input would be 
+#   derived from another record and DTYP might be Soft Channel.
+#   Ian Gillingham: 31/7/13
 #
 #% archiver 0.1 Monitor
 #
 record(ai, "$(dom)-VA-GAUGE-$(id):PLOG") {
   field(DESC, "log Pressure")
-  field(DTYP, "Hy8401ip")
-  field(INP, "#C$(c) S$(s) @")
+  field(DTYP, "$(aitype=Hy8401ip)")
+  field(INP, "$(aiinp=#C$(c) S$(s) @)")
   field(EGU, "log")
   field(LINR, "LINEAR")
 #  field(EGUF, "4.6")
