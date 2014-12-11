@@ -15,6 +15,13 @@
 # should only be changed at the request of the vacuum group for non-standard 
 # vacuum systems.
 #
+# IG Note: Historically, some of these records have DISA field switched on $(channel)
+#          The reason seems to be to disable record processing for RLA when that interlock
+#          is not relevant to the gauge - i.e. IMG-03 would typically not have an MPS interlock
+#          so should switch it off. I think this is a bit of a flakey way to do it, as any exceptional
+#          cases would not fit this method. Probably needs re-working sometime.
+#          IJG 12 August 2014
+#
 # required substitutions:
 #% macro, device,  device name
 #% macro, port,    serial port (steam device code ie /ty/0/1 => ty_0_1)
@@ -240,7 +247,7 @@ record(mbbo, "$(device):CTL:ENABLE") {
   field(ZRSV, "MAJOR")
   field(ONSV, "NO_ALARM")
   field(DOL, "1")
-  field(PINI, "YES")
+  #field(PINI, "YES")
 }
 
 record(seq, "$(device):CTL:SEQ") {
@@ -251,6 +258,7 @@ record(seq, "$(device):CTL:SEQ") {
   field(LNK1, "$(device):CTL:DIS PP")
   field(DOL2, "$(device):CTL:SETSP")
   field(LNK2, "$(device):CTL:OUTSP PP")
+  field(SDIS, "$(device):CTL:ILKSETSP:NOWRITE")
 }
 
 record(ai, "$(device):CTL:SP") {
@@ -272,11 +280,14 @@ record(ai, "$(device):CTL:SP") {
   field(LSV, "MINOR")
 }
 
-record(ao, "$(device):CTL:OUTSP") {
-  field(DESC, "Output Control Setpoint")
-  field(DTYP, "stream")
-  field(OUT, "@mks937a.protocol setsp($(channel),CTL) $(port) 0")
-}
+record(ao, "$(device):CTL:OUTSP") 
+    {
+    field(DESC, "Output Control Setpoint")
+    field(DTYP, "stream")
+    field(TPRO, "1")
+    field(SDIS, "$(device):CTL:ILKSETSP:NOWRITE")
+    field(OUT, "@mks937a.protocol setsp($(channel),CTL) $(port) 0")
+    }
 
 record(bo, "$(device):CTL:DIS") {
   field(DESC, "Disable Control Setpoint")
@@ -314,18 +325,19 @@ record(mbbo, "$(device):PRO:ENABLE") {
   field(ZRSV, "MAJOR")
   field(ONSV, "NO_ALARM")
   field(DOL, "1")
-  field(PINI, "YES")
+  #field(PINI, "YES")
 }
 
-record(seq, "$(device):PRO:SEQ") {
-  field(DESC, "Sequence Protection Setpoint")
-  field(SELM, "Specified")
-  field(SELL, "$(device):PRO:ENABLE.RVAL")
-  field(DOL1, "0")
-  field(LNK1, "$(device):PRO:DIS PP")
-  field(DOL2, "$(device):PRO:SETSP")
-  field(LNK2, "$(device):PRO:OUTSP PP")
-}
+record(seq, "$(device):PRO:SEQ") 
+    {
+    field(DESC, "Sequence Protection Setpoint")
+    field(SELM, "Specified")
+    field(SELL, "$(device):PRO:ENABLE.RVAL")
+    field(DOL1, "0")
+    field(LNK1, "$(device):PRO:DIS PP")
+    field(DOL2, "$(device):PRO:SETSP")
+    field(LNK2, "$(device):PRO:OUTSP PP")
+    }
 
 #
 #% archiver 10 Monitor
@@ -350,11 +362,13 @@ record(ai, "$(device):PRO:SP") {
   field(LSV, "MINOR")
 }
 
-record(ao, "$(device):PRO:OUTSP") {
-  field(DESC, "Output Protection Setpoint")
-  field(DTYP, "stream")
-  field(OUT, "@mks937a.protocol setsp($(channel),PRO) $(port) 0")
-}
+record(ao, "$(device):PRO:OUTSP") 
+    {
+    field(DESC, "Output Protection Setpoint")
+    field(DTYP, "stream")
+    field(SDIS, "$(device):PRO:ILKSETSP:NOWRITE")
+    field(OUT, "@mks937a.protocol setsp($(channel),PRO) $(port) 0")
+    }
 
 record(bo, "$(device):PRO:DIS") {
   field(DESC, "Disable Protection Setpoint")
@@ -377,6 +391,7 @@ record(ao, "$(device):RLY:SETSP") {
   field(DRVH, "$(rlysp_drvh=1.2e-2)")
   field(DRVL, "$(rlysp_drvl=2.7e-10)")
   field(DOL, "$(rlysp_level=1.0e-6)")
+  field(SDIS, "$(device):RLY:ILKSETSP:NOWRITE")
 }
 
 #
@@ -392,7 +407,7 @@ record(mbbo, "$(device):RLY:ENABLE") {
   field(ZRSV, "MAJOR")
   field(ONSV, "NO_ALARM")
   field(DOL, "1")
-  field(PINI, "YES")
+  #field(PINI, "YES")
 }
 
 record(seq, "$(device):RLY:SEQ") {
@@ -428,17 +443,20 @@ record(ai, "$(device):RLY:SP") {
   field(LSV, "MINOR")
 }
 
-record(ao, "$(device):RLY:OUTSP") {
-  field(DESC, "Output Relay Setpoint")
-  field(DTYP, "stream")
-  field(OUT, "@mks937a.protocol setsp($(channel),RLY) $(port) 0")
-}
+record(ao, "$(device):RLY:OUTSP") 
+    {
+    field(DESC, "Output Relay Setpoint")
+    field(DTYP, "stream")
+    field(SDIS, "$(device):RLY:ILKSETSP:NOWRITE")
+    field(OUT, "@mks937a.protocol setsp($(channel),RLY) $(port) 0")
+    }
 
-record(bo, "$(device):RLY:DIS") {
-  field(DESC, "Disable Relay Setpoint")
-  field(DTYP, "stream")
-  field(OUT, "@mks937a.protocol dissp($(channel),RLY) $(port) 0")
-}
+record(bo, "$(device):RLY:DIS") 
+    {
+    field(DESC, "Disable Relay Setpoint")
+    field(DTYP, "stream")
+    field(OUT, "@mks937a.protocol dissp($(channel),RLY) $(port) 0")
+    }
 
 ################################################################################
 # Relay 2 (Chanel A Only) - MPS Interlock
@@ -481,7 +499,7 @@ record(mbbo, "$(device):RLA:ENABLE") {
   field(ONSV, "NO_ALARM")
   field(DISA, "$(channel)")
   field(DOL, "1")
-  field(PINI, "YES")
+  #field(PINI, "YES")
 }
 
 record(seq, "$(device):RLA:SEQ") {
@@ -519,12 +537,14 @@ record(ai, "$(device):RLA:SP") {
   field(DISA, "$(channel)")
 }
 
-record(ao, "$(device):RLA:OUTSP") {
-  field(DESC, "Output Relay Setpoint")
-  field(DTYP, "stream")
-  field(OUT, "@mks937a.protocol setsp(3,RLY) $(port) 0")
-  field(DISA, "$(channel)")
-}
+record(ao, "$(device):RLA:OUTSP") 
+    {
+    field(DESC, "Output Relay Setpoint")
+    field(DTYP, "stream")
+    field(SDIS, "$(device):RLA:ILKSETSP:NOWRITE")
+    field(OUT, "@mks937a.protocol setsp(3,RLY) $(port) 0")
+    field(DISA, "$(channel)")
+    }
 
 record(bo, "$(device):RLA:DIS") {
   field(DESC, "Disable Relay Setpoint")
@@ -551,3 +571,90 @@ record(bi, "$(device):OFFWARN")
   field(ONAM, "Warning on")
 }
 
+#
+# The :CONSTZERO record allows the :ILKSETSP:NOWRITE record (below)
+# to have a PV link rather than constant zero value, which would be 
+# invalid with the "MS CP" modifiers
+#
+record(bi, "$(device):PRO:CONSTZERO")
+  {
+  field(DESC, "Constant zero value")
+  field(SCAN, "Passive")
+  field(PINI, "YES")
+  field(INP, "0")
+  field(ZNAM, "Zero")
+  field(ONAM, "One")
+  }
+
+# Disable the writing of setpoints to hardware so the machine does not trip
+# when the IOC is rebooted with lower default interlock pressures
+# This record is local to the relay instance, but controlled by the global
+# access record - given in the macro parameters. If not supplied, it will
+# assume an empty INP and do nothing.
+#
+# NB: These four records are identical and could have been instantiated via
+#     alias. The names are for compatibility with the macros in the EDM screens
+#     in which they are referenced.
+#
+record(bi, "$(device):PRO:ILKSETSP:NOWRITE")
+  {
+  field(DESC, "ILK setpoint access")
+  field(SCAN, "Passive")
+  field(PINI, "YES")
+  field(INP, "$(ilk_write_access_pv=$(device):PRO:CONSTZERO) MS CP")
+  field(ZNAM, "Allow")
+  field(ONAM, "Inhibit")
+  }
+record(bi, "$(device):CTL:ILKSETSP:NOWRITE")
+  {
+  field(DESC, "ILK setpoint access")
+  field(SCAN, "Passive")
+  field(PINI, "YES")
+  field(TPRO, "2")
+  field(INP, "$(ilk_write_access_pv=$(device):PRO:CONSTZERO) MS CP")
+  field(ZNAM, "Allow")
+  field(ONAM, "Inhibit")
+  }
+record(bi, "$(device):RLA:ILKSETSP:NOWRITE")
+  {
+  field(DESC, "ILK setpoint access")
+  field(SCAN, "Passive")
+  field(PINI, "YES")
+  field(INP, "$(ilk_write_access_pv=$(device):PRO:CONSTZERO) MS CP")
+  field(ZNAM, "Allow")
+  field(ONAM, "Inhibit")
+  }
+record(bi, "$(device):RLY:ILKSETSP:NOWRITE")
+  {
+  field(DESC, "ILK setpoint access")
+  field(SCAN, "Passive")
+  field(PINI, "YES")
+  field(INP, "$(ilk_write_access_pv=$(device):PRO:CONSTZERO) MS CP")
+  field(ZNAM, "Allow")
+  field(ONAM, "Inhibit")
+  }
+  
+# -----------------------------------------------------------------------------------------
+# These two records work together to provide one scan
+# to correctly initialise just once, records that used to use PINI
+# This is to ensure that the autoSR PV refered by ilk_write_access_pv
+# is correctly established before any other record processing, to potentially
+# avoid overwriting setpoints at IOC startup.
+#
+record(bo, "$(device):CTL:INITSETSPSDIS") 
+{
+  field(DTYP, "Soft Channel")
+  field(VAL, "1")
+  field(OUT, "$(device):CTL:INITSETSPFAN.DISA")
+}
+record(fanout, "$(device):CTL:INITSETSPFAN")
+{
+    field(DESC, "Relay 1s Scan fanout")
+    field(SCAN, "1 second")
+    field(LNK1, "$(device):CTL:ENABLE")
+    field(LNK2, "$(device):PRO:ENABLE")
+    field(LNK3, "$(device):RLY:ENABLE")
+    field(LNK4, "$(device):RLA:ENABLE")
+    field(LNK5, "$(device):CTL:INITSETSPSDIS")
+    field(SELM, "All")
+}

@@ -141,6 +141,7 @@ record(ao, "$(dom)-VA-PIRG-$(id):CTL:SETSP") {
   field(FLNK, "$(dom)-VA-IMG-$(id):CTL:SETSP")
   field(OUT, "$(dom)-VA-IMG-$(id):CTL:SETSP")
   field(EGU, "mbar")
+  field(SDIS, "$(dom)-VA-PIRG-$(id):ILKSETSP:NOWRITE")
   field(PREC, "1")
   field(HOPR, "$(ctlsp_hopr=9.5e-1)")
   field(LOPR, "$(ctlsp_lopr=2.7e-3)")
@@ -181,6 +182,41 @@ record(ai, "$(dom)-VA-PIRG-$(id):CTL:SP") {
   field(LOPR, "$(ctlsp_lopr=2.7e-3)")
 }
 
+# Disable the writing of setpoints to hardware so the machine does not trip
+# when the IOC is rebooted with lower default interlock pressures
+# This record is local to the relay instance, but controlled by the global
+# access record - given in the macro parameters. If not supplied, it will
+# assume a zero INP link (from :CONSTZERO above) and do nothing.
+#
+# This is essentially a copy of the global record below, but in the domain
+# of the PIRG instance, so available to EDM screen.
+#
+record(bi, "$(dom)-VA-PIRG-$(id):ILKSETSP:NOWRITE")
+  {
+  field(DESC, "ILK setpoint access")
+  field(SCAN, "Passive")
+  field(PINI, "YES")
+  field(PHAS, "1")
+  field(INP, "$(dom)-VA-GAUGE-$(id):ILKSETSP:NOWRITE CP")
+  field(ZNAM, "Allow")
+  field(ONAM, "Inhibit")
+  }
+
+# Disable the writing of setpoints to hardware so the machine does not trip
+# when the IOC is rebooted with lower default interlock pressures
+#
+#% autosave 0 VAL
+record(bi, "$(dom)-VA-GAUGE-$(id):ILKSETSP:NOWRITE")
+  {
+  field(DESC, "ILK setpoint access")
+  field(SCAN, "Passive")
+  field(PINI, "YES")
+  field(PHAS, "0")
+  field(INP, "0")
+  field(ZNAM, "Allow")
+  field(ONAM, "Inhibit")
+  }
+  
 #! Further lines contain data used by VisualDCT
 #! View(0,0,1.0)
 #! Record("$(dom)-VA-GAUGE-$(id):SEL",20,46,0,0,"$(dom)-VA-GAUGE-$(id):SEL")

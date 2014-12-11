@@ -3,10 +3,10 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 470
-y 198
-w 232
-h 208
+x 993
+y 54
+w 287
+h 209
 font "arial-medium-r-16.0"
 ctlFont "arial-bold-r-16.0"
 btnFont "arial-medium-r-16.0"
@@ -23,6 +23,7 @@ title "MKS 937A IMG Interlocks - $(device)"
 showGrid
 snapToGrid
 gridSize 8
+disableScroll
 endScreenProperties
 
 # (Static Text)
@@ -33,7 +34,7 @@ minor 1
 release 0
 x 0
 y 0
-w 232
+w 288
 h 40
 font "arial-bold-r-16.0"
 fontAlign "center"
@@ -72,7 +73,7 @@ minor 0
 release 0
 x 8
 y 56
-w 216
+w 272
 h 112
 lineColor index 14
 fill
@@ -148,9 +149,9 @@ endObjectProperties
 object activeXTextDspClass
 beginObjectProperties
 major 4
-minor 0
+minor 5
 release 0
-x 144
+x 192
 y 72
 w 72
 h 24
@@ -171,15 +172,16 @@ autoSelect
 useHexPrefix
 newPos
 objType "controls"
+noExecuteClipMask
 endObjectProperties
 
 # (Text Control)
 object activeXTextDspClass
 beginObjectProperties
 major 4
-minor 0
+minor 5
 release 0
-x 144
+x 192
 y 104
 w 72
 h 24
@@ -200,6 +202,65 @@ autoSelect
 useHexPrefix
 newPos
 objType "controls"
+noExecuteClipMask
+endObjectProperties
+
+# (Symbol)
+object activeSymbolClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 160
+y 72
+w 24
+h 24
+file "mks937bLock-symbol.edl"
+numStates 3
+minValues {
+  0 -1
+  1 1
+}
+maxValues {
+  1 99
+  2 1
+}
+controlPvs {
+  0 "$(device):PRO:ILKSETSP:NOWRITE"
+}
+numPvs 1
+useOriginalColors
+fgColor index 14
+bgColor index 3
+endObjectProperties
+
+# (Symbol)
+object activeSymbolClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 160
+y 104
+w 24
+h 24
+file "mks937bLock-symbol.edl"
+numStates 3
+minValues {
+  0 -1
+  1 1
+}
+maxValues {
+  1 99
+  2 1
+}
+controlPvs {
+  0 "$(device):RLY:ILKSETSP:NOWRITE"
+}
+numPvs 1
+useOriginalColors
+fgColor index 14
+bgColor index 3
 endObjectProperties
 
 # (Group)
@@ -210,8 +271,8 @@ minor 0
 release 0
 x 16
 y 136
-w 198
-h 20
+w 246
+h 24
 
 beginGroup
 
@@ -219,9 +280,9 @@ beginGroup
 object activeXTextDspClass
 beginObjectProperties
 major 4
-minor 0
+minor 5
 release 0
-x 144
+x 192
 y 136
 w 70
 h 20
@@ -243,6 +304,36 @@ fastUpdate
 useHexPrefix
 newPos
 objType "controls"
+noExecuteClipMask
+endObjectProperties
+
+# (Symbol)
+object activeSymbolClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 160
+y 136
+w 24
+h 24
+file "mks937bLock-symbol.edl"
+numStates 3
+minValues {
+  0 -1
+  1 1
+}
+maxValues {
+  1 99
+  2 1
+}
+controlPvs {
+  0 "$(device):RLA:ILKSETSP:NOWRITE"
+}
+numPvs 1
+useOriginalColors
+fgColor index 14
+bgColor index 3
 endObjectProperties
 
 # (Textupdate)

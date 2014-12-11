@@ -129,6 +129,7 @@ record(calc, "$(device):PLOG") {
   field(ADEL, "0.025")
 }
 
+
 ################################################################################
 # Relay - Ion Pump Interlock
 #
@@ -195,11 +196,14 @@ record(ai, "$(device):RLY:SP") {
   field(LSV, "MINOR")
 }
 
-record(ao, "$(device):RLY:OUTSP") {
+record(ao, "$(device):RLY:OUTSP") 
+  {
   field(DESC, "Output Relay Setpoint")
   field(DTYP, "stream")
   field(OUT, "@mks937a.protocol setsp($(channel),RLY) $(port) 0")
-}
+  field(TPRO, "5")
+  field(SDIS, "$(device):RLY:ILKSETSP:NOWRITE")
+  }
 
 record(bo, "$(device):RLY:DIS") {
   field(DESC, "Disable Relay Setpoint")
@@ -212,6 +216,72 @@ record(calc, "$(device):PDIS") {
   field(CALC, "(A>1)?1:0")
   field(INPA, "$(device):STA")
   field(FLNK, "$(device):P")
+}
+
+#
+# The :CONSTZERO record allows the :ILKSETSP:NOWRITE record (below)
+# to have a PV link rather than constant zero value, which would be 
+# invalid with the "MS CP" modifiers
+#
+record(bi, "$(device):CTL:CONSTZERO")
+  {
+  field(DESC, "Constant zero value")
+  field(SCAN, "Passive")
+  field(PINI, "YES")
+  field(INP, "0")
+  field(ZNAM, "Zero")
+  field(ONAM, "One")
+  }
+
+# Disable the writing of setpoints to hardware so the machine does not trip
+# when the IOC is rebooted with lower default interlock pressures
+# This record is local to the relay instance, but controlled by the global
+# access record - given in the macro parameters. If not supplied, it will
+# assume an empty INP and do nothing.
+#
+# NB: These two records are identical and could have been instantiated via
+#     alias. The names are for compatibility with the macros in the EDM screens
+#     in which they are referenced.
+#
+record(bi, "$(device):CTL:ILKSETSP:NOWRITE")
+  {
+  field(DESC, "ILK setpoint access")
+  field(SCAN, "Passive")
+  field(PINI, "YES")
+  field(INP, "$(ilk_write_access_pv=$(device):CTL:CONSTZERO) MS CP")
+  field(ZNAM, "Allow")
+  field(ONAM, "Inhibit")
+  }
+record(bi, "$(device):RLY:ILKSETSP:NOWRITE")
+  {
+  field(DESC, "ILK setpoint access")
+  field(SCAN, "Passive")
+  field(PINI, "YES")
+  field(INP, "$(ilk_write_access_pv=$(device):CTL:CONSTZERO) MS CP")
+  field(ZNAM, "Allow")
+  field(ONAM, "Inhibit")
+  }
+  
+# -----------------------------------------------------------------------------------------
+# These two records work together to provide one scan
+# to correctly initialise just once, records that used to use PINI
+# This is to ensure that the autoSR PV referred by ilk_write_access_pv
+# is correctly established before any other record processing, to potentially
+# avoid overwriting setpoints at IOC startup.
+#
+record(bo, "$(device):CTL:INITSETSPSDIS") 
+{
+  field(DTYP, "Soft Channel")
+  field(VAL, "1")
+  field(OUT, "$(device):CTL:INITSETSPFAN.DISA")
+}
+record(fanout, "$(device):CTL:INITSETSPFAN")
+{
+    field(DESC, "Relay 1s Scan fanout")
+    field(SCAN, "1 second")
+    field(LNK1, "$(device):RLY:ENABLE")
+    field(LNK2, "$(device):CTL:INITSETSPSDIS")
+    field(SELM, "All")
 }
 
 #! Further lines contain data used by VisualDCT

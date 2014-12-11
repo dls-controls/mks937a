@@ -3,10 +3,10 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 325
-y 129
+x 1323
+y 43
 w 264
-h 288
+h 349
 font "arial-medium-r-16.0"
 ctlFont "arial-bold-r-16.0"
 btnFont "arial-medium-r-16.0"
@@ -21,6 +21,7 @@ topShadowColor index 1
 botShadowColor index 11
 title "MKS 937A Gauge - $(dom)-VA-GAUGE-$(id)"
 gridSize 8
+disableScroll
 endScreenProperties
 
 # (Rectangle)
@@ -64,7 +65,7 @@ major 4
 minor 1
 release 0
 x 200
-y 256
+y 312
 w 56
 h 24
 fgColor index 46
@@ -83,7 +84,7 @@ major 4
 minor 2
 release 0
 x 72
-y 256
+y 312
 w 56
 h 24
 fgColor index 44
@@ -283,7 +284,7 @@ major 4
 minor 2
 release 0
 x 8
-y 256
+y 312
 w 56
 h 24
 fgColor index 44
@@ -312,7 +313,7 @@ major 4
 minor 0
 release 0
 x 136
-y 256
+y 312
 w 56
 h 24
 
@@ -325,7 +326,7 @@ major 4
 minor 2
 release 0
 x 136
-y 256
+y 312
 w 56
 h 24
 fgColor index 44
@@ -353,5 +354,48 @@ visPv "CALC\\\{A\}(LOC\\$(!W)noImg=i:$(NOIMG))"
 visInvert
 visMin "1"
 visMax "2"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 13
+y 262
+w 124
+h 36
+font "arial-medium-r-16.0"
+fgColor index 14
+bgColor index 3
+useDisplayBg
+value {
+  "MPS Setpoints"
+  "reboot overwrite"
+}
+autoSize
+endObjectProperties
+
+# (Choice Button)
+object activeChoiceButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 152
+y 268
+w 104
+h 24
+fgColor index 14
+bgColor index 3
+selectColor index 3
+inconsistentColor index 5
+topShadowColor index 1
+botShadowColor index 11
+controlPv "$(dom)-VA-GAUGE-$(id):ILKSETSP:NOWRITE"
+indicatorPv "$(dom)-VA-GAUGE-$(id):ILKSETSP:NOWRITE"
+font "arial-medium-r-14.0"
+orientation "horizontal"
 endObjectProperties
 
