@@ -247,6 +247,7 @@ record(mbbo, "$(device):CTL:ENABLE") {
   field(ZRSV, "MAJOR")
   field(ONSV, "NO_ALARM")
   field(DOL, "1")
+  field(SDIS, "$(device):CTL:ILKSETSP:NOWRITE")
   #field(PINI, "YES")
 }
 
@@ -261,11 +262,13 @@ record(seq, "$(device):CTL:SEQ") {
   field(SDIS, "$(device):CTL:ILKSETSP:NOWRITE")
 }
 
-record(ai, "$(device):CTL:SP") {
+record(ai, "$(device):CTL:SP") 
+  {
   field(DESC, "$(ctlsp_desc=IMG Enable)")
   field(DTYP, "stream")
   field(INP, "@mks937a.protocol getsp($(channel),CTL) $(port) 0")
   field(SCAN, "1 second")
+  field(PINI, "YES")
   field(EGU, "mbar")
   field(PREC, "1")
   field(HOPR, "$(ctlsp_hopr=9.5e-1)")
@@ -278,22 +281,47 @@ record(ai, "$(device):CTL:SP") {
   field(LLSV, "MAJOR")
   field(HSV, "MINOR")
   field(LSV, "MINOR")
-}
+  }
 
 record(ao, "$(device):CTL:OUTSP") 
     {
     field(DESC, "Output Control Setpoint")
     field(DTYP, "stream")
-    field(TPRO, "1")
     field(SDIS, "$(device):CTL:ILKSETSP:NOWRITE")
     field(OUT, "@mks937a.protocol setsp($(channel),CTL) $(port) 0")
     }
 
-record(bo, "$(device):CTL:DIS") {
+record(bo, "$(device):CTL:DIS") 
+  {
   field(DESC, "Disable Control Setpoint")
   field(DTYP, "stream")
   field(OUT, "@mks937a.protocol dissp($(channel),CTL) $(port) 0")
-}
+  }
+
+# Get the implied disabled state of the CTL:SETSP
+# if CTL:SP returns a non-zero value, then it is not disabled
+# and it's in the mode "I/L Operating"
+#
+record(calcout, "$(device):CTL:GETDISCALC")
+  {
+  field(DESC, "Read Disable Setpoint")
+  field(SCAN, "1 second")
+  field(OUT, "$(device):CTL:GETDIS")
+  field(INPA, "$(device):CTL:SP.VAL PP")
+  field(CALC, "A<1e-10?0:1")
+  field(FLNK, "$(device):CTL:GETDIS")
+  }
+# Convert the above disabled state to mbbi
+record(mbbi, "$(device):CTL:GETDIS") 
+  {
+  field(DESC, "Read Disable Setpoint")
+  field(SCAN, "Passive")
+  field(INP, "$(device):CTL:GETDISCALC")
+  field(ZRST, "Force On I/L")
+  field(ONST, "I/L Operating")
+  field(ZRVL, "1")
+  field(ONVL, "2")
+  }
 
 ################################################################################
 # Protection - IMG Overpressure
@@ -610,7 +638,6 @@ record(bi, "$(device):CTL:ILKSETSP:NOWRITE")
   field(DESC, "ILK setpoint access")
   field(SCAN, "Passive")
   field(PINI, "YES")
-  field(TPRO, "2")
   field(INP, "$(ilk_write_access_pv=$(device):PRO:CONSTZERO) MS CP")
   field(ZNAM, "Allow")
   field(ONAM, "Inhibit")
