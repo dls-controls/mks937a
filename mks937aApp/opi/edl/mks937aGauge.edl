@@ -3,8 +3,8 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 1310
-y 39
+x 52
+y 697
 w 264
 h 349
 font "arial-medium-r-16.0"
@@ -44,7 +44,7 @@ object activeXTextClass
 beginObjectProperties
 major 4
 minor 1
-release 0
+release 1
 x 0
 y 0
 w 264
@@ -81,7 +81,7 @@ endObjectProperties
 object relatedDisplayClass
 beginObjectProperties
 major 4
-minor 2
+minor 4
 release 0
 x 72
 y 312
@@ -110,7 +110,7 @@ endObjectProperties
 object shellCmdClass
 beginObjectProperties
 major 4
-minor 2
+minor 3
 release 0
 x 200
 y 184
@@ -133,7 +133,7 @@ object activeXTextClass
 beginObjectProperties
 major 4
 minor 1
-release 0
+release 1
 x 8
 y 40
 w 48
@@ -166,7 +166,7 @@ object activeXTextClass
 beginObjectProperties
 major 4
 minor 1
-release 0
+release 1
 x 16
 y 184
 w 112
@@ -185,7 +185,7 @@ object activeXTextClass
 beginObjectProperties
 major 4
 minor 1
-release 0
+release 1
 x 16
 y 216
 w 112
@@ -281,7 +281,7 @@ endObjectProperties
 object relatedDisplayClass
 beginObjectProperties
 major 4
-minor 2
+minor 4
 release 0
 x 8
 y 312
@@ -323,7 +323,7 @@ beginGroup
 object relatedDisplayClass
 beginObjectProperties
 major 4
-minor 2
+minor 4
 release 0
 x 136
 y 312
@@ -361,17 +361,18 @@ object activeXTextClass
 beginObjectProperties
 major 4
 minor 1
-release 0
+release 1
 x 13
-y 272
-w 126
-h 16
+y 266
+w 62
+h 32
 font "arial-medium-r-14.0"
 fgColor index 14
 bgColor index 3
 useDisplayBg
 value {
-  "Setpoints overwrite"
+  "Setpoints"
+  "overwrite"
 }
 autoSize
 endObjectProperties
@@ -396,5 +397,34 @@ controlPv "$(dom)-VA-GAUGE-$(id):ILKSETSP:NOWRITE"
 indicatorPv "$(dom)-VA-GAUGE-$(id):ILKSETSP:NOWRITE"
 font "arial-medium-r-14.0"
 orientation "horizontal"
+endObjectProperties
+
+# (Symbol)
+object activeSymbolClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 97
+y 269
+w 24
+h 24
+file "mks937bLock-symbol.edl"
+numStates 3
+minValues {
+  0 -1
+  1 1
+}
+maxValues {
+  1 99
+  2 1
+}
+controlPvs {
+  0 "$(dom)-VA-GAUGE-$(id):ILKSETSP:NOWRITE"
+}
+numPvs 1
+useOriginalColors
+fgColor index 14
+bgColor index 3
 endObjectProperties
 
