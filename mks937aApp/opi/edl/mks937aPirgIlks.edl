@@ -3,8 +3,8 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 1698
-y 410
+x 1642
+y 934
 w 270
 h 226
 font "arial-medium-r-16.0"
@@ -145,7 +145,7 @@ inconsistentColor index 0
 topShadowColor index 1
 botShadowColor index 11
 controlPv "$(device):CTL:ENABLE"
-indicatorPv "$(device):CTL:ENABLE"
+indicatorPv "$(device):CTL:GETENABLE"
 font "arial-medium-r-14.0"
 endObjectProperties
 
