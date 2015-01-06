@@ -251,7 +251,7 @@ x 152
 y 80
 w 24
 h 24
-file "mks937bLock-symbol.edl"
+file "mks937aLock-symbol.edl"
 numStates 3
 minValues {
   0 -1
@@ -280,7 +280,7 @@ x 152
 y 152
 w 24
 h 24
-file "mks937bLock-symbol.edl"
+file "mks937aLock-symbol.edl"
 numStates 3
 minValues {
   0 -1
