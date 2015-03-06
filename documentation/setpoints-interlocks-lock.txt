@@ -1,0 +1,112 @@
+Protection Setpoints Overwrite Inhibit
+--------------------------------------
+
+Rebooting an IOC will also reset the setpoints of any MKS937 gauge controller. Occasionally a pressure interlock setpoint will be set higher than the default value, as the pressure in that area may be higher than normal (but acceptable). If the IOC is rebooted, it will re-write the setpoints and could cause a beam-trip due to an apparent MPS interlock failure.
+The support modules mks937a and mks937b have been modified to facilitate allowing or inhibiting writing of interlock setpoints to the gauge controllers, in a move to prevent beam trips during IOC reboot causing setpoints to be re-written to defaults.
+
+These modifications were first released at module revisions:
+mks937a: 2-76
+mks937b: 2-11
+
+This requires Autosave/Restore to be implemented on the relevant IOCs.
+
+
+Implementation
+==============
+The following notes provide guidance on correctly utilising the new feature of the mks937 support modules.
+Examples are given, but you will need to change the references to suit your own domain.
+Fully working examples can be examined in any of the storage ring vacuum (SRxxC/VA) or front-end (FExxx/CS) IOCs.
+
+
+Autosave
+========
+
+To correctly facilitate prevention of setpoint overwrite on IOC reboot, it is necessary to implement Autosave/Restore
+The autosave/restore system requires the following templates to be instantiated. Below are examples taken from SR01C/VA:
+
+### Autosave Restore status records
+#
+file dlssrstatus.template 
+{ 
+pattern { device } 
+        { SR$(cell)C-VA-IOC-01:SR } 
+}
+
+file dlssrfile.template 
+{ 
+pattern { device, file } 
+        { SR$(cell)C-VA-IOC-01:SR, 0 } 
+        { SR$(cell)C-VA-IOC-01:SR, 1 } 
+        { SR$(cell)C-VA-IOC-01:SR, 2 } 
+}
+
+
+
+Db/Makefile:
+-------------
+Add something along the lines of the following to build and install the autosave request files:
+
+$(dom): ../O.Common/$(dom)-VA-IOC-01.db
+    /dls_sw/prod/tools/RHEL6-x86_64/defaults/bin/epicsparser.py ../O.Common/$(dom)-VA-IOC-01.db -r $(dom) -s as > $(dom)
+    @echo "Installing postprocessor files:... INSTALL_PRODUCT=$(INSTALL_PRODUCT) - INSTALL_DATA=$(INSTALL_DATA)"
+    -@$(INSTALL_PRODUCT) -d -m 555 *.req $(INSTALL_DATA)
+
+buildInstall: $(dom)
+
+
+src/Makefile:
+-------------
+Add following entries to link with the autosave libraries
+
+$(dom)-VA-IOC-01_DBD += as.dbd
+$(dom)-VA-IOC-01_LIBS += autosave
+
+
+Startup script:
+---------------
+Add the following to configure Autosave/Restore. You will need to set the mountpoints, directories and EPICS domains according to your own configuration.
+
+# mount NFS for name server and bumpless reboot
+# status-PV prefix, so save_restore can find its status PV's.
+save_restoreSet_status_prefix("FE24B-CS-IOC-01:SR")
+
+# ok to restore a save set that had missing values (no CA connection to PV)?
+# ok to save a file if some CA connections are bad?
+save_restoreSet_IncompleteSetsOk(1)
+
+# In the restore operation, a copy of the save file will be written.  The
+# file name can look like "auto_settings.sav.bu", and be overwritten every
+# reboot, or it can look like "auto_settings.sav_020306-083522" (this is what
+# is meant by a dated backup file) and every reboot will write a new copy.
+save_restoreSet_DatedBackupFiles(1)
+
+# specify where save files should go
+# Primary network for final installation
+set_savefile_path("/home/ops-iocs/prod/autosave/FE24B-CS-IOC-01")
+set_requestfile_path("$(INSTALL)/data")
+
+set_pass0_restoreFile("FE24B_0.sav")
+set_pass0_restoreFile("FE24B_1.sav")
+set_pass1_restoreFile("FE24B_1.sav")
+
+
+IOC Substitutions file:
+=======================
+
+The following are examples of using the new optional ilk_write_access_pv parameter:
+Note that the :ILKSETSP:NOWRITE records are created automatically from the mks937 templates and are optional here for backward compatibility 
+with systems that do not implement this feature. If the optional parameter is omitted then the internal record PV links point to a :PRO:CONSTZERO
+record, which simply forces a value of zero and the overwrite inhibit mechanism becomes non-functional (as before).
+
+file mks937aImg.template
+{
+pattern { device              ,  port   , channel, ilk_write_access_pv }
+        { SR$(cell)S-VA-IMG-01,  ty_40_0,     1  , "SR$(cell)S-VA-GAUGE-01:ILKSETSP:NOWRITE" }    
+}
+
+file mks937aPirg.template
+{
+pattern { device               ,  port   , channel, ilk_write_access_pv }
+        { SR$(cell)S-VA-PIRG-01,  ty_40_0,     4  , "SR$(cell)S-VA-GAUGE-01:ILKSETSP:NOWRITE" }    
+}
+
