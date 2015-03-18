@@ -90,6 +90,7 @@
 #% macro, rlasp_low ,  The LOW alarm field on the second relay setpoint record.
 #% macro, rlasp_desc,  The DESC field on the second relay setpoint record.
 #% macro, offwarn,     Flag to display a warning that switching off the IMG could trip the beam
+#% macro, ilk_write_access_pv, bi record to allow (0) of inhibit (1) gauge interlock setpoint overwrite. Default is local record forcing 'Allow'.
 ################################################################################
 
 # This associates an edm screen with the template

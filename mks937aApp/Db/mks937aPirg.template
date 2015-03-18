@@ -37,7 +37,7 @@
 #% macro, rlysp_low ,  The LOW alarm field on the relay setpoint record.
 #% macro, rlysp_desc,  The DESC field on the relay setpoint records
 #		               (appears as a label on the Pirg EDM screen).
-
+#% macro, ilk_write_access_pv, bi record to allow (0) of inhibit (1) gauge interlock setpoint overwrite. Default is local record forcing 'Allow'.
 ################################################################################
 
 # This associates an edm screen with the template
