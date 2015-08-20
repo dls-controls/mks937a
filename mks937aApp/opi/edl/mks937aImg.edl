@@ -3,10 +3,10 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 385
-y 49
-w 240
-h 432
+x 307
+y 274
+w 238
+h 459
 font "arial-medium-r-16.0"
 ctlFont "arial-bold-r-16.0"
 btnFont "arial-medium-r-16.0"
@@ -23,6 +23,7 @@ title "MKS 937A Inverted Magenetron Gauge - $(device)"
 showGrid
 snapToGrid
 gridSize 4
+disableScroll
 endScreenProperties
 
 # (Rectangle)
@@ -45,7 +46,7 @@ object activeXTextClass
 beginObjectProperties
 major 4
 minor 1
-release 0
+release 1
 x 0
 y 0
 w 240
@@ -82,7 +83,7 @@ endObjectProperties
 object shellCmdClass
 beginObjectProperties
 major 4
-minor 2
+minor 3
 release 0
 x 8
 y 400
@@ -97,32 +98,6 @@ buttonLabel "Graph"
 numCmds 1
 command {
   0 "buildStripToolconfig.py $(device):PLOG log_mbar"
-}
-endObjectProperties
-
-# (Related Display)
-object relatedDisplayClass
-beginObjectProperties
-major 4
-minor 2
-release 0
-x 84
-y 400
-w 72
-h 24
-fgColor index 43
-bgColor index 3
-topShadowColor index 1
-botShadowColor index 11
-font "arial-medium-r-14.0"
-buttonLabel "Interlocks"
-numPvs 4
-numDsps 1
-displayFileName {
-  0 "mks937aImgIlks.edl"
-}
-setPosition {
-  0 "parentWindow"
 }
 endObjectProperties
 
@@ -146,7 +121,7 @@ object activeXTextClass
 beginObjectProperties
 major 4
 minor 1
-release 0
+release 1
 x 16
 y 188
 w 106
@@ -166,7 +141,7 @@ object activeXTextClass
 beginObjectProperties
 major 4
 minor 1
-release 0
+release 1
 x 16
 y 216
 w 42
@@ -305,7 +280,7 @@ object activeXTextClass
 beginObjectProperties
 major 4
 minor 1
-release 0
+release 1
 x 8
 y 40
 w 48
@@ -338,7 +313,7 @@ object activeXTextClass
 beginObjectProperties
 major 4
 minor 1
-release 0
+release 1
 x 8
 y 336
 w 48
@@ -371,7 +346,7 @@ object activeXTextClass
 beginObjectProperties
 major 4
 minor 1
-release 0
+release 1
 x 16
 y 364
 w 89
@@ -499,7 +474,7 @@ beginGroup
 object relatedDisplayClass
 beginObjectProperties
 major 4
-minor 2
+minor 4
 release 0
 x 124
 y 348
@@ -590,5 +565,82 @@ endGroup
 visPv "$(device):OFFWARN"
 visMin "0"
 visMax "1"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 36
+y 436
+w 63
+h 16
+font "arial-medium-r-14.0"
+fgColor index 43
+bgColor index 3
+useDisplayBg
+value {
+  "Interlocks"
+}
+autoSize
+endObjectProperties
+
+# (Shell Command)
+object shellCmdClass
+beginObjectProperties
+major 4
+minor 3
+release 0
+x 8
+y 432
+w 24
+h 20
+fgColor index 25
+bgColor index 3
+topShadowColor index 1
+botShadowColor index 11
+font "arial-medium-r-14.0"
+buttonLabel "^v"
+numCmds 1
+commandLabel {
+  0 "<<>>"
+}
+command {
+  0 "dls-windowsize.py --x1=238 --y1=459 --x2=306 --y2=603"
+}
+endObjectProperties
+
+# (Embedded Window)
+object activePipClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 8
+y 460
+w 292
+h 136
+fgColor index 14
+bgColor index 3
+topShadowColor index 1
+botShadowColor index 11
+displaySource "file"
+filePv "LOC\\enum1"
+file "mks937aImgIlks_embedded.edl"
+sizeOfs 5
+numDsps 3
+displayFileName {
+  0 "mks937bImgIlksReadback_embedded.edl"
+  1 "mks937bImgIlks_embedded.edl"
+  2 "mks937bImgOverrides_embedded.edl"
+}
+menuLabel {
+  0 "Readback"
+  1 "Edit"
+  2 "Override"
+}
+noScroll
 endObjectProperties
 

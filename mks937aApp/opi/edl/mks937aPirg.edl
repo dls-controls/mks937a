@@ -3,10 +3,10 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 899
-y 61
+x 547
+y 195
 w 240
-h 340
+h 358
 font "arial-medium-r-16.0"
 ctlFont "arial-bold-r-16.0"
 btnFont "arial-medium-r-16.0"
@@ -23,6 +23,7 @@ title "MKS 937A Pirani Gauge - $(device)"
 showGrid
 snapToGrid
 gridSize 8
+disableScroll
 endScreenProperties
 
 # (Static Text)
@@ -30,7 +31,7 @@ object activeXTextClass
 beginObjectProperties
 major 4
 minor 1
-release 0
+release 1
 x 0
 y 0
 w 240
@@ -64,7 +65,7 @@ object activeXTextClass
 beginObjectProperties
 major 4
 minor 1
-release 0
+release 1
 x 8
 y 40
 w 48
@@ -97,7 +98,7 @@ object activeXTextClass
 beginObjectProperties
 major 4
 minor 1
-release 0
+release 1
 x 16
 y 188
 w 106
@@ -158,7 +159,7 @@ object activeXTextClass
 beginObjectProperties
 major 4
 minor 1
-release 0
+release 1
 x 16
 y 216
 w 100
@@ -273,7 +274,7 @@ endObjectProperties
 object shellCmdClass
 beginObjectProperties
 major 4
-minor 0
+minor 3
 release 0
 x 8
 y 308
@@ -295,7 +296,7 @@ endObjectProperties
 object relatedDisplayClass
 beginObjectProperties
 major 4
-minor 0
+minor 4
 release 0
 x 72
 y 308
@@ -321,7 +322,7 @@ endObjectProperties
 object activeLogMeterClass
 beginObjectProperties
 major 4
-minor 0
+minor 1
 release 0
 x 16
 y 64
@@ -340,16 +341,94 @@ botShadowColor index 11
 readPv "$(device):P"
 showScale
 scaleFormat "Exponential"
+scalePrecision "0"
 scaleLimitsFromDb
 useDisplayBg
-labelIntervals 6
-majorIntervals 1
-minorIntervals 1
+labelIntervals "6"
+majorIntervals "1"
+minorIntervals "1"
 complexNeedle
 3d
-scaleMin 0.001
-scaleMax 1000
+scaleMin "0.001"
+scaleMax "1000"
 labelFontTag "arial-bold-r-14.0"
 scaleFontTag "arial-medium-r-10.0"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 32
+y 336
+w 63
+h 16
+font "arial-medium-r-14.0"
+fgColor index 43
+bgColor index 3
+useDisplayBg
+value {
+  "Interlocks"
+}
+autoSize
+endObjectProperties
+
+# (Shell Command)
+object shellCmdClass
+beginObjectProperties
+major 4
+minor 3
+release 0
+x 8
+y 336
+w 24
+h 20
+fgColor index 25
+bgColor index 3
+topShadowColor index 1
+botShadowColor index 11
+font "arial-medium-r-14.0"
+buttonLabel "^v"
+numCmds 1
+commandLabel {
+  0 "<<>>"
+}
+command {
+  0 "dls-windowsize.py --x1=240 --y1=358 --x2=274 --y2=509"
+}
+endObjectProperties
+
+# (Embedded Window)
+object activePipClass
+beginObjectProperties
+major 4
+minor 1
+release 0
+x 8
+y 360
+w 264
+h 144
+fgColor index 14
+bgColor index 3
+topShadowColor index 1
+botShadowColor index 11
+displaySource "file"
+filePv "LOC\\enum1"
+file "mks937aPirgIlks_embedded.edl"
+sizeOfs 5
+numDsps 3
+displayFileName {
+  0 "mks937bImgIlksReadback_embedded.edl"
+  1 "mks937bImgIlks_embedded.edl"
+  2 "mks937bImgOverrides_embedded.edl"
+}
+menuLabel {
+  0 "Readback"
+  1 "Edit"
+  2 "Override"
+}
+noScroll
 endObjectProperties
 
