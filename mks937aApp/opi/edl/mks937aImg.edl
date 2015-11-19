@@ -3,8 +3,8 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 307
-y 274
+x 64
+y 703
 w 238
 h 459
 font "arial-medium-r-16.0"
@@ -573,7 +573,7 @@ beginObjectProperties
 major 4
 minor 1
 release 1
-x 36
+x 76
 y 436
 w 63
 h 16
@@ -602,13 +602,13 @@ bgColor index 3
 topShadowColor index 1
 botShadowColor index 11
 font "arial-medium-r-14.0"
-buttonLabel "^v"
+buttonLabel "^"
 numCmds 1
 commandLabel {
   0 "<<>>"
 }
 command {
-  0 "dls-windowsize.py --x1=238 --y1=459 --x2=306 --y2=603"
+  0 "xdotool windowsize <WINID> 238 459"
 }
 endObjectProperties
 
@@ -642,5 +642,30 @@ menuLabel {
   2 "Override"
 }
 noScroll
+endObjectProperties
+
+# (Shell Command)
+object shellCmdClass
+beginObjectProperties
+major 4
+minor 3
+release 0
+x 36
+y 432
+w 24
+h 20
+fgColor index 25
+bgColor index 3
+topShadowColor index 1
+botShadowColor index 11
+font "arial-medium-r-14.0"
+buttonLabel "v"
+numCmds 1
+commandLabel {
+  0 "<<>>"
+}
+command {
+  0 "xdotool windowsize <WINID> 306 603"
+}
 endObjectProperties
 

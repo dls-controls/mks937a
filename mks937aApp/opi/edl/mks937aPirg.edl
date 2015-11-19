@@ -3,8 +3,8 @@ beginScreenProperties
 major 4
 minor 0
 release 1
-x 547
-y 195
+x 31
+y 320
 w 240
 h 358
 font "arial-medium-r-16.0"
@@ -292,32 +292,6 @@ command {
 }
 endObjectProperties
 
-# (Related Display)
-object relatedDisplayClass
-beginObjectProperties
-major 4
-minor 4
-release 0
-x 72
-y 308
-w 72
-h 24
-fgColor index 43
-bgColor index 3
-topShadowColor index 1
-botShadowColor index 11
-font "arial-medium-r-14.0"
-buttonLabel "Interlocks"
-numPvs 4
-numDsps 1
-displayFileName {
-  0 "mks937aPirgIlks.edl"
-}
-setPosition {
-  0 "parentWindow"
-}
-endObjectProperties
-
 # (Logarithmic Meter)
 object activeLogMeterClass
 beginObjectProperties
@@ -355,26 +329,6 @@ labelFontTag "arial-bold-r-14.0"
 scaleFontTag "arial-medium-r-10.0"
 endObjectProperties
 
-# (Static Text)
-object activeXTextClass
-beginObjectProperties
-major 4
-minor 1
-release 1
-x 32
-y 336
-w 63
-h 16
-font "arial-medium-r-14.0"
-fgColor index 43
-bgColor index 3
-useDisplayBg
-value {
-  "Interlocks"
-}
-autoSize
-endObjectProperties
-
 # (Shell Command)
 object shellCmdClass
 beginObjectProperties
@@ -390,13 +344,13 @@ bgColor index 3
 topShadowColor index 1
 botShadowColor index 11
 font "arial-medium-r-14.0"
-buttonLabel "^v"
+buttonLabel "^"
 numCmds 1
 commandLabel {
   0 "<<>>"
 }
 command {
-  0 "dls-windowsize.py --x1=240 --y1=358 --x2=274 --y2=509"
+  0 "xdotool windowsize <WINID> 240 358"
 }
 endObjectProperties
 
@@ -430,5 +384,50 @@ menuLabel {
   2 "Override"
 }
 noScroll
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 72
+y 336
+w 63
+h 16
+font "arial-medium-r-14.0"
+fgColor index 43
+bgColor index 3
+useDisplayBg
+value {
+  "Interlocks"
+}
+autoSize
+endObjectProperties
+
+# (Shell Command)
+object shellCmdClass
+beginObjectProperties
+major 4
+minor 3
+release 0
+x 40
+y 336
+w 24
+h 20
+fgColor index 25
+bgColor index 3
+topShadowColor index 1
+botShadowColor index 11
+font "arial-medium-r-14.0"
+buttonLabel "v"
+numCmds 1
+commandLabel {
+  0 "<<>>"
+}
+command {
+  0 "xdotool windowsize <WINID> 274 509"
+}
 endObjectProperties
 
