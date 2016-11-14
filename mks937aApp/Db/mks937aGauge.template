@@ -86,6 +86,13 @@ record(mbbi, "$(dom)-VA-GAUGE-$(id):GAUGE") {
 #
 #% archiver 0.1 Monitor
 #
+# :PLOG processes passively driven by :P at .1 second scan
+#       this used to be a hardware support type, but recently has the option
+#       of any input source, including other PVs from ADC ai records, which assume
+#       a DTYP of Soft Channel. Soft Channel however will not convert or use EGUF, EGUL etc.
+#       So for this scenario it is necessary to apply a factor to the input ADC Soft Channel
+#       Log value, i.e. add Log(1000/760). (See mks937aPlogADC.template).
+#
 record(ai, "$(dom)-VA-GAUGE-$(id):PLOG") {
   field(DESC, "log Pressure")
   field(DTYP, "$(aitype=Hy8401ip)")
@@ -106,6 +113,7 @@ record(ai, "$(dom)-VA-GAUGE-$(id):PLOG") {
   field(HSV, "MINOR")
   field(ADEL, "0.025")
 }
+
 
 #
 #% controldesk Pressure readback
