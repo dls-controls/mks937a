@@ -1,0 +1,489 @@
+<?xml version='1.0' encoding='utf-8'?>
+<display typeId="org.csstudio.opibuilder.Display" version="1.0">
+  <x>52</x>
+  <y>697</y>
+  <width>264</width>
+  <height>349</height>
+  <font>
+    <fontdata fontName="liberation sans" height="16" pixels="true" style="0" />
+  </font>
+  <boy_version>4.0.0</boy_version>
+  <foreground_color>
+    <color blue="0" green="0" name="Black" red="0" />
+  </foreground_color>
+  <background_color>
+    <color blue="200" green="200" name="Canvas" red="200" />
+  </background_color>
+  <name>MKS 937A Gauge - $(dom)-VA-GAUGE-$(id)</name>
+  <show_grid>false</show_grid>
+  <grid_space>8</grid_space>
+  <auto_zoom_to_fit_all>true</auto_zoom_to_fit_all>
+  <widget typeId="org.csstudio.opibuilder.widgets.Rectangle" version="1.0">
+    <background_color>
+      <color blue="166" green="166" name="Grey 65%" red="166" />
+    </background_color>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <height>201</height>
+    <line_color>
+      <color blue="0" green="0" name="Black" red="0" />
+    </line_color>
+    <line_style>0</line_style>
+    <line_width>1</line_width>
+    <name>EDM Rectangle</name>
+    <transparent>false</transparent>
+    <visible>true</visible>
+    <width>249</width>
+    <x>8</x>
+    <y>48</y>
+  </widget>
+  <widget typeId="org.csstudio.opibuilder.widgets.Label" version="1.0">
+    <auto_size>false</auto_size>
+    <background_color>
+      <color blue="159" green="223" name="VA title" red="202" />
+    </background_color>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <border_color>
+      <color blue="0" green="0" name="Black" red="0" />
+    </border_color>
+    <border_style>0</border_style>
+    <font>
+      <fontdata fontName="liberation sans" height="16" pixels="true" style="1" />
+    </font>
+    <foreground_color>
+      <color blue="0" green="0" name="Text: FG" red="0" />
+    </foreground_color>
+    <height>32</height>
+    <horizontal_alignment>1</horizontal_alignment>
+    <name>EDM Label</name>
+    <text>$(dom)-VA-GAUGE-$(id)</text>
+    <transparent>false</transparent>
+    <width>264</width>
+    <x>0</x>
+    <y>0</y>
+  </widget>
+  <widget typeId="org.csstudio.opibuilder.widgets.ActionButton" version="1.0">
+    <actions hook="false" hook_all="false">
+      <action type="EXECUTE_JAVASCRIPT">
+        <embedded>true</embedded>
+        <scriptText>importPackage(Packages.org.csstudio.opibuilder.scriptUtil);ScriptUtil.closeAssociatedOPI(widget);</scriptText>
+      </action>
+    </actions>
+    <background_color>
+      <color blue="205" green="205" name="Controller: BG" red="205" />
+    </background_color>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <font>
+      <fontdata fontName="liberation sans" height="14" pixels="true" style="0" />
+    </font>
+    <foreground_color>
+      <color blue="192" green="0" name="Exit: FG" red="192" />
+    </foreground_color>
+    <height>25</height>
+    <name>EDM Exit Button</name>
+    <text>Exit</text>
+    <width>57</width>
+    <x>200</x>
+    <y>312</y>
+  </widget>
+  <widget typeId="org.csstudio.opibuilder.widgets.ActionButton" version="1.0">
+    <actions hook="false" hook_all="false">
+      <action type="OPEN_DISPLAY">
+        <path>./mks937aPirg.opi</path>
+        <macros>
+          <include_parent_macros>true</include_parent_macros>
+          <device>$(dom)-VA-PIRG-$(id)</device>
+        </macros>
+        <mode>8</mode>
+        <description />
+      </action>
+    </actions>
+    <background_color>
+      <color blue="205" green="205" name="Controller: BG" red="205" />
+    </background_color>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <font>
+      <fontdata fontName="liberation sans" height="14" pixels="true" style="0" />
+    </font>
+    <foreground_color>
+      <color blue="32" green="96" name="Dark Brown" red="128" />
+    </foreground_color>
+    <height>25</height>
+    <name>EDM related display</name>
+    <text>Pirani</text>
+    <width>57</width>
+    <x>72</x>
+    <y>312</y>
+  </widget>
+  <widget typeId="org.csstudio.opibuilder.widgets.ActionButton" version="1.0">
+    <actions hook="false" hook_all="false">
+      <action type="EXECUTE_CMD">
+        <command>buildStripToolconfig.py $(dom)-VA-GAUGE-$(id):PLOG $(dom)-VA-IMG-$(id):PLOG $(dom)-VA-PIRG-$(id):PLOG log_mbar</command>
+        <command_directory>$(opi.dir)</command_directory>
+        <description />
+      </action>
+    </actions>
+    <background_color>
+      <color blue="205" green="205" name="Controller: BG" red="205" />
+    </background_color>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <font>
+      <fontdata fontName="liberation sans" height="14" pixels="true" style="0" />
+    </font>
+    <foreground_color>
+      <color blue="32" green="64" name="Related Display: FG" red="128" />
+    </foreground_color>
+    <height>25</height>
+    <name>EDM shell command</name>
+    <text>Graph</text>
+    <width>49</width>
+    <x>200</x>
+    <y>184</y>
+  </widget>
+  <widget typeId="org.csstudio.opibuilder.widgets.Label" version="1.0">
+    <auto_size>false</auto_size>
+    <background_color>
+      <color blue="128" green="128" name="Grey 50%" red="128" />
+    </background_color>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <border_color>
+      <color blue="230" green="230" name="Grey 90%" red="230" />
+    </border_color>
+    <border_style>0</border_style>
+    <font>
+      <fontdata fontName="liberation sans" height="12" pixels="true" style="0" />
+    </font>
+    <foreground_color>
+      <color blue="230" green="230" name="Grey 90%" red="230" />
+    </foreground_color>
+    <height>16</height>
+    <horizontal_alignment>1</horizontal_alignment>
+    <name>EDM Label</name>
+    <text>Details</text>
+    <transparent>false</transparent>
+    <width>48</width>
+    <x>8</x>
+    <y>40</y>
+  </widget>
+  <widget typeId="org.csstudio.opibuilder.widgets.Rectangle" version="1.0">
+    <background_color>
+      <color blue="192" green="192" name="Grey 75%" red="192" />
+    </background_color>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <height>17</height>
+    <line_color>
+      <color blue="0" green="0" name="Black" red="0" />
+    </line_color>
+    <line_style>0</line_style>
+    <line_width>1</line_width>
+    <name>EDM Rectangle</name>
+    <transparent>true</transparent>
+    <visible>true</visible>
+    <width>49</width>
+    <x>8</x>
+    <y>40</y>
+  </widget>
+  <widget typeId="org.csstudio.opibuilder.widgets.Label" version="1.0">
+    <auto_size>false</auto_size>
+    <background_color>
+      <color blue="255" green="255" name="White" red="255" />
+    </background_color>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <border_color>
+      <color blue="0" green="0" name="Black" red="0" />
+    </border_color>
+    <border_style>0</border_style>
+    <font>
+      <fontdata fontName="liberation sans" height="14" pixels="true" style="0" />
+    </font>
+    <foreground_color>
+      <color blue="0" green="0" name="Text: FG" red="0" />
+    </foreground_color>
+    <height>24</height>
+    <horizontal_alignment>0</horizontal_alignment>
+    <name>EDM Label</name>
+    <text>Pressure (mbar)</text>
+    <transparent>true</transparent>
+    <width>112</width>
+    <x>16</x>
+    <y>184</y>
+  </widget>
+  <widget typeId="org.csstudio.opibuilder.widgets.Label" version="1.0">
+    <auto_size>false</auto_size>
+    <background_color>
+      <color blue="255" green="255" name="White" red="255" />
+    </background_color>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <border_color>
+      <color blue="0" green="0" name="Black" red="0" />
+    </border_color>
+    <border_style>0</border_style>
+    <font>
+      <fontdata fontName="liberation sans" height="14" pixels="true" style="0" />
+    </font>
+    <foreground_color>
+      <color blue="0" green="0" name="Text: FG" red="0" />
+    </foreground_color>
+    <height>24</height>
+    <horizontal_alignment>0</horizontal_alignment>
+    <name>EDM Label</name>
+    <text>Gauge</text>
+    <transparent>true</transparent>
+    <width>112</width>
+    <x>16</x>
+    <y>216</y>
+  </widget>
+  <widget typeId="org.csstudio.opibuilder.widgets.TextUpdate" version="1.0">
+    <background_color>
+      <color blue="64" green="64" name="Monitor: BG" red="64" />
+    </background_color>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <border_color>
+      <color blue="0" green="192" name="Mid Green" red="0" />
+    </border_color>
+    <border_style>1</border_style>
+    <border_width>0</border_width>
+    <font>
+      <fontdata fontName="liberation sans" height="14" pixels="true" style="1" />
+    </font>
+    <forecolor_alarm_sensitive>true</forecolor_alarm_sensitive>
+    <foreground_color>
+      <color blue="0" green="192" name="Mid Green" red="0" />
+    </foreground_color>
+    <format_type>0</format_type>
+    <height>25</height>
+    <horizontal_alignment>1</horizontal_alignment>
+    <line_width>1</line_width>
+    <name>EDM Text Update</name>
+    <precision>0</precision>
+    <precision_from_pv>true</precision_from_pv>
+    <pv_name>$(dom)-VA-GAUGE-$(id):GAUGE</pv_name>
+    <show_units>true</show_units>
+    <transparent>true</transparent>
+    <width>121</width>
+    <x>128</x>
+    <y>216</y>
+  </widget>
+  <widget typeId="org.csstudio.opibuilder.widgets.TextUpdate" version="1.0">
+    <background_color>
+      <color blue="64" green="64" name="Grey 25%" red="64" />
+    </background_color>
+    <border_alarm_sensitive>true</border_alarm_sensitive>
+    <border_color>
+      <color blue="0" green="192" name="Mid Green" red="0" />
+    </border_color>
+    <border_style>0</border_style>
+    <border_width>2</border_width>
+    <font>
+      <fontdata fontName="liberation sans" height="14" pixels="true" style="1" />
+    </font>
+    <forecolor_alarm_sensitive>true</forecolor_alarm_sensitive>
+    <foreground_color>
+      <color blue="96" green="255" name="Monitor: FG" red="96" />
+    </foreground_color>
+    <format_type>2</format_type>
+    <height>26</height>
+    <horizontal_alignment>1</horizontal_alignment>
+    <line_width>2</line_width>
+    <name>EDM Text Update</name>
+    <precision>1</precision>
+    <precision_from_pv>false</precision_from_pv>
+    <pv_name>$(dom)-VA-GAUGE-$(id):P</pv_name>
+    <show_units>false</show_units>
+    <transparent>false</transparent>
+    <width>72</width>
+    <x>127</x>
+    <y>183</y>
+  </widget>
+  <widget typeId="org.csstudio.opibuilder.widgets.meter" version="1.0">
+    <background_color>
+      <color blue="64" green="64" name="Grey 25%" red="64" />
+    </background_color>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <forecolor_alarm_sensitive>true</forecolor_alarm_sensitive>
+    <foreground_color>
+      <color blue="0" green="192" name="Mid Green" red="0" />
+    </foreground_color>
+    <height>112</height>
+    <log_scale>true</log_scale>
+    <maximum>1000.0</maximum>
+    <minimum>1.0E-11</minimum>
+    <name>EDM meter Hulei</name>
+    <needle_color>
+      <color blue="0" green="192" name="Mid Green" red="0" />
+    </needle_color>
+    <pv_name>$(dom)-VA-GAUGE-$(id):P</pv_name>
+    <show_markers>false</show_markers>
+    <show_minor_ticks>false</show_minor_ticks>
+    <show_scale>true</show_scale>
+    <show_value_label>false</show_value_label>
+    <width>216</width>
+    <x>24</x>
+    <y>64</y>
+  </widget>
+  <widget typeId="org.csstudio.opibuilder.widgets.ActionButton" version="1.0">
+    <actions hook="false" hook_all="false">
+      <action type="OPEN_DISPLAY">
+        <path>./mks937a.opi</path>
+        <macros>
+          <include_parent_macros>true</include_parent_macros>
+          <device>$(GCTLR)</device>
+        </macros>
+        <mode>8</mode>
+        <description />
+      </action>
+    </actions>
+    <background_color>
+      <color blue="205" green="205" name="Controller: BG" red="205" />
+    </background_color>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <font>
+      <fontdata fontName="liberation sans" height="14" pixels="true" style="0" />
+    </font>
+    <foreground_color>
+      <color blue="32" green="96" name="Dark Brown" red="128" />
+    </foreground_color>
+    <height>25</height>
+    <name>EDM related display</name>
+    <text>GCTLR</text>
+    <width>57</width>
+    <x>8</x>
+    <y>312</y>
+  </widget>
+  <widget typeId="org.csstudio.opibuilder.widgets.groupingContainer" version="1.0">
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <border_style>0</border_style>
+    <height>25</height>
+    <lock_children>true</lock_children>
+    <name>0</name>
+    <rules>
+      <rule name="visibleRule" out_exp="false" prop_id="visible">
+        <exp bool_exp="pv0&gt;=1.0&amp;&amp; pv0&lt;2.0">
+          <value>false</value>
+        </exp>
+        <exp bool_exp="true">
+          <value>true</value>
+        </exp>
+        <pv trig="true">=(pv("loc://$(DID)noImg&lt;VDouble&gt;($(NOIMG))"))</pv>
+      </rule>
+    </rules>
+    <show_scrollbar>false</show_scrollbar>
+    <transparent>true</transparent>
+    <widget typeId="org.csstudio.opibuilder.widgets.ActionButton" version="1.0">
+      <actions hook="false" hook_all="false">
+        <action type="OPEN_DISPLAY">
+          <path>./mks937aImg.opi</path>
+          <macros>
+            <include_parent_macros>true</include_parent_macros>
+            <device>$(dom)-VA-IMG-$(id)</device>
+          </macros>
+          <mode>8</mode>
+          <description />
+        </action>
+      </actions>
+      <background_color>
+        <color blue="205" green="205" name="Controller: BG" red="205" />
+      </background_color>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+      <font>
+        <fontdata fontName="liberation sans" height="14" pixels="true" style="0" />
+      </font>
+      <foreground_color>
+        <color blue="32" green="96" name="Dark Brown" red="128" />
+      </foreground_color>
+      <height>25</height>
+      <name>EDM related display</name>
+      <text>IMG</text>
+      <width>57</width>
+      <x>0</x>
+      <y>0</y>
+    </widget>
+    <width>57</width>
+    <x>136</x>
+    <y>312</y>
+  </widget>
+  <widget typeId="org.csstudio.opibuilder.widgets.Label" version="1.0">
+    <auto_size>true</auto_size>
+    <background_color>
+      <color blue="200" green="200" name="Canvas" red="200" />
+    </background_color>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <border_color>
+      <color blue="0" green="0" name="Black" red="0" />
+    </border_color>
+    <border_style>0</border_style>
+    <font>
+      <fontdata fontName="liberation sans" height="14" pixels="true" style="0" />
+    </font>
+    <foreground_color>
+      <color blue="0" green="0" name="Text: FG" red="0" />
+    </foreground_color>
+    <height>32</height>
+    <horizontal_alignment>0</horizontal_alignment>
+    <name>EDM Label</name>
+    <text>Setpoints
+overwrite</text>
+    <transparent>true</transparent>
+    <width>62</width>
+    <x>13</x>
+    <y>266</y>
+  </widget>
+  <widget typeId="org.csstudio.opibuilder.widgets.choiceButton" version="1.0">
+    <background_color>
+      <color blue="205" green="205" name="Controller: BG" red="205" />
+    </background_color>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <font>
+      <fontdata fontName="liberation sans" height="14" pixels="true" style="0" />
+    </font>
+    <foreground_color>
+      <color blue="0" green="0" name="Black" red="0" />
+    </foreground_color>
+    <height>24</height>
+    <horizontal>true</horizontal>
+    <items_from_pv>true</items_from_pv>
+    <name>EDM choice  Button</name>
+    <pv_name>$(dom)-VA-GAUGE-$(id):ILKSETSP:NOWRITE</pv_name>
+    <selected_color>
+      <color blue="192" green="192" name="Grey 75%" red="192" />
+    </selected_color>
+    <width>104</width>
+    <x>152</x>
+    <y>268</y>
+  </widget>
+  <widget typeId="org.csstudio.opibuilder.widgets.edm.symbolwidget" version="1.0">
+    <background_color>
+      <color blue="200" green="200" name="Canvas" red="200" />
+    </background_color>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+    <border_style>0</border_style>
+    <foreground_color>
+      <color blue="0" green="0" name="Text: FG" red="0" />
+    </foreground_color>
+    <group_name>1</group_name>
+    <height>24</height>
+    <name>DLS symbol</name>
+    <rules>
+      <rule name="symbol_single_pv" out_exp="true" prop_id="image_index">
+        <exp bool_exp="pvSev0==-1">
+          <value>0</value>
+        </exp>
+        <exp bool_exp="pv0&gt;=-1.0&amp;&amp;pv0&lt;0.0">
+          <value>0</value>
+        </exp>
+        <exp bool_exp="pv0&gt;=1.0&amp;&amp;pv0&lt;99.0">
+          <value>1</value>
+        </exp>
+        <exp bool_exp="pv0&gt;=0.0&amp;&amp;pv0&lt;1.0">
+          <value>2</value>
+        </exp>
+        <exp bool_exp="true">
+          <value>0</value>
+        </exp>
+        <pv trig="true">$(pv_name)</pv>
+      </rule>
+    </rules>
+    <width>24</width>
+    <x>97</x>
+    <y>269</y>
+  <pv_name>$(dom)-VA-GAUGE-$(id):ILKSETSP:NOWRITE</pv_name><image_file>../mks937a/mks937aLock-symbol-61.png</image_file><symbol_number>0</symbol_number><sub_image_width>61</sub_image_width></widget>
+</display>
