@@ -51,6 +51,17 @@
 # GCTLR used for the controller button
 # % gui, $(name=), edm, mks937aGauge.edl, dom=$(dom), id=$(id), GCTLR=$(GCTLR=)
 #
+# This associates BOY screens with the template
+# % gui, $(name=), boydetail, mks937aApp_opi/gauge_detail.opi, dom=$(dom), id=$(id), GCTLR=$(GCTLR=), name=$(name=)
+# % gui, $(name=), boyembed, mks937aApp_opi/gauge_embed_box.opi, dom=$(dom), id=$(id), GCTLR=$(GCTLR=), name=$(name=)
+# % gui, $(name=), boyembed, mks937aApp_opi/gauge_embed.opi, dom=$(dom), id=$(id), GCTLR=$(GCTLR=), name=$(name=)
+
+# These define what PVs a valve detail screen should contain
+# % gui, $(name=), readback, Pressure,   $(dom)-VA-GAUGE-$(id):P
+# % gui, $(name=), readback, Gauge,  $(dom)-VA-GAUGE-$(id):GAUGE
+# % gui, $(name=), enum, Setpoints Overwrite,  $(dom)-VA-GAUGE-$(id):ILKSETSP:NOWRITE
+
+
 ################################################################################
 # Select Active Gauge (IMG or PIRG)
 #
