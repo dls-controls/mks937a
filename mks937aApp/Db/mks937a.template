@@ -165,3 +165,11 @@ record(mbbi, "$(device):MB")
     field(ELSV, "MAJOR")
 }
 ################################################################################
+################################################################################
+# Text error message
+#
+record(stringin, "$(device):ERROR")
+    {
+    field(DESC, "Last error message")
+    }
+

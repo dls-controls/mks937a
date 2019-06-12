@@ -42,6 +42,6 @@ module=mks937a
 launch_opi=/${project}/${module}/$opifile
 
 links="${SCRIPT_DIR}=${project}/${module},\
-/dls_sw/prod/R3.14.12.3/support/genSub/1-8dls2-9/genSubApp/opi/opi=/${project}/genSub"
+/dls_sw/prod/R3.14.12.7/support/genSub/1-8dls3/genSubApp/opi/opi=/${project}/genSub"
 
 $CSS_RUN_SCRIPT -o "${launch_opi}" -s -l "$links" "$@"

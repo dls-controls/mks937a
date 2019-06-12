@@ -307,7 +307,7 @@ record(ai, "$(device):CTL:SP")
   {
   field(DESC, "$(ctlsp_desc=IMG Enable)")
   field(DTYP, "stream")
-  field(INP, "@mks937a.protocol getsp($(channel),CTL) $(port) 0")
+  field(INP, "@mks937a.protocol getsp($(channel),CTL,$(device)) $(port) 0")
   field(SCAN, "1 second")
   field(PINI, "YES")
   field(EGU, "mbar")
@@ -329,7 +329,7 @@ record(ao, "$(device):CTL:OUTSP")
     field(DESC, "Output Control Setpoint")
     field(DTYP, "stream")
     field(SDIS, "$(device):CTL:ILKSETSP:NOWRITE")
-    field(OUT, "@mks937a.protocol setsp($(channel),CTL) $(port) 0")
+    field(OUT, "@mks937a.protocol setsp($(channel),CTL,$(device)) $(port) 0")
     }
 
 record(bo, "$(device):CTL:DIS") 
@@ -415,7 +415,7 @@ record(seq, "$(device):PRO:SEQ")
 record(ai, "$(device):PRO:SP") {
   field(DESC, "$(prosp_desc=IMG Overpressure)")
   field(DTYP, "stream")
-  field(INP, "@mks937a.protocol getsp($(channel),PRO) $(port) 0")
+  field(INP, "@mks937a.protocol getsp($(channel),PRO,$(device)) $(port) 0")
   field(SCAN, "1 second")
   field(EGU, "mbar")
   field(PREC, "1")
@@ -436,7 +436,7 @@ record(ao, "$(device):PRO:OUTSP")
     field(DESC, "Output Protection Setpoint")
     field(DTYP, "stream")
     field(SDIS, "$(device):PRO:ILKSETSP:NOWRITE")
-    field(OUT, "@mks937a.protocol setsp($(channel),PRO) $(port) 0")
+    field(OUT, "@mks937a.protocol setsp($(channel),PRO,$(device)) $(port) 0")
     }
 
 record(bo, "$(device):PRO:DIS") {
@@ -496,7 +496,7 @@ record(seq, "$(device):RLY:SEQ") {
 record(ai, "$(device):RLY:SP") {
   field(DESC, "$(rlysp_desc=Valve Interlock)")
   field(DTYP, "stream")
-  field(INP, "@mks937a.protocol getsp($(channel),RLY) $(port) 0")
+  field(INP, "@mks937a.protocol getsp($(channel),RLY,$(device)) $(port) 0")
   field(SCAN, "1 second")
   field(EGU, "mbar")
   field(PREC, "1")
@@ -517,7 +517,7 @@ record(ao, "$(device):RLY:OUTSP")
     field(DESC, "Output Relay Setpoint")
     field(DTYP, "stream")
     field(SDIS, "$(device):RLY:ILKSETSP:NOWRITE")
-    field(OUT, "@mks937a.protocol setsp($(channel),RLY) $(port) 0")
+    field(OUT, "@mks937a.protocol setsp($(channel),RLY,$(device)) $(port) 0")
     }
 
 record(bo, "$(device):RLY:DIS") 
@@ -589,7 +589,7 @@ record(seq, "$(device):RLA:SEQ") {
 record(ai, "$(device):RLA:SP") {
   field(DESC, "$(rlasp_desc=MPS Interlock)")
   field(DTYP, "stream")
-  field(INP, "@mks937a.protocol getsp(3,RLY) $(port) 0")
+  field(INP, "@mks937a.protocol getsp(3,RLY,$(device)) $(port) 0")
   field(SCAN, "1 second")
   field(EGU, "mbar")
   field(PREC, "1")
@@ -611,7 +611,7 @@ record(ao, "$(device):RLA:OUTSP")
     field(DESC, "Output Relay Setpoint")
     field(DTYP, "stream")
     field(SDIS, "$(device):RLA:ILKSETSP:NOWRITE")
-    field(OUT, "@mks937a.protocol setsp(3,RLY) $(port) 0")
+    field(OUT, "@mks937a.protocol setsp(3,RLY,$(device)) $(port) 0")
     field(DISA, "$(channel)")
     }
 
@@ -726,3 +726,15 @@ record(fanout, "$(device):CTL:INITSETSPFAN")
     field(LNK5, "$(device):CTL:INITSETSPSDIS")
     field(SELM, "All")
 }
+
+################################################################################
+# Text error message
+#
+record(stringin, "$(device):ERROR")
+    {
+    field(DESC, "Last error message")
+    field(INP, "")
+    field(PINI, "YES")
+    }
+
+
