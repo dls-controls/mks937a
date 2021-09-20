@@ -1,8 +1,10 @@
 from iocbuilder import SetSimulation, AutoSubstitution, Substitution
 from iocbuilder.arginfo import *
 from iocbuilder.modules.streamDevice import AutoProtocol
+from iocbuilder.modules.calc import Calc
 
 class mks937a(AutoSubstitution, AutoProtocol):
+    Dependencies = (Calc,)
     TemplateFile = 'mks937a.template'
     ProtocolFiles = ['mks937a.protocol']
 
