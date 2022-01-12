@@ -1,10 +1,15 @@
-from iocbuilder import SetSimulation, AutoSubstitution, Substitution
+from iocbuilder import SetSimulation, AutoSubstitution, Substitution, Device
 from iocbuilder.arginfo import *
 from iocbuilder.modules.streamDevice import AutoProtocol
 from iocbuilder.modules.calc import Calc
+from iocbuilder.modules.genSub import GenSub
 
+class mks937aLib(Device):
+    LibFileList = ['mks937a']
+    DbdFileList = ['mks937a']
+    AutoInstantiate = True
 class mks937a(AutoSubstitution, AutoProtocol):
-    Dependencies = (Calc,)
+    Dependencies = (Calc,GenSub,mks937aLib)
     TemplateFile = 'mks937a.template'
     ProtocolFiles = ['mks937a.protocol']
 
