@@ -26,6 +26,7 @@ DB += mks937aGauge.template
 DB += mks937aGaugeGroup.template
 DB += mks937aInterlock.template
 DB += mks937aPlogADC.template
+DB += mks937aPlogEGU.template
 
 #----------------------------------------------------
 # In a Diamond IOC Application, build db files from
