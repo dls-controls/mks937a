@@ -69,7 +69,7 @@ class mks937aGaugeEGU(Device,):
         self.eguInputPV = "{}-VA-GAUGE-{}:PLOG_CALC".format(self.dom,self.id)
 
         _mks937aPlogEGU_template(device=self.eguInputPV,p_egu_pv=self.input)
-        _mks937aGauge_template(GCTLR="",c="",s="", dom=self.dom,id=self.id,aitype="Soft Channel",aiinp="{} CP".format(self.eguInputPV))
+        _mks937aGauge_template(name=self.name,GCTLR="",c="",s="", dom=self.dom,id=self.id,aitype="Soft Channel",aiinp="{} CP".format(self.eguInputPV))
     
     ArgInfo = makeArgInfo(__init__,
         name = Simple("Device name", str),
