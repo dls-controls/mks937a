@@ -99,3 +99,6 @@ class mks937aImgDummy(AutoSubstitution):
 class mks937aPirgDummy(AutoSubstitution):
     TemplateFile = 'mks937aPirgDummy.template'
     
+class mks937aImgMean(AutoSubstitution):
+    Dependencies = (Calc,GenSub,mks937aLib)
+    TemplateFile = 'mks937aImgMean.template'
