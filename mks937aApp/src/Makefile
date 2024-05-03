@@ -17,7 +17,7 @@ LIBRARY_IOC += mks937a
 DBD += mks937a.dbd
 
 mks937a_DBD += base.dbd
-mks937a_DBD += genSubRecord.dbd
+mks937a_DBD += aSubRecord.dbd
 mks937a_DBD += mks937aRegister.dbd
 
 # specify all source files to be compiled and added to the library

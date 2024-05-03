@@ -1,6 +1,6 @@
 /*******************************************************************************
 * mks937aMean.c
-* genSub record to calculate the mean pressure from a number of IMGs
+* aSub record to calculate the mean pressure from a number of IMGs
 *
 * Pete Owens
 * 26/6/06
@@ -11,10 +11,10 @@
  *
  * Ian Gillingham
  * 11/3/2011
- * 
+ *
 */
 
-#include <genSubRecord.h>
+#include <aSubRecord.h>
 #include <epicsExport.h>
 #include <registryFunction.h>
 
@@ -28,7 +28,7 @@
 * mks937aMeanInit
 * Initialisation function - Does nothing
 */
-long mks937aMeanInit (struct genSubRecord *psub)
+long mks937aMeanInit (struct aSubRecord *psub)
 {
     return 0;
 }
@@ -50,12 +50,12 @@ long mks937aMeanInit (struct genSubRecord *psub)
 *
 * Return: number of contributing gauges
 */
-long mks937aMeanCalc (struct genSubRecord *psub)
+long mks937aMeanCalc (struct aSubRecord *psub)
 {
     long   n        = 0;            /* counter                                */
     long   status   = STA_NO_GAUGE; /* output status       (output -> VALA)   */
     long   nImgs    = 0;            /* number of IMGs      (input  <- INPA)   */
-    long   nGood    = 0;            /* number of good IMGs (return value)     */ 
+    long   nGood    = 0;            /* number of good IMGs (return value)     */
     double sum      = 0.0;          /* sum of IMG pressures                   */
     double mean     = 0.0;          /* mean pressure       (output -> VALB)   */
     double pmax     = P_MIN;        /* maximum pressure    (output -> VALC)   */
@@ -106,7 +106,7 @@ long mks937aMeanCalc (struct genSubRecord *psub)
     if (nGood > 0)
     {
         mean = sum / (double) nGood;
-        deadband = mean / 20.0; 
+        deadband = mean / 20.0;
         status = (nGood == nImgs) ? STA_OK : STA_OK1;
     }
 
@@ -114,9 +114,9 @@ long mks937aMeanCalc (struct genSubRecord *psub)
     * Set outputs
     */
     *(long *)   psub->vala = status;
-    *(double *) psub->valb = mean; 
-    *(double *) psub->valc = pmax; 
-    *(double *) psub->vald = pmin; 
+    *(double *) psub->valb = mean;
+    *(double *) psub->valc = pmax;
+    *(double *) psub->vald = pmin;
 
     return nGood;
 }

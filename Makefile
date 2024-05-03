@@ -29,7 +29,7 @@ DIRS += $(wildcard *app)
 #DIRS += $(wildcard iocboot)
 include $(TOP)/config/RULES_TOP
 
-clean::
+clean:
 	@rm -rf data
 
 endif
