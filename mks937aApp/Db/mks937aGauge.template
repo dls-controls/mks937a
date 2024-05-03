@@ -51,6 +51,17 @@
 # GCTLR used for the controller button
 # % gui, $(name=), edm, mks937aGauge.edl, dom=$(dom), id=$(id), GCTLR=$(GCTLR=)
 #
+# This associates BOY screens with the template
+# % gui, $(name=), boydetail, mks937aApp_opi/gauge_detail.opi, dom=$(dom), id=$(id), GCTLR=$(GCTLR=), name=$(name=)
+# % gui, $(name=), boyembed, mks937aApp_opi/gauge_embed_box.opi, dom=$(dom), id=$(id), GCTLR=$(GCTLR=), name=$(name=)
+# % gui, $(name=), boyembed, mks937aApp_opi/gauge_embed.opi, dom=$(dom), id=$(id), GCTLR=$(GCTLR=), name=$(name=)
+
+# These define what PVs a valve detail screen should contain
+# % gui, $(name=), readback, Pressure,   $(dom)-VA-GAUGE-$(id):P
+# % gui, $(name=), readback, Gauge,  $(dom)-VA-GAUGE-$(id):GAUGE
+# % gui, $(name=), enum, Setpoints Overwrite,  $(dom)-VA-GAUGE-$(id):ILKSETSP:NOWRITE
+
+
 ################################################################################
 # Select Active Gauge (IMG or PIRG)
 #
@@ -86,6 +97,13 @@ record(mbbi, "$(dom)-VA-GAUGE-$(id):GAUGE") {
 #
 #% archiver 0.1 Monitor
 #
+# :PLOG processes passively driven by :P at .1 second scan
+#       this used to be a hardware support type, but recently has the option
+#       of any input source, including other PVs from ADC ai records, which assume
+#       a DTYP of Soft Channel. Soft Channel however will not convert or use EGUF, EGUL etc.
+#       So for this scenario it is necessary to apply a factor to the input ADC Soft Channel
+#       Log value, i.e. add Log(1000/760). (See mks937aPlogADC.template).
+#
 record(ai, "$(dom)-VA-GAUGE-$(id):PLOG") {
   field(DESC, "log Pressure")
   field(DTYP, "$(aitype=Hy8401ip)")
@@ -106,6 +124,7 @@ record(ai, "$(dom)-VA-GAUGE-$(id):PLOG") {
   field(HSV, "MINOR")
   field(ADEL, "0.025")
 }
+
 
 #
 #% controldesk Pressure readback

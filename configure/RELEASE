@@ -15,25 +15,13 @@ TEMPLATE_TOP=$(EPICS_BASE)/templates/makeBaseApp/top
 #INSTALL_LOCATION_APP=<fullpathname>
 
 # EPICS_BASE usually appears last so other apps can override stuff:
-EPICS_BASE=/dls_sw/epics/R3.14.12.3/base
+EPICS_BASE=/dls_sw/epics/R3.14.12.7/base
 
-SUPPORT=/dls_sw/prod/R3.14.12.3/support
-WORK=/dls_sw/work/R3.14.12.3/support
-
+SUPPORT=/dls_sw/prod/R3.14.12.7/support
+WORK=/dls_sw/work/R3.14.12.7/support
 
 # External module definitions (prod release).
-GENSUB=		$(SUPPORT)/genSub/1-8dls2-9
-#STREAM=		$(SUPPORT)/streamDevice/2-5
+GENSUB=		$(SUPPORT)/genSub/1-8dls3
+CALC=           $(SUPPORT)/calc/3-7-3
 
-# Uncomment these for testing
-#IPAC=		$(SUPPORT)/ipac/2-8dls4-3
-#HY8515=	$(SUPPORT)/Hy8515/3-2
-#UTILITY=	$(SUPPORT)/utility/dls2-7
-#HY8401=	$(SUPPORT)/Hy8401ip/3-2
-
-# External module definitions (local).
-
-#Capfast users may need the following definitions
-#CAPFAST_TEMPLATES=
-#SCH2EDIF_PATH=
 -include $(TOP)/configure/RELEASE.private

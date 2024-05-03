@@ -1,8 +1,15 @@
-from iocbuilder import SetSimulation, AutoSubstitution, Substitution
+from iocbuilder import SetSimulation, AutoSubstitution, Substitution, Device
 from iocbuilder.arginfo import *
 from iocbuilder.modules.streamDevice import AutoProtocol
+from iocbuilder.modules.calc import Calc
+from iocbuilder.modules.genSub import GenSub
 
+class mks937aLib(Device):
+    LibFileList = ['mks937a']
+    DbdFileList = ['mks937a']
+    AutoInstantiate = True
 class mks937a(AutoSubstitution, AutoProtocol):
+    Dependencies = (Calc,GenSub,mks937aLib)
     TemplateFile = 'mks937a.template'
     ProtocolFiles = ['mks937a.protocol']
 
@@ -11,6 +18,12 @@ class _mks937aImg_template(AutoSubstitution):
 
 class _mks937aPirg_template(AutoSubstitution):
     TemplateFile = 'mks937aPirg.template'
+
+class _mks937aGauge_template(AutoSubstitution):
+    TemplateFile = 'mks937aGauge.template'
+class _mks937aPlogEGU_template(AutoSubstitution):
+    TemplateFile = 'mks937aPlogEGU.template'
+
 
 class mks937aImg(_mks937aImg_template):
     def __init__(self, GCTLR, **args):
@@ -43,7 +56,28 @@ class mks937aGauge(AutoSubstitution):
         self.__super.__init__(**args)
 
     TemplateFile = 'mks937aGauge.template'
+
+class mks937aGaugeEGU(Device,):
+
+    def __init__(self,name, dom,id,input):
+        self.__super.__init__()
+        self.name = name
+        self.dom = dom
+        self.id = "%02d" % int(id)
+        self.input = input
     
+        self.eguInputPV = "{}-VA-GAUGE-{}:PLOG_CALC".format(self.dom,self.id)
+
+        _mks937aPlogEGU_template(device=self.eguInputPV,p_egu_pv=self.input)
+        _mks937aGauge_template(name=self.name,GCTLR="",c="",s="", dom=self.dom,id=self.id,aitype="Soft Channel",aiinp="{} CP".format(self.eguInputPV))
+    
+    ArgInfo = makeArgInfo(__init__,
+        name = Simple("Device name", str),
+        dom = Simple("Domain 5 char string (e.g. BL11I)", str),
+        id = Simple("ID number as 2 digit string (e.g. 01)",int),
+        input = Simple("PV providing gauge reading in mbar",str)
+    )
+
 class mks937aGauge_sim(AutoSubstitution):
     WarnMacros = False
     TemplateFile = 'simulation_mks937aGauge.template'
@@ -65,3 +99,6 @@ class mks937aImgDummy(AutoSubstitution):
 class mks937aPirgDummy(AutoSubstitution):
     TemplateFile = 'mks937aPirgDummy.template'
     
+class mks937aImgMean(AutoSubstitution):
+    Dependencies = (Calc,GenSub,mks937aLib)
+    TemplateFile = 'mks937aImgMean.template'

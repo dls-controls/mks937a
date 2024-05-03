@@ -96,6 +96,46 @@
 # This associates an edm screen with the template
 # % gui, $(name=), edm, mks937aImg.edl, device=$(device)
 
+# This associates BOY screens with the template
+# % gui, $(name=), boydetail, mks937aApp_opi/img_detail.opi, device=$(device), desc=$(device), name=$(name=)
+# % gui, $(name=), boyembed, mks937aApp_opi/img_embed_box.opi, device=$(device), desc=$(device), name=$(name=)
+# % gui, $(name=), boyembed, mks937aApp_opi/img_embed.opi, device=$(device), desc=$(device), name=$(name=)
+
+# These define what PVs a valve detail screen should contain
+# % gui, $(name=), readback, Pressure,                                $(device):P
+# % gui, $(name=), readback, Status,                                  $(device):STA
+# % gui, $(name=), readback, Gauge Setpoint Write,                    $(device):PRO:ILKSETSP:NOWRITE
+# % gui, $(name=), readback, Relay 1 on SetPoint for Summary,         $(device):RLY1:SP,        =pv("$(device):RLY1:SP.DESC")
+# % gui, $(name=), readback, Relay 1 off SetPoint for Summary,        $(device):RLY1:SPOFF,     =pv("$(device):RLY1:SPOFF.DESC")
+# % gui, $(name=), readback, Relay 2 on SetPoint for Summary,         $(device):RLY2:SP,        =pv("$(device):RLY2:SP.DESC")
+# % gui, $(name=), readback, Relay 3 on SetPoint for Summary,         $(device):RLY3:SP,        =pv("$(device):RLY3:SP.DESC")
+## TODO The below gives us feedback on what the state actually is - without this you get the current demand
+## (as per differences between EDM and CSS enum menus)
+# % gui, $(name=), readback, Cold Cathode,                            $(device):ISENABLED
+# % gui, $(name=), enum, Cold Cathode,                                $(device):CCHV
+
+# % gui, $(name=), readback, CTL SP Controlling Gauge,                $(device):CTL:SETCCS,     =concat(pv("$(device):CTL:SP.DESC")," Gauge")
+# % gui, $(name=), readback, CTL SP MODE,                             $(device):CTL:SETMODE,    =concat(pv("$(device):CTL:SP.DESC")," Mode")
+# % gui, $(name=), readback, Pro Setpoint,                            $(device):PRO:SP,         =pv("$(device):PRO:SP.DESC")
+# % gui, $(name=), readback, Relay 1 On Setpoint,                     $(device):RLY1:SP,        =pv("$(device):RLY1:SP.DESC")
+# % gui, $(name=), readback, Relay 1 Off Setpoint,                    $(device):RLY1:SPOFF,     =pv("$(device):RLY1:SPOFF.DESC")
+# % gui, $(name=), readback, Relay 2 On Setpoint,                     $(device):RLY2:SP,        =pv("$(device):RLY2:SP.DESC")
+# % gui, $(name=), readback, Relay 2 Off Setpoint,                    $(device):RLY2:SPOFF,     =pv("$(device):RLY2:SPOFF.DESC")
+# % gui, $(name=), readback, Relay 3 On Setpoint,                     $(device):RLY3:SP,        =pv("$(device):RLY3:SP.DESC")
+# % gui, $(name=), readback, Relay 3 Off Setpoint,                    $(device):RLY3:SPOFF,     =pv("$(device):RLY3:SPOFF.DESC")
+# % gui, $(name=), readback, Relay 4 On Setpoint,                     $(device):RLY4:SP,        =pv("$(device):RLY4:SP.DESC")
+# % gui, $(name=), readback, Relay 4 Off Setpoint,                    $(device):RLY4:SPOFF,     =pv("$(device):RLY4:SPOFF.DESC")
+# % gui, $(name=), readback, Fast Relay On Setpoint,                  $(device):FRLY:SP,        =pv("$(device):FRLY:SP.DESC")
+
+# % gui, $(name=), demand,   Pro Setpoint,                            $(device):PRO:OUTSP,      =pv("$(device):PRO:SP.DESC")
+# % gui, $(name=), demand,   Relay 1 On Setpoint,                     $(device):RLY1:SETSP,     =pv("$(device):RLY1:SP.DESC")
+# % gui, $(name=), demand,   Relay 1 Off Setpoint,                    $(device):RLY1:SETSPOFF,  =pv("$(device):RLY1:SPOFF.DESC")
+# % gui, $(name=), demand,   Relay 2 On Setpoint,                     $(device):RLY2:SETSP,     =pv("$(device):RLY2:SP.DESC")
+# % gui, $(name=), demand,   Relay 2 Off Setpoint,                    $(device):RLY2:SETSPOFF,  =pv("$(device):RLY2:SPOFF.DESC")
+# % gui, $(name=), demand,   Relay 3 On Setpoint,                     $(device):RLY3:SETSP,     =pv("$(device):RLY3:SP.DESC")
+# % gui, $(name=), demand,   Relay 3 Off Setpoint,                    $(device):RLY3:SETSPOFF,  =pv("$(device):RLY3:SPOFF.DESC")
+# % gui, $(name=), demand,   Relay 4 On Setpoint,                     $(device):RLY4:SETSP,     =pv("$(device):RLY4:SP.DESC")
+# 
 # Cold Cathode Enable
 #
 #% archiver 10 Monitor
@@ -267,7 +307,7 @@ record(ai, "$(device):CTL:SP")
   {
   field(DESC, "$(ctlsp_desc=IMG Enable)")
   field(DTYP, "stream")
-  field(INP, "@mks937a.protocol getsp($(channel),CTL) $(port) 0")
+  field(INP, "@mks937a.protocol getsp($(channel),CTL,$(device)) $(port) 0")
   field(SCAN, "1 second")
   field(PINI, "YES")
   field(EGU, "mbar")
@@ -289,7 +329,7 @@ record(ao, "$(device):CTL:OUTSP")
     field(DESC, "Output Control Setpoint")
     field(DTYP, "stream")
     field(SDIS, "$(device):CTL:ILKSETSP:NOWRITE")
-    field(OUT, "@mks937a.protocol setsp($(channel),CTL) $(port) 0")
+    field(OUT, "@mks937a.protocol setsp($(channel),CTL,$(device)) $(port) 0")
     }
 
 record(bo, "$(device):CTL:DIS") 
@@ -375,7 +415,7 @@ record(seq, "$(device):PRO:SEQ")
 record(ai, "$(device):PRO:SP") {
   field(DESC, "$(prosp_desc=IMG Overpressure)")
   field(DTYP, "stream")
-  field(INP, "@mks937a.protocol getsp($(channel),PRO) $(port) 0")
+  field(INP, "@mks937a.protocol getsp($(channel),PRO,$(device)) $(port) 0")
   field(SCAN, "1 second")
   field(EGU, "mbar")
   field(PREC, "1")
@@ -396,7 +436,7 @@ record(ao, "$(device):PRO:OUTSP")
     field(DESC, "Output Protection Setpoint")
     field(DTYP, "stream")
     field(SDIS, "$(device):PRO:ILKSETSP:NOWRITE")
-    field(OUT, "@mks937a.protocol setsp($(channel),PRO) $(port) 0")
+    field(OUT, "@mks937a.protocol setsp($(channel),PRO,$(device)) $(port) 0")
     }
 
 record(bo, "$(device):PRO:DIS") {
@@ -456,7 +496,7 @@ record(seq, "$(device):RLY:SEQ") {
 record(ai, "$(device):RLY:SP") {
   field(DESC, "$(rlysp_desc=Valve Interlock)")
   field(DTYP, "stream")
-  field(INP, "@mks937a.protocol getsp($(channel),RLY) $(port) 0")
+  field(INP, "@mks937a.protocol getsp($(channel),RLY,$(device)) $(port) 0")
   field(SCAN, "1 second")
   field(EGU, "mbar")
   field(PREC, "1")
@@ -477,7 +517,7 @@ record(ao, "$(device):RLY:OUTSP")
     field(DESC, "Output Relay Setpoint")
     field(DTYP, "stream")
     field(SDIS, "$(device):RLY:ILKSETSP:NOWRITE")
-    field(OUT, "@mks937a.protocol setsp($(channel),RLY) $(port) 0")
+    field(OUT, "@mks937a.protocol setsp($(channel),RLY,$(device)) $(port) 0")
     }
 
 record(bo, "$(device):RLY:DIS") 
@@ -549,7 +589,7 @@ record(seq, "$(device):RLA:SEQ") {
 record(ai, "$(device):RLA:SP") {
   field(DESC, "$(rlasp_desc=MPS Interlock)")
   field(DTYP, "stream")
-  field(INP, "@mks937a.protocol getsp(3,RLY) $(port) 0")
+  field(INP, "@mks937a.protocol getsp(3,RLY,$(device)) $(port) 0")
   field(SCAN, "1 second")
   field(EGU, "mbar")
   field(PREC, "1")
@@ -571,7 +611,7 @@ record(ao, "$(device):RLA:OUTSP")
     field(DESC, "Output Relay Setpoint")
     field(DTYP, "stream")
     field(SDIS, "$(device):RLA:ILKSETSP:NOWRITE")
-    field(OUT, "@mks937a.protocol setsp(3,RLY) $(port) 0")
+    field(OUT, "@mks937a.protocol setsp(3,RLY,$(device)) $(port) 0")
     field(DISA, "$(channel)")
     }
 
@@ -686,3 +726,15 @@ record(fanout, "$(device):CTL:INITSETSPFAN")
     field(LNK5, "$(device):CTL:INITSETSPSDIS")
     field(SELM, "All")
 }
+
+################################################################################
+# Text error message
+#
+record(stringin, "$(device):ERROR")
+    {
+    field(DESC, "Last error message")
+    field(INP, "")
+    field(PINI, "YES")
+    }
+
+

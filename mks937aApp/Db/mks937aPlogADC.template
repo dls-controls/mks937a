@@ -7,6 +7,13 @@
 # Backward comatibility is important and this helps prevent breaking older instances
 # which use the primitive Hytec VME Hy8401ip module.
 #
+# Quote from MKS937A Manual: 
+# Logarithmic pressure output ranges from 0 to 10 V and is scaled to 0.6 V per
+# decade of pressure change
+# The above model is for Torr. 1 mBar == 1 Torr * 1000 / 760
+# So in the log domain we need to add Log(1000/760) to CALC
+# = 0.119
+#
 # Ian Gillingham 06/01/2016
 #
 # substitutions:
@@ -20,7 +27,7 @@ record(calc, "$(device)")
     {
 	field(DESC, "PLOG Analogue Voltage")
 	field(EGU,  "V")
-	field(CALC, "((10.0*(A/32767.0))/0.6) - 12.0")
+	field(CALC, "(((10.0*(A/32767.0))/0.6) - 12.0)+0.119")
   	field(INPA, "$(plog_adc_pv) PP MS")
   	field(HOPR, "3")
   	field(LOPR, "-11")

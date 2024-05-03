@@ -25,17 +25,8 @@ ccenable { out "%{X|E}CC\$1"; in "OK"; }
 
 # Setpoints
 
-getsp   {
-        out "\$2\$1";
-        in "%f";
-        @mismatch { in "%(\$3:ERROR.VAL)s";}
-        }
-
-setsp   { out "\$2\$1=%0.1E";
-          in "OK";
-          @mismatch { in "%(\$3:ERROR.VAL)s";}
-          }
-
+getsp   { out "\$2\$1"; in "%f"; }
+setsp   { out "\$2\$1=%0.1E"; in "OK"; }
 dissp   { out "\$2\$1=0"; in "OK"; }
 
 # Controller parameters
